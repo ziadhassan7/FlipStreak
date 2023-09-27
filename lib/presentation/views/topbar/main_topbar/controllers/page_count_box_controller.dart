@@ -17,7 +17,7 @@ class PageCountBoxController {
   static Color getBackgroundColor(bool isBright){
 
     if(_getPagesRead() >= getPagesGoal()){
-      return const Color.fromRGBO(248, 233, 193, 0.6);
+      return Color.fromRGBO(248, 233, 193, isBright ? 0.6 : 0.2);
     }
 
     return isBright ? colorAccent.withOpacity(0.05) : Colors.white24;

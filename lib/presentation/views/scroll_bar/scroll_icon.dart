@@ -9,6 +9,7 @@ class ScrollIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     return GestureDetector(
       onPanDown: (det){
         ref.read(scrollPagesIndicatorProvider.notifier).show();

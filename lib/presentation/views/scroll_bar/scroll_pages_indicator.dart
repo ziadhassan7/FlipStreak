@@ -39,7 +39,7 @@ class ScrollPagesIndicator extends ConsumerWidget {
                       return TextInriaSans("${snapshot.data}/${getTotalPages()}");
 
                     } else {
-                      return const Center(child: CircularProgressIndicator(),);
+                      return TextInriaSans("0/${getTotalPages()}");
                     }
 
                   }

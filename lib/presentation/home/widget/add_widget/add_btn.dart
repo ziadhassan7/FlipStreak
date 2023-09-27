@@ -88,7 +88,7 @@ class AddIconButton extends StatelessWidget {
 
   Future<int> getTotalPages(String filePath) async {
     PdfDocument document = await PdfDocument.openFile(filePath);
-    int page = document.pagesCount;
+    int page = document.pagesCount - 1;
 
     return page;
   }

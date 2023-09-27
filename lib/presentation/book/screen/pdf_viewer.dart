@@ -1,4 +1,5 @@
 import 'package:flip_streak/provider/pdf_view_loaded_provider.dart';
+import 'package:flip_streak/provider/scroll_page_indicator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -75,6 +76,8 @@ class PdfViewer extends ConsumerWidget {
                 markAsComplete();
               }
 
+              // Show page indicator
+              showPageIndicator(ref);
             },
           ),
         ],
@@ -135,6 +138,14 @@ class PdfViewer extends ConsumerWidget {
     return currentPage;
   }
 
+
+  showPageIndicator (WidgetRef ref){
+    ref.read(scrollPagesIndicatorProvider.notifier).show();
+
+    Future.delayed(const Duration(milliseconds: 2000), (){
+      ref.read(scrollPagesIndicatorProvider.notifier).hide();
+    });
+  }
 }
 
 

@@ -10,6 +10,7 @@ class StreakWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final int streakCount = ref.watch(streakProvider);
 
     return SizedBox(
@@ -39,7 +40,7 @@ class StreakWidget extends ConsumerWidget {
               children: [
                 textWidget(StreakCommentUtil.getSmallText(ref), size: 15),
                 textWidget(StreakCommentUtil.getBigText(ref), size: 16),
-                const Spacer(),
+                const SizedBox(height: 2,),
                 textWidget(streakCount.toString(), size: 55),
                 textWidget("days", size: 30),
               ],

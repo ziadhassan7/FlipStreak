@@ -13,7 +13,7 @@ class ScreenTouchDetector extends StatelessWidget {
       behavior: HitTestBehavior.translucent,
 
       onTap: () {
-        widgetRef.read(mainTopBarProvider.notifier).toggle();
+        widgetRef.read(topbarProvider.notifier).toggle();
       },
 
       child: SizedBox(

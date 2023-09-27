@@ -21,6 +21,15 @@ class SystemUtil {
         DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight]);
   }
 
+  // Get orientation
+  static bool isScreenLandscape(BuildContext context){
+    if (MediaQuery.of(context).orientation == Orientation.landscape) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   /// Status bar
   static void disableStatusBarColor () {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final mainTopBarProvider = StateNotifierProvider<MainTopBarProvider, bool>((ref) {
+final topbarProvider = StateNotifierProvider<MainTopBarProvider, bool>((ref) {
 
   return MainTopBarProvider();
 });

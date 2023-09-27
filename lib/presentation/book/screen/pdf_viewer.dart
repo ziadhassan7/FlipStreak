@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flip_streak/provider/main_top_bar_provider.dart';
 import 'package:flip_streak/provider/pdf_view_loaded_provider.dart';
 import 'package:flip_streak/provider/scroll_page_indicator_provider.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +81,9 @@ class PdfViewer extends ConsumerWidget {
 
               // Show page indicator
               showPageIndicator(ref);
+
+              // Hide Topbar
+              ref.read(topbarProvider.notifier).keepClosed();
             },
           ),
         ],
@@ -142,9 +148,10 @@ class PdfViewer extends ConsumerWidget {
   showPageIndicator (WidgetRef ref){
     ref.read(scrollPagesIndicatorProvider.notifier).show();
 
-    Future.delayed(const Duration(milliseconds: 2000), (){
+    Timer t = Timer(const Duration(milliseconds: 2000), () {
       ref.read(scrollPagesIndicatorProvider.notifier).hide();
     });
+
   }
 }
 

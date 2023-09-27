@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app_constants/color_constants.dart';
-import '../../../../app_constants/topbar_constants.dart';
 import '../../../../business/app_wise/controllers/book_controller.dart';
 import '../../../../provider/bright_mode_provider.dart';
-import '../../../../provider/top_bar_toggler_provider.dart';
 import '../../../views/dialoq/bookmark_dialog/bookmarks_dialog.dart';
 import '../../../views/menu/menu_widget.dart';
 import '../../../views/text_inria_sans.dart';
@@ -33,11 +31,6 @@ class BookMenuButton extends StatelessWidget {
                   child: TextInriaSans("Bookmarked", color: foregroundColor,),
                 ),
 
-                PopupMenuItem<int>(
-                  value: 1,
-                  child: TextInriaSans("Search in Book", color: foregroundColor,),
-                ),
-
                 ColorPicker.list(ref),
               ]
               ,
@@ -46,10 +39,6 @@ class BookMenuButton extends StatelessWidget {
                   //open Dialog showing list of bookmarks
                   BookmarksDialog(context,
                       await getBookmarkedPages(bookModel.id));
-                }
-
-                if (value == 1) {
-                  ref.read(topbarTogglerProvider.notifier).toggleTopbar(TOPBAR_SEARCH);
                 }
               }
 

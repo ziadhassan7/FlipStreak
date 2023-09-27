@@ -3,25 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../provider/scroll_page_indicator_provider.dart';
 import '../../../provider/scroll_view_provider.dart';
 import '../../styles/box_decoration.dart';
-import '../../styles/device_screen.dart';
 
-class ScrollIndicator extends ConsumerWidget {
-  const ScrollIndicator({Key? key}) : super(key: key);
+class ScrollIcon extends ConsumerWidget {
+  const ScrollIcon({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onPanDown: (det){
-        ref.read(scrollPageIndicatorProvider.notifier).show();
+        ref.read(scrollPagesIndicatorProvider.notifier).show();
       },
 
       onPanUpdate: (det){
-        ref.read(scrollViewProvider.notifier)
-            .update(det.globalPosition.dy, DeviceScreen(context).height);
+        ref.read(scrollViewPositionProvider.notifier)
+            .updateWithPosition(context, det.globalPosition.dy);
       },
 
       onPanEnd: (det){
-        ref.read(scrollPageIndicatorProvider.notifier).hide();
+        ref.read(scrollPagesIndicatorProvider.notifier).hide();
       },
 
       child: Container(

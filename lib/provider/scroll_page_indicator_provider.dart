@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-final scrollPageIndicatorProvider = StateNotifierProvider<ScrollPageIndicatorProvider, bool>((ref) {
+final scrollPagesIndicatorProvider = StateNotifierProvider<ScrollPageIndicatorProvider, bool>((ref) {
 
   return ScrollPageIndicatorProvider();
 });

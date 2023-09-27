@@ -7,6 +7,7 @@ import '../../../business/app_wise/controllers/book_controller.dart';
 import '../../../business/app_wise/counters/counters_helper.dart';
 import '../../../business/app_wise/controllers/page_controller.dart';
 import '../../../provider/page_filter_provider.dart';
+import '../../../provider/scroll_view_provider.dart';
 import '../../../provider/search_text_provider.dart';
 
 class PdfViewer extends ConsumerWidget {
@@ -54,11 +55,14 @@ class PdfViewer extends ConsumerWidget {
               int lastPage = bookModel.lastPage;
               int currentPage = page ?? 0;
 
+              //update scroll view position
+              ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage);
+
+              // update counters & states
               if (currentPage > lastPage) {
                 counters.updateCounters(ref, isIncrement: true);
                 updateLastPage(pageNumber: currentPage);
                 checkFab(ref);
-
               }
               if (currentPage < lastPage){
                 counters.updateCounters(ref, isIncrement: false);
@@ -66,6 +70,7 @@ class PdfViewer extends ConsumerWidget {
                 checkFab(ref);
               }
 
+              //update completion state
               if(currentPage == bookModel.totalPages) {
                 markAsComplete();
               }

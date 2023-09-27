@@ -1,4 +1,4 @@
-import 'package:flip_streak/business/print_debug.dart';
+import 'package:flip_streak/provider/pdf_view_loaded_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,7 +47,7 @@ class PdfViewer extends ConsumerWidget {
             onViewCreated: (controller){
               pdfController = controller;
 
-              PrintDebug("What The Fuck Is going: created", bookModel.lastPage);
+              ref.read(pdfViewLoadedProvider.notifier).show();
             },
 
             onPageChanged: (int? page, int? total) {
@@ -120,13 +120,12 @@ class PdfViewer extends ConsumerWidget {
   }
 
   int openInitialPage () {
+    int currentPage = 0;
     //If there is an initial page specified, open it.
     //if not, open last page user have been on.
     initialPage != null
         ? currentPage = initialPage!
         : currentPage = bookModel.lastPage;
-
-    PrintDebug("What The Fuck Is going: initial model", currentPage);
 
     return currentPage;
   }

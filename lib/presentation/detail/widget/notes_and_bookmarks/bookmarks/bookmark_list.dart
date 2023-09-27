@@ -43,7 +43,7 @@ class BookmarkList extends ConsumerWidget {
                       return Container(
                         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                         width: 170,
-                        child: BookmarkListItem(navigateFromInsideBook: false, page: bookmarks[index]));
+                        child: BookmarkListItem(page: bookmarks[index]));
                     })
               ),
           ],

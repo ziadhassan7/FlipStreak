@@ -1,3 +1,4 @@
+import 'package:flip_streak/business/print_debug.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../business/app_wise/controllers/book_controller.dart';
 
@@ -16,7 +17,7 @@ class BookmarkListProvider extends StateNotifier<List<String>> {
 
   /// State Function
   updateNotifier() async {
-    //force change?   read about all of this to fucking solve it for good
+    PrintDebug("Looool", await getBookmarkedPages(bookModel.id));
     state = await getBookmarkedPages(bookModel.id);
   }
 

@@ -1,6 +1,4 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
-import 'package:flip_streak/business/app_wise/controllers/page_controller.dart';
-import 'package:flip_streak/business/print_debug.dart';
 import 'package:flip_streak/presentation/book/widget/bookmark_fab.dart';
 import 'package:flip_streak/presentation/book/screen/pdf_viewer.dart';
 import 'package:flip_streak/presentation/views/scroll_bar/scroll_bar.dart';
@@ -10,6 +8,7 @@ import '../../../business/app_wise/exit_book_util.dart';
 import '../../../business/system_util.dart';
 import '../../../provider/bright_mode_provider.dart';
 import '../../../provider/main_top_bar_provider.dart';
+import '../../../provider/pdf_view_loaded_provider.dart';
 import '../../views/topbar/main_topbar/base_top_bar.dart';
 import '../widget/screen_touch_detector.dart';
 
@@ -64,16 +63,21 @@ class BookPage extends ConsumerWidget {
                   builder: (context, ref, child) {
                     final isBright = ref.watch(brightModeProvider);
 
-                    PrintDebug("What The Fuck Is going: listen bookmark", currentPage);
-                    //This is not called
-
                     return Visibility(
                         visible: ref.watch(mainTopBarProvider),
                         child: BookmarkFab(isBright));
                   }
               ),
 
-              const CustomScrollBar()
+              Consumer(
+                builder: (context, ref, _) {
+                  bool isBookViewCreated = ref.watch(pdfViewLoadedProvider);
+
+                  return isBookViewCreated
+                    ? const CustomScrollBar()
+                    : const SizedBox();
+                }
+              )
             ],
           ),
         ),

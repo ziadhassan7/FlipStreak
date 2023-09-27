@@ -1,13 +1,13 @@
-import 'package:flip_streak/presentation/book/screen/book_page.dart';
+import 'package:flip_streak/business/app_wise/controllers/page_controller.dart';
 import 'package:flutter/material.dart';
 import '../../../../../business/app_wise/controllers/book_controller.dart';
-import '../../../../../business/route_util.dart';
-import '../../../../views/book_thumbnail.dart';
-import '../../../../views/text_inria_sans.dart';
+import '../../book_thumbnail.dart';
+import '../../text_inria_sans.dart';
 
-class BookmarkListItem extends StatelessWidget {
-  const BookmarkListItem({Key? key, required this.page}) : super(key: key);
+class BookmarkDialogList extends StatelessWidget {
+  const BookmarkDialogList({Key? key, required this.dialogContext, required this.page}) : super(key: key);
 
+  final BuildContext dialogContext;
   final String page;
 
   @override
@@ -42,12 +42,12 @@ class BookmarkListItem extends StatelessWidget {
   Widget clickHandler(BuildContext context) {
 
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
+        behavior: HitTestBehavior.translucent,
 
-      onTap: () {
-        //Open Book, with current page
-        RouteUtil.navigateTo(context, BookPage(initialPage: int.parse(page),));
-      }
+        onTap: () {
+          pdfController.setPage(int.parse(page));
+          Navigator.pop(dialogContext);
+        }
     );
 
   }

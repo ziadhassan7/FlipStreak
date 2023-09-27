@@ -1,9 +1,9 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/data/model/note_model.dart';
 import 'package:flip_streak/presentation/notes/screen/book_note_page/single_book_note_page.dart';
-import 'package:flip_streak/presentation/views/notes_and_bookmarks/notes/note_item.dart';
 import 'package:flutter/material.dart';
 import '../../../business/route_util.dart';
+import '../../detail/widget/notes_and_bookmarks/notes/note_item.dart';
 import '../../views/text_inria_sans.dart';
 
 class BookItem extends StatelessWidget {

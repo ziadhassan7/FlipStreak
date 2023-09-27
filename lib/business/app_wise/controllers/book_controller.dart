@@ -1,9 +1,8 @@
+import 'dart:async';
 import 'package:flip_streak/business/string_list_converter.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../data/local_db/book_client.dart';
 import '../../../data/model/book_model.dart';
 
-final PdfViewerController controller = PdfViewerController();
 BookClient bookClient = BookClient.instance;
 
 // Initial Book model    // static instance - sensitive to global changes
@@ -71,20 +70,11 @@ Future<int> getLastPage (String id) async {
   return book.lastPage;
 }
 
-// jump to last page
-Future<void> jumpToLastPage (String id) async {
-
-  getLastPage(id).then((value) {
-    controller.jumpToPage(value);
-  });
-}
-
 
 ///                                                                             / Total Pages
 // get total pages
-Future<int> getTotalPages (String id) async {
-  BookModel book = await bookClient.readOneElement(id);
-  return book.totalPages;
+int getTotalPages () {
+  return bookModel.totalPages;
 }
 
 ///                                                                             / Book Category

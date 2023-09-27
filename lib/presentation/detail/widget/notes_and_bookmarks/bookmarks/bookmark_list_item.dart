@@ -1,15 +1,16 @@
+import 'package:flip_streak/business/app_wise/controllers/page_controller.dart';
 import 'package:flip_streak/presentation/book/screen/book_page.dart';
 import 'package:flutter/material.dart';
-import '../../../../business/app_wise/controllers/book_controller.dart';
-import '../../../../business/route_util.dart';
-import '../../book_thumbnail.dart';
-import '../../text_inria_sans.dart';
+import '../../../../../business/app_wise/controllers/book_controller.dart';
+import '../../../../../business/route_util.dart';
+import '../../../../views/book_thumbnail.dart';
+import '../../../../views/text_inria_sans.dart';
 
 class BookmarkListItem extends StatelessWidget {
-  const BookmarkListItem({Key? key, required this.navigateFromInsideBook, required this.currentPage}) : super(key: key);
+  const BookmarkListItem({Key? key, required this.navigateFromInsideBook, required this.page}) : super(key: key);
 
   final bool navigateFromInsideBook;
-  final String currentPage;
+  final String page;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +25,13 @@ class BookmarkListItem extends StatelessWidget {
             Expanded(
               child: BookThumbnail(
                 filePath: bookModel.path,
-                page: int.parse(currentPage) - 1, //This package starts page 1 with 0
+                page: int.parse(page) - 1, //This package starts page 1 with 0
               ),
             ),
 
             const SizedBox(height: 8,),
 
-            TextInriaSans(currentPage, weight: FontWeight.bold, color: Colors.black54,),
+            TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
           ],
         ),
 
@@ -48,11 +49,11 @@ class BookmarkListItem extends StatelessWidget {
       onTap: () {
 
         if(navigateFromInsideBook){
-          controller.jumpToPage(int.parse(currentPage));
+          currentPage = int.parse(page);
         } else {
           //Open Book, with current page
           RouteUtil.navigateTo(context,
-              BookPage(initialPage: int.parse(currentPage),));
+              BookPage(initialPage: int.parse(page),));
         }
       }
     );

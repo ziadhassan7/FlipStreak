@@ -1,12 +1,21 @@
 import 'package:flip_streak/data/local_db/book_client.dart';
 import 'package:flip_streak/data/model/book_model.dart';
 import 'package:flip_streak/data/shared_pref/hive_client.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../presentation/views/topbar/search_topbar/search_bar.dart';
 import '../../../provider/bookmark_list_provider.dart';
 import 'book_controller.dart';
 
+int currentPage = 0;
 HiveClient hiveClient = HiveClient();
+late PDFViewController pdfController;
+
+
+/// Jump to page
+void jumpToPage(int page){
+  pdfController.setPage(page);
+}
+
 
 /// Check Fab on page change
 void checkFab(WidgetRef ref,) {
@@ -14,8 +23,6 @@ void checkFab(WidgetRef ref,) {
   // update FAB bookmark button
   ref.read(bookmarkListProvider.notifier)
       .toggleBookmarkButton();
-
-  hiveClient.updateLastPage(controller.pageNumber);
 
 }
 
@@ -25,10 +32,10 @@ updateLastPage({required int pageNumber}) {
   // update Book Model
   bookModel = bookModel.copyWith(lastPage: pageNumber,);
 
-  // update last page, only if page didn't flip while search
-  if (!FindBar.searchResult.hasResult) {
-    updateBookDetails();
-  }
+  hiveClient.updateLastPage(pageNumber);
+
+  // update last page
+  updateBookDetails();
 }
 
 /// Update Last page - from hive - updates on last widget

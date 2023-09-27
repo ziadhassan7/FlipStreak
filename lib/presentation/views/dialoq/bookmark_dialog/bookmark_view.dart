@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../notes_and_bookmarks/bookmarks/bookmark_list_item.dart';
+import '../../../detail/widget/notes_and_bookmarks/bookmarks/bookmark_list_item.dart';
 import '../../text_inria_sans.dart';
 
 class BookmarkView extends StatelessWidget {
@@ -32,7 +32,7 @@ class BookmarkView extends StatelessWidget {
                 itemCount: list.length,
                 itemBuilder: (context, index) {
 
-                  return BookmarkListItem(navigateFromInsideBook: true, currentPage: list[index]);
+                  return BookmarkListItem(navigateFromInsideBook: true, page: list[index]);
                 }
             ),
           ),

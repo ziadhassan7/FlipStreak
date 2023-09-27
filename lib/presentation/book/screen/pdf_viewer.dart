@@ -1,24 +1,18 @@
-import 'dart:io';
-import 'package:flip_streak/presentation/book/screen/book_page.dart';
-import 'package:flip_streak/presentation/book/widget/horizontal_indicator_widget.dart';
-import 'package:flip_streak/provider/select_text_provider.dart';
+import 'package:flip_streak/business/print_debug.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../../app_constants/color_constants.dart';
 import '../../../business/app_wise/controllers/book_controller.dart';
-import '../../../business/app_wise/counters/counters_util.dart';
+import '../../../business/app_wise/counters/counters_helper.dart';
 import '../../../business/app_wise/controllers/page_controller.dart';
-import '../../../provider/horizontal_indicator_provider.dart';
 import '../../../provider/page_filter_provider.dart';
 import '../../../provider/search_text_provider.dart';
-import '../../../provider/main_top_bar_provider.dart';
-import '../../views/context_menu/context_menu.dart';
-import '../../views/topbar/search_topbar/search_bar.dart';
 
 class PdfViewer extends ConsumerWidget {
   const PdfViewer({Key? key, this.initialPage}) : super(key: key);
+
+  static final CountersHelper counters = CountersHelper();
 
   static ColorFilter _pageFilter = filterNormalPage;
   final int? initialPage;
@@ -38,110 +32,48 @@ class PdfViewer extends ConsumerWidget {
     return ColorFiltered(
       colorFilter: _pageFilter,
 
-      child: SfPdfViewerTheme(
-        data: SfPdfViewerThemeData(
-          backgroundColor: getBackgroundColor(filter),
-        ),
+      child: Stack(
+        children: [
 
-        child: Stack(
-          children: [
-            SfPdfViewer.file(
-              File(bookModel.path),
+          PDFView(
+            filePath: bookModel.path,
+            defaultPage: openInitialPage(),
+            swipeHorizontal: false,
+            autoSpacing: false, //
+            pageFling: false, //
+            pageSnap: false, //
+            nightMode: false,
 
-              key: BookPage.pdfViewerKey,
-              controller: controller,
-              scrollDirection: PdfScrollDirection.horizontal,
-              pageLayoutMode: PdfPageLayoutMode.single,
+            onViewCreated: (controller){
+              pdfController = controller;
 
+              PrintDebug("What The Fuck Is going: created", bookModel.lastPage);
+            },
 
-              /// Text Select
-              onTextSelectionChanged:
-                  (PdfTextSelectionChangedDetails details) {
+            onPageChanged: (int? page, int? total) {
+              int lastPage = bookModel.lastPage;
+              int currentPage = page ?? 0;
 
-                if (details.selectedText == null && !FindBar.searchResult.hasResult && ContextMenu.current != null) {
-                  ref.read(selectTextProvider.notifier).deselect();
-                  //Make sure it's opened
-                  ref.read(mainTopBarProvider.notifier).keepOpen();
+              if (currentPage > lastPage) {
+                counters.updateCounters(ref, isIncrement: true);
+                updateLastPage(pageNumber: currentPage);
+                checkFab(ref);
 
-                  ContextMenu.current!.remove();
-                  ContextMenu.current = null;
+              }
+              if (currentPage < lastPage){
+                counters.updateCounters(ref, isIncrement: false);
+                updateLastPage(pageNumber: currentPage);
+                checkFab(ref);
+              }
 
-                } else if (details.selectedText != null && ContextMenu.current == null) {
-                  //Open selection top-bar
-                  ref.read(selectTextProvider.notifier).selected();
-                  //Make sure it's opened
-                  ref.read(mainTopBarProvider.notifier).keepOpen();
-                  //Show context menu
-                  ContextMenu.show(context, ref, details);
-                }
+              if(currentPage == bookModel.totalPages) {
+                markAsComplete();
+              }
 
-              },
-
-              /// Load Doc
-              onDocumentLoaded: (details){
-
-                showHorizontalIndicatorForSeconds(ref);
-
-                // update BookModel with total pages value
-                bookModel = bookModel.copyWith(totalPages: controller.pageCount,);
-
-                updateBookDetails();
-
-                //When book finish loading, open top bar
-                Future.delayed(const Duration(milliseconds: 100), (){
-                  ref.read(mainTopBarProvider.notifier).keepOpen();
-                });
-
-              },
-
-              /// Change Page
-              onPageChanged: (details) async {
-                int lastPage = await getLastPage(bookModel.id);
-                int newPage = details.newPageNumber;
-
-                if (newPage > lastPage) {
-                  CountersUtil.updateCounters(ref, isIncrement: true);
-                  updateLastPage(pageNumber: controller.pageNumber);
-                  checkFab(ref);
-
-                }
-                if (newPage < lastPage){
-                  CountersUtil.updateCounters(ref, isIncrement: false);
-                  updateLastPage(pageNumber: controller.pageNumber);
-                  checkFab(ref);
-                }
-
-                if(newPage == bookModel.totalPages) {
-                  markAsComplete();
-                }
-              },
-            ),
-
-            /// Indicator: Scrolling is Horizontal
-            const HorizontalIndicatorWidget(),
-
-            disableTouchEvents(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget disableTouchEvents(){
-    return Consumer(
-      builder: (context, ref, _) {
-        final isSelecting = ref.watch(selectTextProvider);
-
-        return Visibility(
-          visible: isSelecting, //disable scrolling, while selecting text
-
-          child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: (){},
-            onHorizontalDragDown: (details){},
+            },
           ),
-        );
-      }
+        ],
+      ),
     );
   }
 
@@ -187,26 +119,16 @@ class PdfViewer extends ConsumerWidget {
     }
   }
 
-  void openInitialPage () {
-    //If you are not searching (cuz, when searching, pdf page gets rebuilt)
-    if(!FindBar.searchResult.hasResult){
+  int openInitialPage () {
+    //If there is an initial page specified, open it.
+    //if not, open last page user have been on.
+    initialPage != null
+        ? currentPage = initialPage!
+        : currentPage = bookModel.lastPage;
 
-      //If there is an initial page specified, open it.
-      //if not, open last page user have been on.
-      initialPage != null
-          ? controller.jumpToPage(initialPage!)
-          : jumpToLastPage(bookModel.id);
-    }
-  }
+    PrintDebug("What The Fuck Is going: initial model", currentPage);
 
-  showHorizontalIndicatorForSeconds(WidgetRef ref){
-    // Show horizontal indicator at the start
-    ref.read(horizontalIndicatorProvider.notifier).showIndicator();
-
-    // Hide
-    Future.delayed(const Duration(milliseconds: 1000), (){
-      ref.read(horizontalIndicatorProvider.notifier).hideIndicator();
-    });
+    return currentPage;
   }
 
 }

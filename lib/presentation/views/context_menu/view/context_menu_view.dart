@@ -12,10 +12,10 @@ enum MenuItem {
 }
 
 class ContextMenuView extends StatelessWidget {
-  const ContextMenuView(this.ref, {Key? key, required this.selectedText,}) : super(key: key);
+  const ContextMenuView(this.ref, {Key? key, required this.text,}) : super(key: key);
 
   final WidgetRef ref;
-  final String selectedText;
+  final String text;
   final double radius = 15;
   final double elevation = 15;
 
@@ -43,7 +43,7 @@ class ContextMenuView extends StatelessWidget {
               return ContextMenuItem(
                   ref,
                   currentItem: MenuItem.values[index],
-                  selectedText: selectedText);
+                  selectedText: text);
               },
         )
       ),

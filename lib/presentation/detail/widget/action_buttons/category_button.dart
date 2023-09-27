@@ -29,23 +29,11 @@ class CategoryButton extends StatelessWidget {
                     CategoryAttacherDialog(context, ref, currentBook: bookModel);
                   },
                   color: colorAccent,
-                  icon: const Icon(Icons.label_outline_rounded, color: Colors.white,)
+                  icon: const Icon(Icons.category_outlined, color: Colors.white,)
               ),
             );
           }
       ),
     );
   }
-
-  /*void toggleFavourite() {
-    isFavourite == 1
-        ? isFavourite = 0
-        : isFavourite = 1;
-  }
-
-  Icon getCorrectIcon() {
-    return isFavourite == 1
-        ? const Icon(Icons.favorite_rounded, size: 35,)
-        : const Icon(Icons.favorite_outline_rounded, size: 35,);
-  }*/
 }

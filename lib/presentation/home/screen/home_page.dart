@@ -3,7 +3,6 @@ import 'package:flip_streak/presentation/views/last_book_widget.dart';
 import 'package:flip_streak/presentation/home/widget/streak_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../data/model/book_model.dart';
 import '../../../provider/book_list_provider.dart';
 import '../../views/text_inria_sans.dart';
@@ -11,11 +10,7 @@ import '../widget/add_widget/add_widget.dart';
 import '../widget/book_list_view.dart';
 
 class HomePage extends ConsumerWidget {
-  HomePage({super.key});
-
-  final PdfViewerController controller = PdfViewerController();
-  final GlobalKey<SfPdfViewerState> scrollerKey =GlobalKey();
-
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

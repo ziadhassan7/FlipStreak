@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../data/shared_pref/hive_client.dart';
 
-class CountersUtil {
+class CountersHelper {
   static final HiveClient _hive = HiveClient();
-  static int pageReadCounter = 0;
+  late int pageReadCounter;
 
+  CountersHelper(){
+    pageReadCounter = _hive.getPageReadCounter();
+  }
 
-  static void updateCounters(WidgetRef ref, {required bool isIncrement}){
+  void updateCounters(WidgetRef ref, {required bool isIncrement}){
     int streakState = _hive.getStreakState(); //get state
 
     switch(streakState) {
@@ -38,7 +41,7 @@ class CountersUtil {
   }
 
   /// How many pages you've read Today
-  static void incrementCounters(WidgetRef ref, bool isIncrease) {
+  void incrementCounters(WidgetRef ref, bool isIncrease) {
 
 
     if(isIncrease){

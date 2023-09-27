@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../tabs_names_widget.dart';
+import '../../../views/tabs_names_widget.dart';
 import 'bookmarks/bookmark_list.dart';
 import 'notes/notes_list.dart';
 

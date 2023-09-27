@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app_constants/color_constants.dart';
-import '../../../../business/app_wise/controllers/book_controller.dart';
 import '../../../styles/padding.dart';
 import '../../dialoq/note_dialog/add_note_dialog.dart';
 import '../../dialoq/translate_dialog/translate_dialog.dart';
@@ -41,9 +40,6 @@ class ContextMenuItem extends StatelessWidget {
                   TranslateDialog(context, ref, selectedText);
                   break;
               }
-
-              //Close context menu
-              controller.clearSelection();
             },
 
             /// Widget

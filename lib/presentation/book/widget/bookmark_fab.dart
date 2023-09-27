@@ -1,8 +1,9 @@
+import 'package:flip_streak/business/app_wise/controllers/page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../app_constants/color_constants.dart';
-import '../../../business/app_wise/controllers/book_controller.dart';
+import '../../../business/print_debug.dart';
 import '../../../provider/bookmark_list_provider.dart';
 
 class BookmarkFab extends ConsumerWidget {
@@ -20,7 +21,7 @@ class BookmarkFab extends ConsumerWidget {
     //listen for bookmarks list
     List<String> allBookmarks = ref.watch(bookmarkListProvider);
     //check if current page is bookmarked
-    isBookmarked = allBookmarks.contains(controller.pageNumber.toString());
+    isBookmarked = allBookmarks.contains(currentPage.toString());
 
     return Positioned.directional(
       start: 15,
@@ -30,8 +31,10 @@ class BookmarkFab extends ConsumerWidget {
       child: FloatingActionButton(
         onPressed: () async {
 
+          PrintDebug("What The Fuck Is going: pressed", currentPage);
+
           ref.read(bookmarkListProvider.notifier)
-              .updateList(controller.pageNumber.toString(), allBookmarks);
+              .updateList(currentPage.toString(), allBookmarks);
         },
 
         elevation: 5,

@@ -1,9 +1,9 @@
-import 'package:flip_streak/business/app_wise/controllers/book_controller.dart';
 import 'package:flip_streak/data/model/note_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../provider/note_list_provider.dart';
-import '../../text_inria_sans.dart';
+import '../../../../../business/app_wise/controllers/book_controller.dart';
+import '../../../../../provider/note_list_provider.dart';
+import '../../../../views/text_inria_sans.dart';
 import 'note_item.dart';
 
 class NotesList extends ConsumerWidget {
@@ -18,17 +18,17 @@ class NotesList extends ConsumerWidget {
 
     return (notes.isNotEmpty)
 
-      ? ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: notes.length,
-          itemBuilder: (context, index) {
+        ? ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: notes.length,
+        itemBuilder: (context, index) {
 
-              return SizedBox(
-                  width: 210, height: 160,
-                  child: NoteItem(note: notes[index],));
-          })
+          return SizedBox(
+              width: 210, height: 160,
+              child: NoteItem(note: notes[index],));
+        })
 
-      : Center(child: TextInriaSans("Nothing here"),);
+        : Center(child: TextInriaSans("Nothing here"),);
   }
 
 

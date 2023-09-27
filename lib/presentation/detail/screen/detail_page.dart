@@ -2,12 +2,13 @@ import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/presentation/detail/widget/page_number_widget.dart';
 import 'package:flip_streak/presentation/detail/widget/action_buttons/action_buttons_row.dart';
 import 'package:flip_streak/presentation/detail/widget/edit_button.dart';
+import 'package:flip_streak/presentation/styles/device_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../business/app_wise/controllers/book_controller.dart';
 import '../../views/book_thumbnail.dart';
-import '../../views/notes_and_bookmarks/bottom_tab_controller.dart';
 import '../../views/text_inria_sans.dart';
 import '../widget/details_page_menu.dart';
+import '../widget/notes_and_bookmarks/bookmarks/bookmark_list.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -29,9 +30,9 @@ class DetailPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: 15),
             child: DetailsPageMenu(),
           )
         ],
@@ -46,7 +47,7 @@ class DetailPage extends StatelessWidget {
               children: [
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 25, top: 30, bottom: 45),
+                  padding: const EdgeInsets.only(left: 40, right: 25, top: 30, bottom: 60),
 
                   child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -75,10 +76,12 @@ class DetailPage extends StatelessWidget {
                 /// Read  &  Category - Buttons
                 const ActionButtonsRow(),
 
+                const SizedBox(width: 10,),
 
-                /// Notes & Bookmarks
-                const BottomTabController(),
-
+                /// Bookmarks
+                SizedBox(
+                    height: DeviceScreen(context).height * 0.35,
+                    child: BookmarkList())
 
               ],
             ),

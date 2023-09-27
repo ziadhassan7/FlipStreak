@@ -16,6 +16,7 @@ class BookmarkListProvider extends StateNotifier<List<String>> {
 
   /// State Function
   updateNotifier() async {
+    //force change?   read about all of this to fucking solve it for good
     state = await getBookmarkedPages(bookModel.id);
   }
 

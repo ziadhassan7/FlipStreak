@@ -2,7 +2,7 @@ import 'package:flip_streak/data/model/note_model.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import '../../../../app_constants/color_constants.dart';
-import '../../../views/notes_and_bookmarks/notes/note_item.dart';
+import '../../../detail/widget/notes_and_bookmarks/notes/note_item.dart';
 
 class SingleBookNotePage extends StatelessWidget {
   const SingleBookNotePage({Key? key, required this.notesList}) : super(key: key);

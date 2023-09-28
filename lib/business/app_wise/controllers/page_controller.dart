@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../provider/bookmark_list_provider.dart';
 import 'book_controller.dart';
 
-int currentPage = 0;
 HiveClient hiveClient = HiveClient();
 late PDFViewController pdfController;
 

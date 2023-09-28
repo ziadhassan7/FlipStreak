@@ -59,10 +59,10 @@ class PdfViewer extends ConsumerWidget {
 
               // update counters & states
               if (currentPage > lastPage) {
-                updateOnPageScroll(ref, isIncrement: true);
+                updateOnPageScroll(ref, newPage: currentPage, isIncrement: true);
               }
               if (currentPage < lastPage){
-                updateOnPageScroll(ref, isIncrement: false);
+                updateOnPageScroll(ref, newPage: currentPage, isIncrement: false);
               }
 
               //update completion state
@@ -142,11 +142,11 @@ class PdfViewer extends ConsumerWidget {
 
   }
 
-  updateOnPageScroll(WidgetRef ref, {required bool isIncrement}){
+  updateOnPageScroll(WidgetRef ref, {required int newPage, required bool isIncrement}){
     //update page & streak counters
     counters.updateCounters(ref, isIncrement: isIncrement);
     //update last page
-    updateLastPage(pageNumber: currentPage);
+    updateLastPage(pageNumber: newPage);
     //refresh fab button
     checkFab(ref);
     // Hide Topbar

@@ -106,7 +106,7 @@ class HomePage extends ConsumerWidget {
       return b.lastReadDate!.compareTo(a.lastReadDate!);
     });
 
-    return currentList.length > 6 ? currentList.getRange(0, 6) : currentList;
+    return currentList.length > 4 ? currentList.getRange(0, 4).toList() : currentList;
   }
 
 }

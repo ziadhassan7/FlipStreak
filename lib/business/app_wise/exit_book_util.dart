@@ -3,7 +3,7 @@ import 'package:flip_streak/provider/book_list_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wakelock/wakelock.dart';
 import '../../provider/last_book_provider.dart';
-import '../../provider/main_top_bar_provider.dart';
+import '../../provider/top_bar_provider.dart';
 import '../../provider/pdf_view_loaded_provider.dart';
 import 'controllers/book_controller.dart';
 

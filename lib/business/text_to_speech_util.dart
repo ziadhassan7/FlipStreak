@@ -14,7 +14,6 @@ class TextToSpeechUtil {
   static Future speak(String text) async{
 
     String sourceLanguage = _hiveClient.getLanguageSource();
-    PrintDebug("ksfklam", await flutterTts.getLanguages);
 
     // Check if language is available, and not (auto)
     if(sourceLanguage != "Auto Detect"){
@@ -22,22 +21,18 @@ class TextToSpeechUtil {
 
       if(await flutterTts.isLanguageAvailable(langCode)){
         flutterTts.setLanguage(langCode);
-        PrintDebug("ksfklam", "available");
+        PrintDebug("debug: tts ", "(available)");
       } else {
-        PrintDebug("ksfklam", "not available");
+        PrintDebug("debug: tts ", "(not available)");
       }
     }
 
 
     if(isPlaying){
-      PrintDebug("ksfklam", "was playing");
       _stop();
 
     } else {
       await flutterTts.speak(text);
-
-      PrintDebug("ksfklam", "was not playing");
-
       handleState();
     }
   }
@@ -49,15 +44,12 @@ class TextToSpeechUtil {
 
 
   static handleState(){
-    PrintDebug("ksfklam", "testing state?");
     flutterTts.setStartHandler(() {
       isPlaying = true;
-      PrintDebug("ksfklam: playing", isPlaying);
     });
 
     flutterTts.setCompletionHandler(() {
       isPlaying = false;
-      PrintDebug("ksfklam: stopped", isPlaying);
     });
   }
 

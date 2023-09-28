@@ -1,7 +1,5 @@
 import 'dart:async';
-
-import 'package:flip_streak/provider/main_top_bar_provider.dart';
-import 'package:flip_streak/provider/pdf_view_loaded_provider.dart';
+import 'package:flip_streak/provider/top_bar_provider.dart';
 import 'package:flip_streak/provider/scroll_page_indicator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
@@ -11,8 +9,8 @@ import '../../../business/app_wise/controllers/book_controller.dart';
 import '../../../business/app_wise/counters/counters_helper.dart';
 import '../../../business/app_wise/controllers/page_controller.dart';
 import '../../../provider/page_filter_provider.dart';
+import '../../../provider/pdf_view_loaded_provider.dart';
 import '../../../provider/scroll_view_provider.dart';
-import '../../../provider/search_text_provider.dart';
 
 class PdfViewer extends ConsumerWidget {
   const PdfViewer({Key? key, this.initialPage}) : super(key: key);
@@ -27,7 +25,6 @@ class PdfViewer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final filter = ref.watch(pageFilterProvider);
-    ref.watch(searchTextProvider);
 
     openInitialPage();
 
@@ -53,25 +50,19 @@ class PdfViewer extends ConsumerWidget {
               pdfController = controller;
 
               ref.read(pdfViewLoadedProvider.notifier).show();
+              ref.read(topbarProvider.notifier).keepOpen();
             },
 
             onPageChanged: (int? page, int? total) {
               int lastPage = bookModel.lastPage;
               int currentPage = page ?? 0;
 
-              //update scroll view position
-              ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage);
-
               // update counters & states
               if (currentPage > lastPage) {
-                counters.updateCounters(ref, isIncrement: true);
-                updateLastPage(pageNumber: currentPage);
-                checkFab(ref);
+                updateOnPageScroll(ref, isIncrement: true);
               }
               if (currentPage < lastPage){
-                counters.updateCounters(ref, isIncrement: false);
-                updateLastPage(pageNumber: currentPage);
-                checkFab(ref);
+                updateOnPageScroll(ref, isIncrement: false);
               }
 
               //update completion state
@@ -79,11 +70,8 @@ class PdfViewer extends ConsumerWidget {
                 markAsComplete();
               }
 
-              // Show page indicator
-              showPageIndicator(ref);
-
-              // Hide Topbar
-              ref.read(topbarProvider.notifier).keepClosed();
+              //update scroll view position
+              ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage);
             },
           ),
         ],
@@ -152,6 +140,19 @@ class PdfViewer extends ConsumerWidget {
       ref.read(scrollPagesIndicatorProvider.notifier).hide();
     });
 
+  }
+
+  updateOnPageScroll(WidgetRef ref, {required bool isIncrement}){
+    //update page & streak counters
+    counters.updateCounters(ref, isIncrement: isIncrement);
+    //update last page
+    updateLastPage(pageNumber: currentPage);
+    //refresh fab button
+    checkFab(ref);
+    // Hide Topbar
+    ref.read(topbarProvider.notifier).keepClosed();
+    // Show pages number indicator
+    showPageIndicator(ref);
   }
 }
 

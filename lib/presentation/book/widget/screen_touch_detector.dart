@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../provider/main_top_bar_provider.dart';
+import '../../../provider/top_bar_provider.dart';
 
 class ScreenTouchDetector extends StatelessWidget {
   const ScreenTouchDetector({Key? key, required this.widgetRef}) : super(key: key);

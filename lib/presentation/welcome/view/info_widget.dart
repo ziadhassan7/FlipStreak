@@ -54,7 +54,7 @@ class InfoWidget extends StatelessWidget {
       case Pages.secondPage:
         return "The number of books you want to read";
       case Pages.thirdPage:
-        return "Get reminded if you are going to loose your streak";
+        return "Get reminded if you are going to lose your streak";
     }
   }
 

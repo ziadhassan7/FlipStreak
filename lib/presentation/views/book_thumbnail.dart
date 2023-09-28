@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 
 class BookThumbnail extends StatelessWidget {
-  const BookThumbnail({Key? key, required this.filePath, this.page = 1}) : super(key: key);
+  const BookThumbnail({Key? key, required this.filePath, this.page = 0}) : super(key: key);
 
   final String filePath;
   final int page;

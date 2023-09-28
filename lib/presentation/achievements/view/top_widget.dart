@@ -11,13 +11,13 @@ class AchievementTopWidget extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 54, left: 26),
+          padding: const EdgeInsets.only(top: 38, left: 26),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextInriaSans("Your", size: 28, color: colorAccent,),
-              TextInriaSans("Finished Books", weight: FontWeight.bold, size: 30, color: colorAccent,),
+              TextInriaSans("Achievements", weight: FontWeight.bold, size: 30, color: colorAccent,),
             ],
           ),),
 

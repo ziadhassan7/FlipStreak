@@ -133,7 +133,6 @@ class LastBookWidget extends ConsumerWidget {
   ///                                                                           / Functions
   //Load data
   Future<BookModel?> loadData(BookModel? model) async {
-    print("supposed to load");
 
     if (model == null) {
       String bookId = await hive.getLastBook();
@@ -150,10 +149,6 @@ class LastBookWidget extends ConsumerWidget {
   double getPercent(int page, int total) {
 
     double value = page/total;
-    print("loook per $value");
-    print("loook per $page");
-    print("loook per $total");
-
     if (value == 1) return 100;
 
     return (page/total)*100;
@@ -171,7 +166,7 @@ class LastBookWidget extends ConsumerWidget {
 
   Future<void> onTap(BuildContext context, BookModel model) async {
     // Globalize new bookModel data
-    await globalizeCurrentBookModel(model.id).then((value) {
+    await globalizeCurrentBookModel(model).then((value) {
       // Open Details Page
       RouteUtil
           .navigateTo(context, const BookPage(),);

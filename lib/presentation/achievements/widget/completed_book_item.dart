@@ -24,7 +24,7 @@ class CompletedBookItem extends ConsumerWidget {
       /// Tap --------------
       onTap: () async {
         // Globalize new bookModel data
-        await globalizeCurrentBookModel(bookModel.id).then((value) {
+        await globalizeCurrentBookModel(bookModel).then((value) {
           // Open Details Page
           RouteUtil
               .navigateTo(context, const DetailPage(),);

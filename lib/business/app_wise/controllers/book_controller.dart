@@ -18,8 +18,7 @@ BookModel bookModel = BookModel(
 ///Globalize BookModel
 //Get Current Book model, and
 // make it accessible throughout the whole application
-Future<void> globalizeCurrentBookModel(String currentBookId) async {
-  BookModel currentBook = await bookClient.readOneElement(currentBookId);
+Future<void> globalizeCurrentBookModel(BookModel currentBook) async {
   bookModel = currentBook;
 }
 

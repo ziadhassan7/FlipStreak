@@ -39,7 +39,7 @@ class _PickerDialogViewState extends State<PickerDialogView> {
 
           NumberPicker(
             value: getCurrentValue(),
-            minValue: 1,
+            minValue: 0,
             maxValue: widget.maxValue,
             textStyle: getTextStyle(isSelected: false),
             selectedTextStyle: getTextStyle(isSelected: true),

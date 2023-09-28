@@ -48,7 +48,10 @@ class BookThumbnail extends StatelessWidget {
   }
 
   Future<PdfPage> getPage(PdfDocument document) async {
-    return await document.getPage(page);
+    if(document.pagesCount == 1){
+      return await document.getPage(1);
+    }
+    return await document.getPage(page +1);
   }
 
   Future<PdfPageImage?> getPdfImage(PdfPage page) async {
@@ -56,7 +59,7 @@ class BookThumbnail extends StatelessWidget {
       width: page.width,
       height: page.height,
       format: PdfPageImageFormat.jpeg,
-      quality: 20,
+      quality: 10,
       backgroundColor: '#ffffff',
 
       // Crop rect in image for render

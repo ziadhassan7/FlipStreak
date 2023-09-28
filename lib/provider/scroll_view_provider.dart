@@ -17,7 +17,7 @@ class ScrollViewProvider extends StateNotifier<double>{
 
   updateWithPosition(BuildContext context, double position) {
     int totalPages = getTotalPages();
-    double totalHeight = DeviceScreen(context).height-100;
+    double totalHeight = DeviceScreen(context).height-200;
     int ratio = ((position / totalHeight) *100).round();
 
     int page = ((ratio*totalPages)/100).round();
@@ -29,7 +29,7 @@ class ScrollViewProvider extends StateNotifier<double>{
 
   updateWithPage(BuildContext context, int page) {
     int totalPages = getTotalPages();
-    double totalHeight = DeviceScreen(context).height-100;
+    double totalHeight = DeviceScreen(context).height-200;
 
     double ratio = (page / totalPages) *100;
     double position = (ratio*totalHeight)/100;

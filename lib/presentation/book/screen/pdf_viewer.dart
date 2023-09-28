@@ -10,7 +10,6 @@ import '../../../business/app_wise/counters/counters_helper.dart';
 import '../../../business/app_wise/controllers/page_controller.dart';
 import '../../../provider/page_filter_provider.dart';
 import '../../../provider/pdf_view_loaded_provider.dart';
-import '../../../provider/scroll_view_provider.dart';
 
 class PdfViewer extends ConsumerWidget {
   const PdfViewer({Key? key, this.initialPage}) : super(key: key);
@@ -71,7 +70,7 @@ class PdfViewer extends ConsumerWidget {
               }
 
               //update scroll view position
-              ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage);
+              //ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage);
             },
           ),
         ],

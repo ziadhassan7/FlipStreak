@@ -1,3 +1,4 @@
+import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/scroll_bar/scroll_icon.dart';
 import 'package:flip_streak/presentation/views/scroll_bar/scroll_pages_indicator.dart';
 import 'package:flip_streak/provider/scroll_view_provider.dart';
@@ -13,14 +14,20 @@ class CustomScrollBar extends ConsumerWidget {
       end: 0,
       top: ref.watch(scrollViewPositionProvider),
 
-      child: const Row(
-        children: [
-          ScrollPagesIndicator(),
+      child: const SizedBox(
+        child: Padding(
+          padding: CustomPadding.only(top: 70),
 
-          SizedBox(width: 10,),
+          child: Row(
+            children: [
+              ScrollPagesIndicator(),
 
-          ScrollIcon(),
-        ],
+              SizedBox(width: 10,),
+
+              ScrollIcon(),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -23,7 +23,10 @@ class PickerDialog {
 
     DialogWidget(
       context,
-      dominantButtonFunction: ()=> onSave(currentValue),
+      dominantButtonFunction: () {
+        onSave(currentValue);
+        PickerDialog.currentValue = 0;
+      },
 
       child: PickerDialogView(
         title,

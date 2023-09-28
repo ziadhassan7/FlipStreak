@@ -25,7 +25,7 @@ class ListItem extends StatelessWidget {
 
           onTap: () async {
             // Globalize new bookModel data
-            await globalizeCurrentBookModel(book.id).then((value) {
+            await globalizeCurrentBookModel(book).then((value) {
               // Open Details Page
               RouteUtil
                   .navigateTo(context, const DetailPage(),);

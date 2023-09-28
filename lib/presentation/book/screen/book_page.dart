@@ -8,7 +8,7 @@ import 'package:wakelock/wakelock.dart';
 import '../../../business/app_wise/exit_book_util.dart';
 import '../../../business/system_util.dart';
 import '../../../provider/bright_mode_provider.dart';
-import '../../../provider/main_top_bar_provider.dart';
+import '../../../provider/top_bar_provider.dart';
 import '../../../provider/pdf_view_loaded_provider.dart';
 import '../../views/topbar/main_topbar/base_top_bar.dart';
 import '../widget/screen_touch_detector.dart';

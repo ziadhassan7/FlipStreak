@@ -629,6 +629,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  vibration:
+    dependency: "direct main"
+    description:
+      name: vibration
+      sha256: ab6d26f6694ae0cf702b6d3d1b399570f2911eddb1132c8f82eeacb71a08ece2
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.2"
   wakelock:
     dependency: "direct main"
     description:

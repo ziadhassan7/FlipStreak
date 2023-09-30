@@ -1,3 +1,5 @@
+import 'package:flip_streak/presentation/styles/device_screen.dart';
+import 'package:flip_streak/presentation/views/scroll_bar/scroll_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../provider/scroll_page_indicator_provider.dart';
@@ -10,14 +12,23 @@ class ScrollIcon extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
+    double screenHeight = DeviceScreen(context).height;
+
     return GestureDetector(
       onPanDown: (det){
         ref.read(scrollPagesIndicatorProvider.notifier).show();
       },
 
       onPanUpdate: (det){
-        ref.read(scrollViewPositionProvider.notifier)
-            .updateWithPosition(context, det.globalPosition.dy);
+
+        double minScreenLimit = 80;
+        double maxScreenLimit = screenHeight - CustomScrollBar.limit;
+        double position = det.globalPosition.dy;
+
+        if (minScreenLimit < position && position < maxScreenLimit) {
+          ref.read(scrollViewPositionProvider.notifier)
+              .updateWithPosition(context, det.globalPosition.dy, minScreenLimit, maxScreenLimit);
+        }
       },
 
       onPanEnd: (det){

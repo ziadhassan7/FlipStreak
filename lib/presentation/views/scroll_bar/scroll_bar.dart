@@ -1,4 +1,3 @@
-import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/scroll_bar/scroll_icon.dart';
 import 'package:flip_streak/presentation/views/scroll_bar/scroll_pages_indicator.dart';
 import 'package:flip_streak/provider/scroll_view_provider.dart';
@@ -8,26 +7,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CustomScrollBar extends ConsumerWidget {
   const CustomScrollBar({Key? key}) : super(key: key);
 
+  static const double limit = 100; //screen limit
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PositionedDirectional(
       end: 0,
       top: ref.watch(scrollViewPositionProvider),
 
-      child: const SizedBox(
-        child: Padding(
-          padding: CustomPadding.only(top: 70),
+      child: const Row(
+        children: [
+          ScrollPagesIndicator(),
 
-          child: Row(
-            children: [
-              ScrollPagesIndicator(),
+          SizedBox(width: 10,),
 
-              SizedBox(width: 10,),
-
-              ScrollIcon(),
-            ],
-          ),
-        ),
+          ScrollIcon(),
+        ],
       ),
     );
   }

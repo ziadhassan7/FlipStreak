@@ -11,6 +11,8 @@ import '../../../business/app_wise/controllers/page_controller.dart';
 import '../../../provider/page_filter_provider.dart';
 import '../../../provider/pdf_view_loaded_provider.dart';
 import '../../../provider/scroll_view_provider.dart';
+import '../../styles/device_screen.dart';
+import '../../views/scroll_bar/scroll_bar.dart';
 
 class PdfViewer extends ConsumerWidget {
   const PdfViewer({Key? key, this.initialPage}) : super(key: key);
@@ -71,7 +73,7 @@ class PdfViewer extends ConsumerWidget {
               }
 
               //update scroll view position
-              ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage);
+              updateScrollIndicatorPosition(context, ref, currentPage);
             },
           ),
         ],
@@ -153,6 +155,12 @@ class PdfViewer extends ConsumerWidget {
     ref.read(topbarProvider.notifier).keepClosed();
     // Show pages number indicator
     showPageIndicator(ref);
+  }
+
+  updateScrollIndicatorPosition(BuildContext context, WidgetRef ref, int currentPage){
+    double minScreenLimit = 80;
+    double maxScreenLimit = DeviceScreen(context).height - CustomScrollBar.limit;
+    ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage, minScreenLimit, maxScreenLimit);
   }
 }
 

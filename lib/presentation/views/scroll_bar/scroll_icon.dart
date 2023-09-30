@@ -1,3 +1,4 @@
+import 'package:flip_streak/business/vibration_util.dart';
 import 'package:flip_streak/presentation/styles/device_screen.dart';
 import 'package:flip_streak/presentation/views/scroll_bar/scroll_bar.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,16 @@ class ScrollIcon extends ConsumerWidget {
         double maxScreenLimit = screenHeight - CustomScrollBar.limit;
         double position = det.globalPosition.dy;
 
+        // move position unless it reaches screen limits
         if (minScreenLimit < position && position < maxScreenLimit) {
           ref.read(scrollViewPositionProvider.notifier)
               .updateWithPosition(context, det.globalPosition.dy, minScreenLimit, maxScreenLimit);
+
+          VibrationUtil.resetTrigger();
+
+        } else {
+          //if it reached, then vibrate
+          VibrationUtil.vibrate();
         }
       },
 

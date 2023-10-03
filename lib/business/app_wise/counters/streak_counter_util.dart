@@ -1,4 +1,3 @@
-import 'package:flip_streak/business/print_debug.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../data/shared_pref/hive_client.dart';
 import '../../../provider/streak_provider.dart';
@@ -15,16 +14,14 @@ class StreakCounterUtil {
   static void triggerStreakUpdateOnFirstFlip(WidgetRef ref){
     flipCounterTrigger = _hive.getFlipCounter();
 
-    PrintDebug("Flip:", flipCounterTrigger);
-
     //Trigger streak update only on the fist flip.
     if(flipCounterTrigger == 1){
+      // update New Date
+      updateWithNewDate(DateTime.now());
       // update Streak Status
       StreakStateUtil.updateStreakState();
-      updateWithNewDate(DateTime.now());
       //increment streak
-      streakCounter = _hive.getStreakCounter();
-      _hive.updateStreakCounter(streakCounter +1);
+      _hive.incrementStreakCounter();
       //Trigger notification countdown, and cancel old one
       StreakNotificationUtil.reScheduleNotification();
       //update provider

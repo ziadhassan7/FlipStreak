@@ -24,8 +24,8 @@ class HiveClient {
 
   /// --------------------------------------------------------------------------/ Streak Counter
 
-  void updateStreakCounter(int value) {
-    globalBox.put(STREAK_COUNTER, value);
+  void incrementStreakCounter() {
+    globalBox.put(STREAK_COUNTER, getStreakCounter() + 1);
   }
 
   void resetStreakCounter() {

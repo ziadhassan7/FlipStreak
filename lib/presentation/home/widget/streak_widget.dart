@@ -97,7 +97,7 @@ class StreakWidget extends ConsumerWidget {
 
     //from 0 -> 2
     if (streakCount >= 0 && streakCount <= 2) {
-      return 0.27;
+      return 0.28;
     }
 
     //from 3 -> 4

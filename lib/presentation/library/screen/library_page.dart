@@ -1,8 +1,7 @@
 import 'package:flip_streak/data/shared_pref/hive_client.dart';
+import 'package:flip_streak/presentation/library/widget/filter_bar.dart';
 import 'package:flip_streak/presentation/library/widget/list_item.dart';
 import 'package:flip_streak/presentation/library/widget/top_widget.dart';
-import 'package:flip_streak/presentation/views/dialoq/category_menu/category_menu.dart';
-import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app_constants/color_constants.dart';
@@ -31,47 +30,7 @@ class LibraryPage extends ConsumerWidget {
             const TopWidget(),
 
             /// Category Widget
-            Consumer(
-              builder: (context, ref, _) {
-                final currentCategory = ref.watch(currentCategoryProvider);
-
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-
-                  child: InkWell(
-                    onTap: (){
-                      CategoryMenu(context, currentCategory);
-                    },
-
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
-                      decoration: BoxDecoration(
-                        color: colorAccent.withOpacity(0.04),
-                        borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      ),
-
-                      child: Row(
-                        children: [
-                          TextInriaSans("Category:", size: 16, color: Colors.black38,),
-
-                          const Spacer(),
-
-                          TextInriaSans(
-                              currentCategory,
-                              size: 16,
-                              color: colorAccent,
-                              weight: FontWeight.bold,),
-
-                          const SizedBox(width: 10,),
-
-                          const Icon(Icons.arrow_drop_down_rounded, color: Colors.black87,),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              }
-            ),
+            const FilterBar(),
 
             const SizedBox(height: 10,),
 

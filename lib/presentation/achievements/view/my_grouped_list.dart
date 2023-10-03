@@ -57,7 +57,7 @@ class MyGroupedList<T, E> extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: const CustomPadding(ver: 20),
+                padding: const CustomPadding(vertical: 20),
                 child: groupSeparatorBuilder(header),
               ),
               sliverList(currentHeaderGroup(header))
@@ -73,7 +73,7 @@ class MyGroupedList<T, E> extends StatelessWidget {
   /// Current Group widget
   Widget sliverList(List currentGroup){
     return Padding(
-      padding: const CustomPadding.only(top: 30),
+      padding: const CustomPadding(top: 30),
 
       child: CustomScrollView(
         physics: const NeverScrollableScrollPhysics(),

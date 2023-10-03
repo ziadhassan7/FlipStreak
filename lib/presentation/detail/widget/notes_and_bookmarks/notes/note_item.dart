@@ -85,7 +85,7 @@ class NoteItem extends ConsumerWidget {
                       children: [
                       const Spacer(),
                   Container(
-                     padding: const CustomPadding(ver: 4, hor: 10),
+                     padding: const CustomPadding(vertical: 4, horizontal: 10),
                       decoration: const BoxDecoration(
                         color: colorAccent,
                         borderRadius: BorderRadius.only(

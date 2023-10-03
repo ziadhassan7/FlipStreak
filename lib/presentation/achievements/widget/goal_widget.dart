@@ -30,7 +30,7 @@ class GoalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const CustomPadding(hor: 30, ver: 10),
+      padding: const CustomPadding(horizontal: 30, vertical: 10),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,8 +41,8 @@ class GoalWidget extends StatelessWidget {
             children: [
               /// Title - Text
               Padding(
-                padding: const CustomPadding(hor: 12),
-                child: TextInriaSans(title, size: 18, color: Colors.black87,),
+                padding: const CustomPadding(horizontal: 12),
+                child: TextInriaSans(title, size: 16, color: Colors.black87,),
               ),
 
               const Spacer(),
@@ -57,7 +57,7 @@ class GoalWidget extends StatelessWidget {
           alignmentWidget(),
 
           Container(
-            padding: const CustomPadding(ver: 16, hor: 20),
+            padding: const CustomPadding(vertical: 16, horizontal: 20),
 
             decoration: CustomDecoration(
                 backgroundColor: Colors.white, //colorBackground

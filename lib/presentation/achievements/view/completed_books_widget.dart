@@ -19,21 +19,21 @@ class CompletedBooksWidget extends StatelessWidget {
     arrangeBooksByCompletionDate();
 
     return Padding(
-      padding: const CustomPadding(hor: 30, ver: 20),
+      padding: const CustomPadding(horizontal: 30, vertical: 20),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
           Padding(
-            padding: const CustomPadding(hor: 12),
+            padding: const CustomPadding(horizontal: 12),
             child: TextInriaSans("Completed Books", size: 20,),
           ),
 
           alignmentWidget(),
 
           Container(
-            padding: const CustomPadding.only(horizontal: 20, bottom: 100),
+            padding: const CustomPadding(horizontal: 20, bottom: 100),
 
             decoration: CustomDecoration(
                 backgroundColor: Colors.white, //colorBackground

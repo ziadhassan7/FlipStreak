@@ -20,7 +20,7 @@ class ScrollPagesIndicator extends ConsumerWidget {
         elevation: 1,
 
         child: Container(
-          padding: const CustomPadding(hor: 15, ver: 10),
+          padding: const CustomPadding(horizontal: 15, vertical: 10),
           decoration: CustomDecoration(
               backgroundColor: Colors.white,
               radius: 30

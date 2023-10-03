@@ -19,7 +19,7 @@ class BookmarkList extends ConsumerWidget {
     final List<String> bookmarks = ref.watch(bookmarkListProvider);
 
     return Padding(
-      padding: const CustomPadding( hor: 10),
+      padding: const CustomPadding(horizontal: 10),
 
       child:
         (bookmarks.isNotEmpty)
@@ -27,7 +27,7 @@ class BookmarkList extends ConsumerWidget {
           children: [
             /// Text
             Padding(
-              padding: const CustomPadding.only(top: 40, horizontal: 30),
+              padding: const CustomPadding(top: 40, horizontal: 30),
               child: TextInriaSans("Bookmarks", size: 18, color: Colors.black54,),
             ),
 

@@ -13,7 +13,7 @@ class HeadingImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: CustomPadding(hor: 30, ver: haveSpaceOnTop ? 30 : 0),
+      padding: CustomPadding(horizontal: 30, vertical: haveSpaceOnTop ? 30 : 0),
 
       child: SizedBox(
           height: 110,

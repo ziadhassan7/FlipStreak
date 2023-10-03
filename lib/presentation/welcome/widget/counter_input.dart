@@ -32,7 +32,7 @@ class CounterInput extends StatelessWidget {
           onTap: counterPickerFunction,
 
           child: Container(
-            padding: const CustomPadding(ver: 10, hor: 60),
+            padding: const CustomPadding(vertical: 10, horizontal: 60),
             decoration: CustomDecoration(
               backgroundColor: Colors.white,
               borderColor: colorAccent.withOpacity(0.4),

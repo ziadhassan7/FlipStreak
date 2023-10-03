@@ -21,26 +21,28 @@ class StreakStateUtil {
     if(remaining < hoursMin) {
       _hive.updateStreakState(SAME_DATE_STATE);
 
-    /// Countdown (entered Countdown Gap)                                       -- You can change streak
+    /// Countdown (entered Countdown Gap)                                       -- You can change streak (reset flipped and pages counters)
     } else if (remaining > hoursMin  &&  remaining < hoursMax){
       _hive.updateStreakState(COUNTDOWN_STATE);
+      _resetPagesCounter();
 
     /// Ended (Reset)                                                           -- Streak is back to 0
     }else if (remaining > hoursMax){
       _hive.updateStreakState(ENDED_STATE);
-      resetAllCounter();
+      _resetAllCounter();
     }
   }
 
-  static void updateWithNewDate(DateTime newDate){
-    _hive.putLastDate(newDate);
-  }
 
-
-  static void resetAllCounter(){
+  // Reset
+  static void _resetAllCounter(){
     _hive.resetPageReadCounter();
     _hive.resetFlipCounter();
     _hive.resetStreakCounter();
+  }
+  static void _resetPagesCounter(){
+    _hive.resetPageReadCounter();
+    _hive.resetFlipCounter();
   }
 
 }

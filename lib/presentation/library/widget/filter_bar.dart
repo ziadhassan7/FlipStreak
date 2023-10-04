@@ -1,3 +1,4 @@
+import 'package:flip_streak/data/shared_pref/hive_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app_constants/color_constants.dart';
@@ -7,6 +8,8 @@ import '../../views/text_inria_sans.dart';
 
 class FilterBar extends ConsumerWidget {
   const FilterBar({super.key});
+
+  static final HiveClient _hiveClient = HiveClient();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,6 +37,9 @@ class FilterBar extends ConsumerWidget {
                   hintText: 'Search your books',
                   hintStyle: TextStyle(color: colorAccent.withOpacity(0.2)),
                 ),
+                onChanged: (search){
+                  ref.read(currentCategoryProvider.notifier).updateCategory(search);
+                },
               ),
             ),
 
@@ -48,11 +54,20 @@ class FilterBar extends ConsumerWidget {
                 flex: 1,
                 child: Row(
                   children: [
-                    TextInriaSans(
-                      currentCategory,
-                      size: 16,
-                      color: colorAccent,
-                      weight: FontWeight.bold,),
+                    FutureBuilder(
+                      future: getCategory(currentCategory),
+                      builder: (context, AsyncSnapshot snapshot) {
+
+                        return snapshot.hasData
+                          ? TextInriaSans(
+                          snapshot.data,
+                          size: 16,
+                          color: colorAccent,
+                          weight: FontWeight.bold,)
+
+                          : const Center(child: CircularProgressIndicator(),);
+                      }
+                    ),
 
                     const SizedBox(width: 10,),
 
@@ -65,5 +80,17 @@ class FilterBar extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  Future<String> getCategory(String category) async {
+    List categories = await _hiveClient.getCategories();
+
+    for(String item in categories){
+      if(category == item){
+        return category;
+      }
+    }
+
+    return "All";
   }
 }

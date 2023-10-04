@@ -37,7 +37,7 @@ class LibraryPage extends ConsumerWidget {
             Expanded(
               child: Consumer(
                 builder: (context, ref, _) {
-                  final currentCategory = ref.watch(currentCategoryProvider);
+                  final String currentCategory = ref.watch(currentCategoryProvider);
 
                   return FutureBuilder(
                     future: files,
@@ -76,10 +76,10 @@ class LibraryPage extends ConsumerWidget {
   }
 
 
-  List getFilteredList(List allBooks, String category) {
+  List getFilteredList(List allBooks, String filter) {
     List filteredList = [];
 
-    if(category == "All") {
+    if(filter == "All") {
       filteredList = allBooks;
       return filteredList;
     }
@@ -90,8 +90,14 @@ class LibraryPage extends ConsumerWidget {
         List bookCategories = getListFromString(element.category!);
 
         // if book has that category
-        if(bookCategories.contains(category)) filteredList.add(element);
+        if(bookCategories.contains(filter)) filteredList.add(element);
+      }
 
+      // if book has that category
+      if(element.id.contains(filter)) {
+        if(!filteredList.contains(element)){
+          filteredList.add(element);
+        }
       }
     }
 

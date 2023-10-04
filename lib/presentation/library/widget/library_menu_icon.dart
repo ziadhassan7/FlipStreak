@@ -24,7 +24,7 @@ class LibraryMenuIcon extends ConsumerWidget {
       menuItems: [
         PopupMenuItem<int>(
           value: 0,
-          child: TextInriaSans("Add label", color: colorAccent,),
+          child: TextInriaSans("Add category", color: colorAccent,),
         ),
 
         PopupMenuItem<int>(

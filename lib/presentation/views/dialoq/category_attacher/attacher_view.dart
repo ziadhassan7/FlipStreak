@@ -14,9 +14,6 @@ class AttacherView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final categoriesList = ref.watch(categoriesProvider);
-    print("ohhhhhhh");
-    print(categoriesList.length);
-    print(categoriesList.isEmpty);
 
     return SizedBox(
       height: MediaQuery.of(context).size.height *0.4,
@@ -27,7 +24,7 @@ class AttacherView extends ConsumerWidget {
           Expanded(
             child:
             categoriesList.isEmpty
-            ? Center(child: TextInriaSans("You haven't created any labels yet!"))
+            ? Center(child: TextInriaSans("You haven't created any categories yet!"))
             : ListView.separated(
               itemCount: categoriesList.length,
               itemBuilder: (context, index){

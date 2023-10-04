@@ -79,6 +79,7 @@ class LibraryPage extends ConsumerWidget {
   List getFilteredList(List allBooks, String filter) {
     List filteredList = [];
 
+    /// Return all list, if "All"
     if(filter == "All") {
       filteredList = allBooks;
       return filteredList;
@@ -86,6 +87,7 @@ class LibraryPage extends ConsumerWidget {
 
     //Iterate through all books, and filter
     for (BookModel element in allBooks) {
+      /// Filter for categories
       if (element.category != null) {
         List bookCategories = getListFromString(element.category!);
 
@@ -93,7 +95,7 @@ class LibraryPage extends ConsumerWidget {
         if(bookCategories.contains(filter)) filteredList.add(element);
       }
 
-      // if book has that category
+      /// Filter for search
       if(element.id.contains(filter)) {
         if(!filteredList.contains(element)){
           filteredList.add(element);
@@ -101,6 +103,6 @@ class LibraryPage extends ConsumerWidget {
       }
     }
 
-    return filteredList;
+    return filteredList; //return filtered list
   }
 }

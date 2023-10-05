@@ -96,7 +96,7 @@ class LibraryPage extends ConsumerWidget {
       }
 
       /// Filter for search
-      if(element.id.contains(filter)) {
+      if(element.id.toLowerCase().contains(filter.toLowerCase())) {
         if(!filteredList.contains(element)){
           filteredList.add(element);
         }

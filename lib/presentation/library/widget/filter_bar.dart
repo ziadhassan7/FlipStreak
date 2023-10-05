@@ -27,6 +27,8 @@ class FilterBar extends ConsumerWidget {
 
         child: Row(
           children: [
+
+            ///Search bar
             Expanded(
               flex: 6,
               child: TextFormField(
@@ -45,6 +47,8 @@ class FilterBar extends ConsumerWidget {
 
             const Spacer(),
 
+
+            /// Current Category
             InkWell(
               onTap: (){
                 CategoryMenu(context, currentCategory);

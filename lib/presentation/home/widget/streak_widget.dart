@@ -42,7 +42,7 @@ class StreakWidget extends ConsumerWidget {
                 textWidget(StreakCommentUtil.getBigText(ref), size: 16),
                 const SizedBox(height: 2,),
                 textWidget(streakCount.toString(), size: 55),
-                textWidget("days", size: 30),
+                textWidget(streakCount == 1? "day":"days", size: 30),
               ],
             ),
           ),

@@ -140,7 +140,7 @@ class PdfViewer extends ConsumerWidget {
   showPageIndicator (WidgetRef ref){
     ref.read(scrollPagesIndicatorProvider.notifier).show();
 
-    Timer t = Timer(const Duration(milliseconds: 2000), () {
+    Timer(const Duration(milliseconds: 2000), () {
       ref.read(scrollPagesIndicatorProvider.notifier).hide();
     });
 

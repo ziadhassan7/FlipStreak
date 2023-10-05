@@ -51,11 +51,9 @@ class DetailPage extends StatelessWidget {
 
                   children: [
                     /// Book Image
-                    Expanded(
-                        flex: 2,
-                        child: SizedBox(
-                            height: 218,
-                            child: BookThumbnail(filePath: bookModel.path,))),
+                    SizedBox(
+                      width: 170, height: 218,
+                      child: BookThumbnail(filePath: bookModel.path,)),
 
                     const Spacer(),
 

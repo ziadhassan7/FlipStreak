@@ -22,4 +22,17 @@ class ActionButtonsRow extends StatelessWidget {
       ],
     );
   }
+
+  //adaptive but not suitable for landscape tablets
+  double getWidgetAdaptiveWidth(context){
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    //on breakpoint
+    if(screenWidth > 650){
+      return 500;
+
+    } else {
+      return screenWidth *0.65;
+    }
+  }
 }

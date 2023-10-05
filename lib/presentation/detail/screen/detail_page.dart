@@ -80,7 +80,7 @@ class DetailPage extends StatelessWidget {
 
                 /// Bookmarks
                 SizedBox(
-                    height: DeviceScreen(context).height * 0.35,
+                    height: DeviceScreen(context).height * 0.4,
                     child: BookmarkList())
 
               ],

@@ -24,11 +24,12 @@ class BookmarkList extends ConsumerWidget {
       child:
         (bookmarks.isNotEmpty)
         ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Text
             Padding(
               padding: const CustomPadding(top: 40, horizontal: 30),
-              child: TextInriaSans("Bookmarks", size: 18, color: Colors.black54,),
+              child: TextInriaSans("Bookmarks:", size: 18, color: Colors.black54,),
             ),
 
             const SizedBox(width: 10,),
@@ -40,10 +41,7 @@ class BookmarkList extends ConsumerWidget {
                     itemCount: bookmarks.length,
                     itemBuilder: (context, index){
 
-                      return Container(
-                        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                        width: 170,
-                        child: BookmarkListItem(page: bookmarks[index]));
+                      return BookmarkListItem(page: bookmarks[index]);
                     })
               ),
           ],
@@ -58,4 +56,5 @@ class BookmarkList extends ConsumerWidget {
     List bookmarks = await getBookmarkedPages(bookModel.id);
     return bookmarks;
   }
+
 }

@@ -48,7 +48,7 @@ class BookThumbnail extends StatelessWidget {
   }
 
   Future<PdfPage> getPage(PdfDocument document) async {
-    if(document.pagesCount == 1){
+    if(document.pagesCount == 1 || page < 0){
       return await document.getPage(1);
     }
     return await document.getPage(page +1);

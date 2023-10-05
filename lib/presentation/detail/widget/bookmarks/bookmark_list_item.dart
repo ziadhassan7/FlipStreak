@@ -12,30 +12,30 @@ class BookmarkListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+      width: 170,
+      child: Stack(
+        children: [
 
-        /// Widget
-        Column(
-          mainAxisSize: MainAxisSize.min,
+          Column(
+            children: [
+              Expanded(
+                child: BookThumbnail(
+                    filePath: bookModel.path,
+                    page: int.parse(page) - 1,
+              ),),
 
-          children: [
-            Expanded(
-              child: BookThumbnail(
-                filePath: bookModel.path,
-                page: int.parse(page) - 1, //This package starts page 1 with 0
-              ),
-            ),
+              const SizedBox(height: 10,),
 
-            const SizedBox(height: 8,),
+              TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
+            ],
+          ),
 
-            TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
-          ],
-        ),
-
-        /// Click Handler
-        clickHandler(context),
-      ],
+          /// Click Handler
+          clickHandler(context),
+        ],
+      ), //This package starts page 1 with 0
     );
   }
 

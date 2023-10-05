@@ -1,4 +1,3 @@
-import 'package:flip_streak/presentation/views/dialoq/note_dialog/add_note_dialog.dart';
 import 'package:flip_streak/provider/last_book_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,16 +22,11 @@ class DetailsPageMenu extends StatelessWidget {
               menuItems: [
                 PopupMenuItem<int>(
                   value: 0,
-                  child: TextInriaSans("Add note", color: colorAccent,),
-                ),
-
-                PopupMenuItem<int>(
-                  value: 1,
                   child: TextInriaSans("Edit Last Page", color: colorAccent,),
                 ),
 
                 PopupMenuItem<int>(
-                  value: 2,
+                  value: 1,
                   child: StatefulBuilder(
                     builder: (context, Function(Function()) setState) {
                       _updateState = setState;
@@ -44,16 +38,11 @@ class DetailsPageMenu extends StatelessWidget {
 
               functions: (value) {
                 if(value == 0){
-                  //open Dialog to add note
-                  AddNoteDialog(context, ref,);
-                }
-
-                if(value == 1){
                   //open Dialog showing list of bookmarks
                   EditLastPageDialog(context, ref);
                 }
 
-                if (value == 2) {
+                if (value == 1) {
                   ref.read(bookListProvider.notifier).toggleAsCompleted(bookModel);
 
                   // Also change it in the last book widget

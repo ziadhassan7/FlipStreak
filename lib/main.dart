@@ -1,7 +1,6 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/app_constants/hive_keys.dart';
 import 'package:flip_streak/business/notification_util.dart';
-import 'package:flip_streak/business/translate_util.dart';
 import 'package:flip_streak/data/shared_pref/hive_client.dart';
 import 'package:flip_streak/presentation/index/index_page.dart';
 import 'package:flip_streak/presentation/welcome/screen/welcome_screen.dart';
@@ -23,9 +22,6 @@ Future<void> main() async {
     to make sure that you have an instance of the WidgetsBinding.
    */
   WidgetsFlutterBinding.ensureInitialized();
-
-  //Fire up translation
-  TranslateUtil.init();
 
   //Initialize Notification
   NotificationUtil.init();

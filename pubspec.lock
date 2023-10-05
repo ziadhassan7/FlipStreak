@@ -17,14 +17,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  books_finder:
-    dependency: "direct main"
-    description:
-      name: books_finder
-      sha256: df9532dfe2e378abe984965bf993a03348c21fed9e0d25d1a19554fcd818bf29
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.4.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -57,22 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.2"
-  connectivity_plus:
-    dependency: "direct main"
-    description:
-      name: connectivity_plus
-      sha256: "77a180d6938f78ca7d2382d2240eb626c0f6a735d0bfdce227d8ffb80f95c48b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
-  connectivity_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: connectivity_plus_platform_interface
-      sha256: cf1d1c28f4416f8c654d7dc3cd638ec586076255d407cef3ddbdaf178272a71a
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.4"
   crypto:
     dependency: transitive
     description:
@@ -227,14 +203,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_tts:
-    dependency: "direct main"
-    description:
-      name: flutter_tts
-      sha256: "23d47e1335c632228b80d9693e2494a834393fff5893b66e8ae494dcce4e9867"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.8.3"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -328,14 +296,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
-  nm:
-    dependency: transitive
-    description:
-      name: nm
-      sha256: "2c9aae4127bdc8993206464fcc063611e0e36e72018696cd9631023a31b24254"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.0"
   numberpicker:
     dependency: "direct main"
     description:
@@ -558,21 +518,13 @@ packages:
     source: hosted
     version: "0.6.0"
   timezone:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: timezone
       sha256: "1cfd8ddc2d1cfd836bc93e67b9be88c3adaeca6f40a00ca999104c30693cdca0"
       url: "https://pub.dev"
     source: hosted
     version: "0.9.2"
-  translator_plus:
-    dependency: "direct main"
-    description:
-      name: translator_plus
-      sha256: fd1989918a5e5549fe81fde7cc7479c5939bdfcc34109ccad87a3cfadb9f5240
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   typed_data:
     dependency: transitive
     description:

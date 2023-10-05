@@ -50,30 +50,27 @@ class FilterBar extends ConsumerWidget {
                 CategoryMenu(context, currentCategory);
               },
 
-              child: Expanded(
-                flex: 1,
-                child: Row(
-                  children: [
-                    FutureBuilder(
-                      future: getCategory(currentCategory),
-                      builder: (context, AsyncSnapshot snapshot) {
+              child: Row(
+                children: [
+                  FutureBuilder(
+                    future: getCategory(currentCategory),
+                    builder: (context, AsyncSnapshot snapshot) {
 
-                        return snapshot.hasData
-                          ? TextInriaSans(
-                          snapshot.data,
-                          size: 16,
-                          color: colorAccent,
-                          weight: FontWeight.bold,)
+                      return snapshot.hasData
+                        ? TextInriaSans(
+                        snapshot.data,
+                        size: 16,
+                        color: colorAccent,
+                        weight: FontWeight.bold,)
 
-                          : const Center(child: CircularProgressIndicator(),);
-                      }
-                    ),
+                        : const Center(child: CircularProgressIndicator(),);
+                    }
+                  ),
 
-                    const SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
 
-                    const Icon(Icons.arrow_drop_down_rounded, color: Colors.black87,),
-                  ],
-                ),
+                  const Icon(Icons.arrow_drop_down_rounded, color: Colors.black87,),
+                ],
               ),
             ),
           ],

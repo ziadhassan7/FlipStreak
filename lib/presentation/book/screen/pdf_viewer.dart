@@ -72,6 +72,8 @@ class PdfViewer extends ConsumerWidget {
                 markAsComplete();
               }
 
+              //refresh fab button
+              checkFab(ref);
               //update scroll view position
               updateScrollIndicatorPosition(context, ref, currentPage);
             },
@@ -149,8 +151,6 @@ class PdfViewer extends ConsumerWidget {
     counters.updateCounters(ref, isIncrement: isIncrement);
     //update last page
     updateLastPage(pageNumber: newPage);
-    //refresh fab button
-    checkFab(ref);
     // Hide Topbar
     ref.read(topbarProvider.notifier).keepClosed();
     // Show pages number indicator

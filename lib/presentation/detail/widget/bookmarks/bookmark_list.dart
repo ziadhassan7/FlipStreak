@@ -3,8 +3,8 @@ import 'package:flip_streak/data/local_db/book_client.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../provider/bookmark_list_provider.dart';
-import '../../../../views/text_inria_sans.dart';
+import '../../../../provider/bookmark_list_provider.dart';
+import '../../../views/text_inria_sans.dart';
 import 'bookmark_list_item.dart';
 
 class BookmarkList extends ConsumerWidget {

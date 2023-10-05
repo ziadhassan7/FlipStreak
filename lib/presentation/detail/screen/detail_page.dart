@@ -8,7 +8,7 @@ import '../../../business/app_wise/controllers/book_controller.dart';
 import '../../views/book_thumbnail.dart';
 import '../../views/text_inria_sans.dart';
 import '../widget/details_page_menu.dart';
-import '../widget/notes_and_bookmarks/bookmarks/bookmark_list.dart';
+import '../widget/bookmarks/bookmark_list.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);

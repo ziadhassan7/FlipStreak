@@ -23,7 +23,7 @@ class BookmarkListItem extends StatelessWidget {
               Expanded(
                 child: BookThumbnail(
                     filePath: bookModel.path,
-                    page: int.parse(page) - 1,
+                    page: int.parse(page),
               ),),
 
               const SizedBox(height: 10,),

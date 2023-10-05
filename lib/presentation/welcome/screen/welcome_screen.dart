@@ -45,6 +45,8 @@ class WelcomeScreen extends ConsumerWidget {
 
                       /// Counter Input
                       getLeadingWidget(currentPage),
+
+                      alignmentSpace(context, false),
                     ],
                   ),
                 ),

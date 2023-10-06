@@ -58,7 +58,7 @@ class HomePage extends ConsumerWidget {
                             padding: const EdgeInsets.only(top: 150),
                             alignment: AlignmentDirectional.bottomCenter,
                             child: TextInriaSans("You haven't read anything yet! :)",
-                              weight: FontWeight.bold, color: Colors.brown.shade400, size: 14,));
+                              weight: FontWeight.bold, color: Colors.brown.shade400, size: 16,));
 
                       } else {
 

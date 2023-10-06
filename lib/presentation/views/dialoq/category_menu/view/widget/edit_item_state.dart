@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../provider/book_list_provider.dart';
 import '../../../../../../provider/categories_provider.dart';
-import '../../../../../../provider/current_category_provider.dart';
+import '../../../../../../provider/filter_provider.dart';
 
 
 class EditItemState extends ConsumerWidget {
@@ -37,7 +37,7 @@ class EditItemState extends ConsumerWidget {
 
               //if current category got deleted, go back to All list
               if (currentCategory == itemTitle) {
-                ref.read(currentCategoryProvider.notifier)
+                ref.read(filterProvider.notifier)
                     .updateCategory("All");
               }
 
@@ -65,7 +65,7 @@ class EditItemState extends ConsumerWidget {
                   .updateAllBooksWithNewCat(itemTitle, editingController.text);
 
               if(currentCategory == itemTitle){
-                ref.read(currentCategoryProvider.notifier)
+                ref.read(filterProvider.notifier)
                     .updateCategory(editingController.text);
               }
 

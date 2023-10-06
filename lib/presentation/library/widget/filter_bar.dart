@@ -2,18 +2,18 @@ import 'package:flip_streak/data/shared_pref/hive_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app_constants/color_constants.dart';
-import '../../../provider/current_category_provider.dart';
+import '../../../provider/filter_provider.dart';
 import '../../views/dialoq/category_menu/category_menu.dart';
 import '../../views/text_inria_sans.dart';
 
 class FilterBar extends ConsumerWidget {
-  const FilterBar({super.key});
+  const FilterBar({super.key, required this.currentFilter});
 
+  final String currentFilter;
   static final HiveClient _hiveClient = HiveClient();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentCategory = ref.watch(currentCategoryProvider);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -40,7 +40,7 @@ class FilterBar extends ConsumerWidget {
                   hintStyle: TextStyle(color: colorAccent.withOpacity(0.2)),
                 ),
                 onChanged: (search){
-                  ref.read(currentCategoryProvider.notifier).updateCategory(search);
+                  ref.read(filterProvider.notifier).updateCategory(search);
                 },
               ),
             ),
@@ -51,13 +51,13 @@ class FilterBar extends ConsumerWidget {
             /// Current Category
             InkWell(
               onTap: (){
-                CategoryMenu(context, currentCategory);
+                CategoryMenu(context, currentFilter);
               },
 
               child: Row(
                 children: [
                   FutureBuilder(
-                    future: getCategory(currentCategory),
+                    future: getCategory(currentFilter),
                     builder: (context, AsyncSnapshot snapshot) {
 
                       return snapshot.hasData

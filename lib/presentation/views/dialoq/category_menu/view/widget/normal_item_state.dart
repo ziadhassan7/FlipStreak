@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../app_constants/color_constants.dart';
-import '../../../../../../provider/current_category_provider.dart';
+import '../../../../../../provider/filter_provider.dart';
 import '../../../../text_inria_sans.dart';
 
 class NormalItemState extends ConsumerWidget {
@@ -27,7 +27,7 @@ class NormalItemState extends ConsumerWidget {
     /// OnTap
     return InkWell(
       onTap: (){
-        ref.read(currentCategoryProvider.notifier)
+        ref.read(filterProvider.notifier)
             .updateCategory(itemTitle);
         Navigator.pop(context);
       },

@@ -1,4 +1,4 @@
-import 'package:flip_streak/data/shared_pref/hive_client.dart';
+import 'package:flip_streak/presentation/library/widget/add_book_fab.dart';
 import 'package:flip_streak/presentation/library/widget/filter_bar.dart';
 import 'package:flip_streak/presentation/library/widget/list_item.dart';
 import 'package:flip_streak/presentation/library/widget/top_widget.dart';
@@ -8,17 +8,16 @@ import '../../../app_constants/color_constants.dart';
 import '../../../business/string_list_converter.dart';
 import '../../../data/model/book_model.dart';
 import '../../../provider/book_list_provider.dart';
-import '../../../provider/current_category_provider.dart';
+import '../../../provider/filter_provider.dart';
 
 class LibraryPage extends ConsumerWidget {
   const LibraryPage({Key? key}) : super(key: key);
-
-  static final HiveClient hiveClient = HiveClient();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
     final files = ref.watch(bookListProvider);
+    final String currentFilter = ref.watch(filterProvider);
 
     return Scaffold(
       backgroundColor: colorPrimary.withOpacity(0.4),
@@ -30,48 +29,45 @@ class LibraryPage extends ConsumerWidget {
             const TopWidget(),
 
             /// Category Widget
-            const FilterBar(),
+            FilterBar(currentFilter: currentFilter,),
 
             const SizedBox(height: 10,),
 
             Expanded(
-              child: Consumer(
-                builder: (context, ref, _) {
-                  final String currentCategory = ref.watch(currentCategoryProvider);
+              child: FutureBuilder(
+                  future: files,
+                  builder: (context, AsyncSnapshot snapshot) {
 
-                  return FutureBuilder(
-                    future: files,
-                    builder: (context, AsyncSnapshot snapshot) {
+                    if(snapshot.hasData){
 
-                      if(snapshot.hasData){
+                      List date = snapshot.data;
 
-                        List date = snapshot.data;
+                      //sort by add date
+                      date.sort((a, b) {
+                        return b.addDate.compareTo(a.addDate);
+                      });
 
-                        //sort by add date
-                        date.sort((a, b) {
-                          return b.addDate.compareTo(a.addDate);
-                        });
+                      return ListView.builder(
+                          itemCount: getFilteredList(date, currentFilter).length,
 
-                        return ListView.builder(
-                            itemCount: getFilteredList(date, currentCategory).length,
+                          itemBuilder: (context, index){
+                            return ListItem(book: getFilteredList(date, currentFilter)[index]);
+                          }
+                      );
 
-                            itemBuilder: (context, index){
-                              return ListItem(book: getFilteredList(date, currentCategory)[index]);
-                            }
-                        );
+                    } else {
 
-                      } else {
-
-                        return const Center(child: CircularProgressIndicator(),);
-                      }
+                      return const Center(child: CircularProgressIndicator(),);
                     }
-                  );
-                }
+                  }
               ),
             ),
           ],
         ),
-      )
+      ),
+
+      /// FAB - Add Book
+      floatingActionButton: AddBookFab(currentFilter: currentFilter,),
     );
   }
 

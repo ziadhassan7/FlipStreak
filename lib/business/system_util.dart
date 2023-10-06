@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wakelock/wakelock.dart';
 import '../app_constants/color_constants.dart';
 import '../provider/bright_mode_provider.dart';
 
@@ -55,5 +56,16 @@ class SystemUtil {
     ));
   }
 
+
+  /// Screen Timeout
+  static keepScreenAwake(){
+    //Make Screen always awake (Never Dim out)
+    Wakelock.enable();
+  }
+
+  static letScreenRest(){
+    //Screen can dim out now
+    Wakelock.disable();
+  }
 
 }

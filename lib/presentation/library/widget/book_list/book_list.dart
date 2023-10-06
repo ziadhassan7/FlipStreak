@@ -40,7 +40,7 @@ class BookList extends ConsumerWidget {
                 );
 
               } else {
-                return const EmptyList();
+                return EmptyList(currentFilter: currentFilter,);
               }
 
             } else {

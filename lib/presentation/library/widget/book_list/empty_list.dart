@@ -1,13 +1,19 @@
 import 'package:flip_streak/presentation/styles/device_screen.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../business/app_wise/add_book_util.dart';
+import '../../../../data/shared_pref/hive_client.dart';
 
-class EmptyList extends StatelessWidget {
-  const EmptyList({super.key});
+class EmptyList extends ConsumerWidget {
+  const EmptyList({super.key, required this.currentFilter});
+
+  final String currentFilter;
+  static final HiveClient _hiveClient = HiveClient();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     double screenSize = DeviceScreen(context).height;
 
@@ -15,15 +21,32 @@ class EmptyList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
 
       children: [
-        //"assets/illustrations/bookshelf_ill.svg"
+
+        /// Illustration
         Visibility(
-            visible: screenSize > 500, //hide when screen rotates
-            child: SvgPicture.asset("assets/illustrations/bookshelf_ill_sec.svg", height: 180,)),
+            visible: screenSize > 500, //hide when screen is too short
+            child: InkWell(
+                //disable splash
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+
+                onTap: () async => AddBookUtil.addBook(ref,
+                    currentCategory: await getCategory(currentFilter)),
+
+                child: SvgPicture.asset(
+                  height: 180,
+                  "assets/illustrations/bookshelf_ill_sec.svg",
+                )
+            )),
 
         _verticalPadding(40),
 
+
+        /// Text
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
+
           children: [
             _customText(context, "Still Empty!", isBold: true,),
             const SizedBox(width: 8,),
@@ -34,6 +57,7 @@ class EmptyList extends StatelessWidget {
     );
   }
 
+  /// Widgets
   static Widget _customText(BuildContext context, String text, {bool isBold = false,}){
 
     return TextInriaSans(
@@ -50,5 +74,19 @@ class EmptyList extends StatelessWidget {
 
   static Widget _verticalPadding(double amount){
     return SizedBox(height: amount,);
+  }
+
+
+  /// Functions
+  Future<String> getCategory(String category) async {
+    List categories = await _hiveClient.getCategories();
+
+    for(String item in categories){
+      if(category == item){
+        return category;
+      }
+    }
+
+    return "All";
   }
 }

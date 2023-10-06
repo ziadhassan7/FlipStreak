@@ -4,6 +4,8 @@ import 'package:flip_streak/presentation/detail/widget/action_buttons/action_but
 import 'package:flip_streak/presentation/detail/widget/edit_button.dart';
 import 'package:flutter/material.dart';
 import '../../../business/app_wise/controllers/book_controller.dart';
+import '../../../business/route_util.dart';
+import '../../book/screen/book_page.dart';
 import '../../views/book_thumbnail.dart';
 import '../../views/text_inria_sans.dart';
 import '../widget/details_page_menu.dart';
@@ -52,8 +54,10 @@ class DetailPage extends StatelessWidget {
                   children: [
                     /// Book Image
                     SizedBox(
-                      width: 170, height: 218,
-                      child: BookThumbnail(filePath: bookModel.path,)),
+                      width: 150, height: 218,
+                      child: InkWell(
+                          onTap: ()=> RouteUtil.navigateTo(context, const BookPage(),),
+                          child: BookThumbnail(filePath: bookModel.path,))),
 
                     const Spacer(),
 

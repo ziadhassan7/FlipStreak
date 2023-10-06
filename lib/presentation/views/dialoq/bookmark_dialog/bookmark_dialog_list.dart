@@ -12,43 +12,31 @@ class BookmarkDialogList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
+    return InkWell(
 
-        /// Widget
-        Column(
-          mainAxisSize: MainAxisSize.min,
+      // click handler
+      onTap: () {
+        pdfController.setPage(int.parse(page));
+        Navigator.pop(dialogContext);
+      },
 
-          children: [
-            Expanded(
-              child: BookThumbnail(
-                filePath: bookModel.path,
-                page: int.parse(page) - 1, //This package starts page 1 with 0
-              ),
+      // widget
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+
+        children: [
+          Expanded(
+            child: BookThumbnail(
+              filePath: bookModel.path,
+              page: int.parse(page) - 1, //This package starts page 1 with 0
             ),
+          ),
 
-            const SizedBox(height: 8,),
+          const SizedBox(height: 8,),
 
-            TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
-          ],
-        ),
-
-        /// Click Handler
-        clickHandler(context),
-      ],
+          TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
+        ],
+      ),
     );
-  }
-
-  Widget clickHandler(BuildContext context) {
-
-    return GestureDetector(
-        behavior: HitTestBehavior.translucent,
-
-        onTap: () {
-          pdfController.setPage(int.parse(page));
-          Navigator.pop(dialogContext);
-        }
-    );
-
   }
 }

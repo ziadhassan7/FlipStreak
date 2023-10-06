@@ -15,40 +15,27 @@ class BookmarkListItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
       width: 170,
-      child: Stack(
-        children: [
 
-          Column(
-            children: [
-              Expanded(
-                child: BookThumbnail(
-                    filePath: bookModel.path,
-                    page: int.parse(page),
-              ),),
+      child: InkWell(
+        onTap: () {
+          //Open Book, with current page
+          RouteUtil.navigateTo(context, BookPage(initialPage: int.parse(page),));
+        },
 
-              const SizedBox(height: 10,),
+        child: Column(
+          children: [
+            Expanded(
+              child: BookThumbnail(
+                  filePath: bookModel.path,
+                  page: int.parse(page),
+            ),),
 
-              TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
-            ],
-          ),
+            const SizedBox(height: 10,),
 
-          /// Click Handler
-          clickHandler(context),
-        ],
+            TextInriaSans(page, weight: FontWeight.bold, color: Colors.black54,),
+          ],
+        ),
       ), //This package starts page 1 with 0
     );
-  }
-
-  Widget clickHandler(BuildContext context) {
-
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-
-      onTap: () {
-        //Open Book, with current page
-        RouteUtil.navigateTo(context, BookPage(initialPage: int.parse(page),));
-      }
-    );
-
   }
 }

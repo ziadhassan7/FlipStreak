@@ -2,6 +2,7 @@ import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/presentation/achievements/screen/achievements_page.dart';
 import 'package:flip_streak/presentation/home/screen/home_page.dart';
 import 'package:flip_streak/presentation/library/screen/library_page.dart';
+import 'package:flip_streak/presentation/notes/screen/notes_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,6 +26,7 @@ class IndexPage extends ConsumerWidget {
           children: const [
             HomePage(),
             LibraryPage(),
+            NotesPage(),
             AchievementsPage(),
           ]
       ),
@@ -62,11 +64,18 @@ class IndexPage extends ConsumerWidget {
               itemIndex: 1,
             ),
 
+            /// Notes
+            navBarItem(
+              title: "Notes",
+              iconPath: "assets/icons/note.svg",
+              itemIndex: 2,
+            ),
+
             /// Achievements
             navBarItem(
               title: "Achievements",
               iconPath: "assets/icons/achievement.svg",
-              itemIndex: 2,
+              itemIndex: 3,
             ),
 
           ],

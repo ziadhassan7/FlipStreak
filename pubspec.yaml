@@ -52,6 +52,7 @@ dependencies:
   hive: ^2.2.3
   wakelock: ^0.4.0
   vibration: ^1.8.2
+  disable_battery_optimization: ^1.1.0+1
 
 dev_dependencies:
   flutter_test:

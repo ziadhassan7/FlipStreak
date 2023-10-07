@@ -10,7 +10,7 @@ class AddNoteFab extends ConsumerWidget {
     return FloatingActionButton.small(
       onPressed: () {},
 
-      backgroundColor: const Color.fromRGBO(255, 242, 233, 1.0), //Color.fromRGBO(255, 231, 220, 1.0),
+      backgroundColor: const Color.fromRGBO(255, 225, 217, 1.0), //Color.fromRGBO(255, 231, 220, 1.0),
       child: const Icon(Icons.add, color: colorBrown,),
     );
   }

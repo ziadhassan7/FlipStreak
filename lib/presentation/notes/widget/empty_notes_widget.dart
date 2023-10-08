@@ -1,13 +1,15 @@
+import 'package:flip_streak/presentation/views/dialoq/note_dialog/add_note_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../app_constants/color_constants.dart';
 import '../../views/text_inria_sans.dart';
 
-class EmptyNotesWidget extends StatelessWidget {
+class EmptyNotesWidget extends ConsumerWidget {
   const EmptyNotesWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     double screenSize = MediaQuery.of(context).size.height;
 
@@ -19,7 +21,9 @@ class EmptyNotesWidget extends StatelessWidget {
 
           Visibility(
               visible: screenSize > 500, //hide when screen rotates
-              child: SvgPicture.asset("assets/illustrations/note_ill.svg")),
+              child: InkWell(
+                  onTap: () => AddNoteDialog(context, ref),
+                  child: SvgPicture.asset("assets/illustrations/note_ill.svg"))),
 
           _verticalPadding(40),
 

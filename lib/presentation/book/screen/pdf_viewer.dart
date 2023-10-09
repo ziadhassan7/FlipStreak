@@ -151,8 +151,6 @@ class PdfViewer extends ConsumerWidget {
     counters.updateCounters(ref, isIncrement: isIncrement);
     //update last page
     updateLastPage(pageNumber: newPage);
-    // Hide Topbar
-    ref.read(topbarProvider.notifier).keepClosed();
     // Show pages number indicator
     showPageIndicator(ref);
   }

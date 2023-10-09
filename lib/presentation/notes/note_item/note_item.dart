@@ -1,4 +1,6 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
+import 'package:flip_streak/business/route_util.dart';
+import 'package:flip_streak/presentation/notes/note_edit/note_edit.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/dialoq/delete_dialog/delete_note_dialog.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
@@ -7,13 +9,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../data/model/note_model.dart';
 import '../../styles/box_decoration.dart';
 import '../../styles/device_screen.dart';
-import '../../views/dialoq/note_dialog/add_note_dialog.dart';
+import '../controller/note_controller.dart';
 
 class NoteItem extends ConsumerWidget {
-  const NoteItem({Key? key, required this.note, this.isBigView = false}) : super(key: key);
+  const NoteItem({Key? key, required this.note,}) : super(key: key);
 
   final NoteModel note;
-  final bool isBigView;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,9 +25,9 @@ class NoteItem extends ConsumerWidget {
       child: InkWell(
         //Tap
         onTap: (){
-          AddNoteDialog.noteTitleController.text = note.noteTitle ?? "";
-          AddNoteDialog.noteBodyController.text = note.noteBody;
-          AddNoteDialog(context, ref);
+          NoteController.noteTitle.text = note.noteTitle ?? "";
+          NoteController.noteBody.text = note.noteBody;
+          RouteUtil.navigateTo(context, const NoteEdit());
         },
 
         //Long Press
@@ -43,7 +44,7 @@ class NoteItem extends ConsumerWidget {
             Expanded(
               child: Container(
                 width: DeviceScreen(context).width,
-                padding: EdgeInsets.symmetric(vertical: 25, horizontal: isBigView?36:25),
+                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 36),
 
                 decoration: CustomDecoration(
                   backgroundColor: Colors.white,
@@ -79,9 +80,7 @@ class NoteItem extends ConsumerWidget {
 
 
             /// Page indicator
-            Visibility(
-            visible: isBigView,
-            child: Row(
+            Row(
               children: [
                 const Spacer(),
                 Container(
@@ -102,7 +101,7 @@ class NoteItem extends ConsumerWidget {
 
                 const SizedBox(width: 40,)
               ],
-            )),
+            ),
           ],
         ),
       ),

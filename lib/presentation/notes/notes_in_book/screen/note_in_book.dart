@@ -1,11 +1,11 @@
-import 'package:flip_streak/data/model/note_model.dart';
-import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import '../../../../app_constants/color_constants.dart';
-import '../../widget/note_item.dart';
+import '../../../../data/model/note_model.dart';
+import '../../../views/text_inria_sans.dart';
+import '../../note_item/note_item.dart';
 
-class SingleBookNotePage extends StatelessWidget {
-  const SingleBookNotePage({Key? key, required this.notesList}) : super(key: key);
+class NotesInBookPage extends StatelessWidget {
+  const NotesInBookPage({Key? key, required this.notesList}) : super(key: key);
 
   final List<NoteModel> notesList;
 
@@ -35,16 +35,16 @@ class SingleBookNotePage extends StatelessWidget {
       body: SafeArea(
 
         child: ListView.builder(
-          itemCount: notesList.length,
-          itemBuilder: (context, index){
-            return Padding(
-              padding: const EdgeInsets.only(right: 24),
+            itemCount: notesList.length,
+            itemBuilder: (context, index){
+              return Padding(
+                padding: const EdgeInsets.only(right: 24),
 
-              child: SizedBox(
-                  height: 340,
-                  child: NoteItem(note: notesList[index], isBigView: true,)),
-            );
-          }
+                child: SizedBox(
+                    height: 340,
+                    child: NoteItem(note: notesList[index])),
+              );
+            }
         ),
       ),
     );

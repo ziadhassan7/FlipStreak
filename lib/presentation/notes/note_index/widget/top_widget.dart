@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../app_constants/color_constants.dart';
-import '../../views/heading_image.dart';
-import '../../views/text_inria_sans.dart';
+import '../../../../app_constants/color_constants.dart';
+import '../../../views/heading_image.dart';
+import '../../../views/text_inria_sans.dart';
 
 class NotePageTopWidget extends StatelessWidget {
   const NotePageTopWidget({Key? key}) : super(key: key);

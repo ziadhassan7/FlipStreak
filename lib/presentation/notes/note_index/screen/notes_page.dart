@@ -1,15 +1,15 @@
 import 'package:flip_streak/data/model/note_model.dart';
-import 'package:flip_streak/presentation/notes/widget/add_note_fab.dart';
-import 'package:flip_streak/presentation/notes/widget/book_item.dart';
-import 'package:flip_streak/presentation/notes/widget/empty_notes_widget.dart';
-import 'package:flip_streak/presentation/notes/widget/top_widget.dart';
+import 'package:flip_streak/presentation/notes/note_item/note_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../app_constants/color_constants.dart';
-import '../../../provider/note_list_provider.dart';
+import '../../../../app_constants/color_constants.dart';
+import '../../../../provider/note_list_provider.dart';
+import '../widget/add_note_fab.dart';
+import '../widget/empty_notes_widget.dart';
+import '../widget/top_widget.dart';
 
-class NotesPage extends ConsumerWidget {
-  const NotesPage({Key? key}) : super(key: key);
+class NoteIndexPage extends ConsumerWidget {
+  const NoteIndexPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,7 +38,7 @@ class NotesPage extends ConsumerWidget {
             child: ListView.builder(
                 itemCount: bookNames.length,
                 itemBuilder: (context, index){
-                  return BookItem(bookNames.elementAt(index), notes);
+                  return NoteItem(note: notes[index]);
                 }
             ),
           )

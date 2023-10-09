@@ -1,9 +1,10 @@
-import 'package:flip_streak/presentation/views/dialoq/note_dialog/add_note_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../app_constants/color_constants.dart';
-import '../../views/text_inria_sans.dart';
+import '../../../../app_constants/color_constants.dart';
+import '../../../../business/route_util.dart';
+import '../../../views/text_inria_sans.dart';
+import '../../note_edit/note_edit.dart';
 
 class EmptyNotesWidget extends ConsumerWidget {
   const EmptyNotesWidget({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class EmptyNotesWidget extends ConsumerWidget {
           Visibility(
               visible: screenSize > 500, //hide when screen rotates
               child: InkWell(
-                  onTap: () => AddNoteDialog(context, ref),
+                  onTap: () => RouteUtil.navigateTo(context, const NoteEdit()),
                   child: SvgPicture.asset("assets/illustrations/note_ill.svg"))),
 
           _verticalPadding(40),

@@ -29,7 +29,7 @@ class NoteEdit extends StatelessWidget {
 
       onWillPop: ()=> _onWillPop(context),
 
-      child: const Scaffold(
+      child:  const Scaffold(
 
         body: SafeArea(
           child: Column(

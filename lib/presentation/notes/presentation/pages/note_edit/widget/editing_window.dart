@@ -40,7 +40,6 @@ class EditingWindow extends StatelessWidget {
 
                 expands: true,
                 maxLines: null,
-                textAlign: TextAlign.justify,
                 textCapitalization: TextCapitalization.sentences,
 
                 style: CustomFormat.formField(isTitle: false),

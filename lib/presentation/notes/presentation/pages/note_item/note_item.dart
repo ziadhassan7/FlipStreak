@@ -2,7 +2,7 @@ import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/business/route_util.dart';
 import 'package:flip_streak/presentation/notes/presentation/styles/custom_format.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
-import 'package:flip_streak/presentation/views/dialoq/delete_dialog/delete_note_dialog.dart';
+import 'package:flip_streak/presentation/notes/presentation/views/dialog/delete_note_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../styles/box_decoration.dart';

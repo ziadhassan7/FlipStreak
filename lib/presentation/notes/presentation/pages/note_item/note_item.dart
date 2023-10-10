@@ -1,8 +1,8 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/business/route_util.dart';
+import 'package:flip_streak/presentation/notes/presentation/styles/custom_format.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/dialoq/delete_dialog/delete_note_dialog.dart';
-import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../styles/box_decoration.dart';
@@ -20,9 +20,10 @@ class NoteItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     return Padding(
-      padding: const CustomPadding(horizontal: 18, vertical: 15),
+      padding: const CustomPadding(horizontal: 18, vertical: 12),
 
       child: InkWell(
+        ///                                                                     / Handle taps
         //Tap
         onTap: (){
           NoteController.noteTitle.text = note.noteTitle ?? "";
@@ -32,28 +33,56 @@ class NoteItem extends ConsumerWidget {
 
         //Long Press
         onLongPress: (){
-
-          //open dialog
+          //open delete dialog
           DeleteNoteDialog(context, ref, noteId: note.noteId);
         },
 
 
-        //Widget
+        ///                                                                     / Widgets
         child: Container(
+          //Settings
             width: DeviceScreen(context).width,
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 36),
+            padding: const CustomPadding(horizontal: 28, vertical: 28),
 
             decoration: CustomDecoration(
               backgroundColor: Colors.white,
               borderColor: colorAccent.withOpacity(0.4),
-              radius: 20,
+              radius: 18,
               borderWidth: 2,
             ),
 
-
+          //View
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(note.noteBody),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Visibility(
+                      visible: note.noteTitle != null,
+                      child: Column(
+                        children: [
+                          Text(
+                            note.noteTitle??"",
+                            style: CustomFormat.normalText(color: Colors.black,
+                                isBold: true, size: 18),
+                          ),
+
+                          const SizedBox(height: 20,),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: getHeight(),
+                      child: Text(
+                        note.noteBody,
+                        style: CustomFormat.normalText(
+                            color: Colors.brown.shade900, size: 16),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             )
         ),
@@ -61,14 +90,9 @@ class NoteItem extends ConsumerWidget {
     );
   }
 
-  Widget customText(String text, {required bool isTitle}) {
-    return TextInriaSans(
-      text,
-      weight: isTitle? FontWeight.bold : FontWeight.normal,
-      color: isTitle? colorAccent : Colors.black,
-      size: isTitle? 17 : 16,
-      maxLine: isTitle? 1: 10,
-      overflow: TextOverflow.ellipsis,
-    );
+  double? getHeight(){
+    return (note.noteBody.length > 150)
+        ? 200 //maximum height
+        : null; //adaptive
   }
 }

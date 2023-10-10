@@ -11,8 +11,8 @@ class NotePageTopWidget extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 36, left: 26),
-          child: TextInriaSans("Notes", weight: FontWeight.bold, size: 34, color: colorAccent,),),
+          padding: const EdgeInsets.only(top: 32, left: 26),
+          child: TextInriaSans("Notes", weight: FontWeight.normal, size: 42, color: colorAccent,),),
 
         const Spacer(),
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../app_constants/color_constants.dart';
 
-class CustomStyles{
+class CustomFormat{
 
 
   /// TextFormField (Title-normal)
@@ -15,11 +15,19 @@ class CustomStyles{
   }
 
   /// Text (bold, accent)
-  static TextStyle text({double? size, Color? color, FontWeight? weight}){
+  static TextStyle textInriaSans({double? size, Color? color, bool isBold = false}){
     return GoogleFonts.inriaSans(
         fontSize: size,
-        fontWeight: weight ?? FontWeight.bold,
+        fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
         color: color ?? colorAccent,
+    );
+  }
+
+  static TextStyle normalText({double? size, Color? color, bool isBold = false}){
+    return GoogleFonts.tinos(
+      fontSize: size,
+      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+      color: color ?? colorAccent,
     );
   }
 

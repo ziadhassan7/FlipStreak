@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../manager/controller/note_controller.dart';
-import '../../../styles/custom_styles.dart';
+import '../../../styles/custom_format.dart';
 
 class EditingWindow extends StatelessWidget {
   const EditingWindow({super.key});
@@ -19,7 +19,8 @@ class EditingWindow extends StatelessWidget {
           TextFormField(
             controller: NoteController.noteTitle,
 
-            style: CustomStyles.formField(isTitle: true),
+            style: CustomFormat.formField(isTitle: true),
+            textCapitalization: TextCapitalization.sentences,
 
             decoration: const InputDecoration(
               border: InputBorder.none,
@@ -39,8 +40,10 @@ class EditingWindow extends StatelessWidget {
 
                 expands: true,
                 maxLines: null,
+                textAlign: TextAlign.justify,
+                textCapitalization: TextCapitalization.sentences,
 
-                style: CustomStyles.formField(isTitle: false),
+                style: CustomFormat.formField(isTitle: false),
                 decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Body',

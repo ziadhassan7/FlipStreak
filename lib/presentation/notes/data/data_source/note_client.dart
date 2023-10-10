@@ -1,7 +1,7 @@
 import 'package:flip_streak/data/local_db/sql_client.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import '../../app_constants/db_constants/note_db_constants.dart';
+import '../../../../app_constants/db_constants/note_db_constants.dart';
 import '../model/note_model.dart';
 
 class NoteClient {

@@ -1,7 +1,7 @@
-import 'package:flip_streak/presentation/notes/note_edit/styles/custom_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../controller/note_controller.dart';
+import '../../../manager/controller/note_controller.dart';
+import '../../../styles/custom_styles.dart';
 
 class EditingWindow extends StatelessWidget {
   const EditingWindow({super.key});

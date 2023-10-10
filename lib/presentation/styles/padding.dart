@@ -2,6 +2,9 @@ import 'package:flutter/widgets.dart';
 
 class CustomPadding extends EdgeInsets{
 
+  /// Custom Padding
+  /// You can specify [left] or [right] padding, or [horizontal] for both,
+  /// You can specify [top] or [bottom] padding, or [vertical] for both,
   const CustomPadding({
     double left = 0,
     double top = 0,
@@ -16,4 +19,11 @@ class CustomPadding extends EdgeInsets{
     top: vertical ?? top,
     bottom: vertical ?? bottom,
   );
+
+
+  /// Apply overall padding
+  const CustomPadding.all({
+    required double value
+
+  }) : super.all(value);
 }

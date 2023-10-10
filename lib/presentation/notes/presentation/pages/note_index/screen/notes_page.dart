@@ -1,9 +1,9 @@
-import 'package:flip_streak/data/model/note_model.dart';
-import 'package:flip_streak/presentation/notes/note_item/note_item.dart';
+import 'package:flip_streak/presentation/notes/data/model/note_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../app_constants/color_constants.dart';
-import '../../../../provider/note_list_provider.dart';
+import '../../../../../../app_constants/color_constants.dart';
+import '../../../manager/riverpod/note_list_provider.dart';
+import '../../note_item/note_item.dart';
 import '../widget/add_note_fab.dart';
 import '../widget/empty_notes_widget.dart';
 import '../widget/top_widget.dart';
@@ -16,12 +16,6 @@ class NoteIndexPage extends ConsumerWidget {
 
     final List<NoteModel> notes = ref.watch(noteListProvider);
 
-    Set bookNames = {};
-
-    for (NoteModel note in notes) {
-      bookNames.add(note.noteBookName);
-    }
-
 
    return Scaffold(
      backgroundColor: colorPrimary.withOpacity(0.4), //0.2
@@ -33,12 +27,12 @@ class NoteIndexPage extends ConsumerWidget {
           const NotePageTopWidget(),
 
           /// Screen Body (Notes / Empty Notes)
-          bookNames.isNotEmpty
+          notes.isNotEmpty
           ? Expanded(
             child: ListView.builder(
-                itemCount: bookNames.length,
+                itemCount: notes.length,
                 itemBuilder: (context, index){
-                  return NoteItem(note: notes[index]);
+                  return NoteItem(note: notes[index],);
                 }
             ),
           )

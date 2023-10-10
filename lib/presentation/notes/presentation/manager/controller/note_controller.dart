@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../data/model/note_model.dart';
-import '../../../provider/note_list_provider.dart';
+import '../riverpod/note_list_provider.dart';
 
 class NoteController {
 

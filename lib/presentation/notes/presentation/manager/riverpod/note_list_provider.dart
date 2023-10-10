@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../data/local_db/note_client.dart';
-import '../../data/model/note_model.dart';
+import '../../../data/data_source/note_client.dart';
+import '../../../data/model/note_model.dart';
 
 final noteListProvider = StateNotifierProvider<NoteProvider, List<NoteModel>>((ref) {
 

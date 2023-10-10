@@ -1,6 +1,7 @@
 import 'package:flip_streak/business/route_util.dart';
-import 'package:flip_streak/presentation/notes/note_share/note_share_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../note_share/note_share_page.dart';
 
 class NoteAppBar extends StatelessWidget {
   const NoteAppBar({super.key});

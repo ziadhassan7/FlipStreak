@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import '../../provider/nav_bar_provider.dart';
-import '../notes/note_index/screen/notes_page.dart';
+import '../notes/presentation/pages/note_index/screen/notes_page.dart';
 
 class IndexPage extends ConsumerWidget {
   IndexPage({Key? key}) : super(key: key);

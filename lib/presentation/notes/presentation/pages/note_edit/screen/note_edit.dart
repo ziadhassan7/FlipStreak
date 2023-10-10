@@ -1,8 +1,8 @@
-import 'package:flip_streak/presentation/notes/note_edit/widget/editing_window.dart';
-import 'package:flip_streak/presentation/notes/note_edit/widget/note_app_bar.dart';
-import 'package:flip_streak/presentation/notes/note_edit/widget/note_bottom_bar.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flutter/material.dart';
+import '../widget/editing_window.dart';
+import '../widget/note_app_bar.dart';
+import '../widget/note_bottom_bar.dart';
 
 class NoteEdit extends StatelessWidget {
   const NoteEdit({super.key});
@@ -18,9 +18,10 @@ class NoteEdit extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-
+            ///                                                                 / Back , Share
             NoteAppBar(),
 
+            ///                                                                 / Editing Space
             Expanded(
               child: Padding(
                 padding: CustomPadding(horizontal: _padding),
@@ -28,6 +29,7 @@ class NoteEdit extends StatelessWidget {
             )),
 
 
+            ///                                                                 / Book name, Page number, Save
             Padding(
               padding: CustomPadding(horizontal: _padding, vertical: _padding-20),
               child: NoteBottomBar(),

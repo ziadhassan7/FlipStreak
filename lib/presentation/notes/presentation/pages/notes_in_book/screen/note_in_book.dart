@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../app_constants/color_constants.dart';
+import '../../../../../../app_constants/color_constants.dart';
+import '../../../../../views/text_inria_sans.dart';
 import '../../../../data/model/note_model.dart';
-import '../../../views/text_inria_sans.dart';
 import '../../note_item/note_item.dart';
 
 class NotesInBookPage extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
-import 'package:flip_streak/provider/note_list_provider.dart';
+import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../business/file_util.dart';

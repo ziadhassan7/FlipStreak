@@ -1,7 +1,7 @@
 import 'package:flip_streak/presentation/views/circular_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../controller/note_controller.dart';
+import '../../../manager/controller/note_controller.dart';
 import 'note_book_details.dart';
 
 class NoteBottomBar extends ConsumerWidget {
@@ -21,7 +21,7 @@ class NoteBottomBar extends ConsumerWidget {
 
         ///                                                                     / Save Button
         CircularButton(
-          onPressed: () => _onSave(ref),
+          onPressed: () => _onSave(context, ref),
           size: 42,
           icon: const Icon(Icons.done, color: Colors.white,),
         ),
@@ -30,11 +30,13 @@ class NoteBottomBar extends ConsumerWidget {
   }
 
 
-  void _onSave(WidgetRef ref){
+  void _onSave(BuildContext context, WidgetRef ref){
     if (NoteController.formKey.currentState!.validate()) {
       _controller.saveNote(ref);
       NoteController.noteTitle.clear();
       NoteController.noteBody.clear();
+
+      Navigator.pop(context);
     }
   }
 }

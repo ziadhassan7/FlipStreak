@@ -9,7 +9,8 @@ class CustomStyles{
   static TextStyle formField({required bool isTitle}){
     return TextStyle(
         fontSize: isTitle ? 34 : 20,
-        fontWeight: isTitle ? FontWeight.bold : FontWeight.normal
+        fontWeight: isTitle ? FontWeight.bold : FontWeight.normal,
+      color: Colors.black
     );
   }
 

@@ -1,8 +1,8 @@
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flutter/material.dart';
-import '../../../../app_constants/color_constants.dart';
-import '../../../styles/box_decoration.dart';
-import '../styles/custom_styles.dart';
+import '../../../../../../app_constants/color_constants.dart';
+import '../../../../../styles/box_decoration.dart';
+import '../../../styles/custom_styles.dart';
 
 class NoteBookDetails extends StatelessWidget {
   const NoteBookDetails({super.key});

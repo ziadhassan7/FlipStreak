@@ -1,4 +1,4 @@
-import '../../app_constants/db_constants/note_db_constants.dart';
+import '../../../../app_constants/db_constants/note_db_constants.dart';
 
 class NoteModel {
 

@@ -19,7 +19,7 @@ class AddIconButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 50),
 
               child: CircularButton(
-                onTap: () => AddBookUtil.addBook(ref),
+                onPressed: () => AddBookUtil.addBook(ref),
                 color: const Color.fromRGBO(242, 193, 162, 1), // Button color
                 icon: const Icon(Icons.add, color: colorDark,),
               )

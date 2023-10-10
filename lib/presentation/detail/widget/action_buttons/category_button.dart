@@ -25,7 +25,7 @@ class CategoryButton extends StatelessWidget {
               height: size,
               width: size,
               child: CircularButton(
-                  onTap: () {
+                  onPressed: () {
                     CategoryAttacherDialog(context, ref, currentBook: bookModel);
                   },
                   color: colorAccent,

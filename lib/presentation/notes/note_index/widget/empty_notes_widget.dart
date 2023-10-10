@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../app_constants/color_constants.dart';
 import '../../../../business/route_util.dart';
 import '../../../views/text_inria_sans.dart';
-import '../../note_edit/note_edit.dart';
+import '../../note_edit/screen/note_edit.dart';
 
 class EmptyNotesWidget extends ConsumerWidget {
   const EmptyNotesWidget({Key? key}) : super(key: key);

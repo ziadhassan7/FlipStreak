@@ -1,11 +1,13 @@
+import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
 class CircularButton extends StatelessWidget {
-  const CircularButton({Key? key, required this.onTap, required this.color, required this.icon,}) : super(key: key);
+  const CircularButton({Key? key, required this.onPressed, this.color = colorAccent, required this.icon, this.size = 56}) : super(key: key);
 
-  final Function()? onTap;
+  final Function()? onPressed;
   final Color color;
   final Icon icon;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +16,11 @@ class CircularButton extends StatelessWidget {
         color: color, // Button Color
 
         child: InkWell(
-          onTap: onTap, // Button Function
+          onTap: onPressed, // Button Function
 
           child: SizedBox(
-            width: 56,
-            height: 56,
+            width: size,
+            height: size,
 
             child: icon, // Button Icon
           ),

@@ -1,6 +1,6 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/business/route_util.dart';
-import 'package:flip_streak/presentation/notes/note_edit/note_edit.dart';
+import 'package:flip_streak/presentation/notes/note_edit/screen/note_edit.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/dialoq/delete_dialog/delete_note_dialog.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';

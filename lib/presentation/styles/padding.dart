@@ -22,8 +22,5 @@ class CustomPadding extends EdgeInsets{
 
 
   /// Apply overall padding
-  const CustomPadding.all({
-    required double value
-
-  }) : super.all(value);
+  const CustomPadding.all(double value) : super.all(value);
 }

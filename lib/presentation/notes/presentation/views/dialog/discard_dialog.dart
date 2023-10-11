@@ -20,7 +20,7 @@ class DiscardDialog {
           exit();
         },
 
-        child: TextInriaSans("You will lose your note..", color: colorDark, size: 16,)
+        child: TextInriaSans("You will lose your note..", size: 16,)
 
     ).showAlert();
   }

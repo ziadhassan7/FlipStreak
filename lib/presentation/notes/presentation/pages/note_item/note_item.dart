@@ -100,7 +100,7 @@ class NoteItem extends ConsumerWidget {
                           const Spacer(),
 
                           /// Page number
-                          TextInriaSans(getPageNumberText(note.notePage),
+                          TextInriaSans(note.notePage,
                             weight: FontWeight.bold,
                             size: 14, color: colorAccent,),
                         ],
@@ -119,11 +119,5 @@ class NoteItem extends ConsumerWidget {
     return (note.noteBody.length > 150)
         ? 200 //maximum height
         : null; //adaptive
-  }
-
-  String getPageNumberText(int page){
-    if(page == 0) return ""; //no value
-
-    return "pg. $page"; //pg. 7
   }
 }

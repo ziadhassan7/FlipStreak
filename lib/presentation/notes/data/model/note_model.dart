@@ -6,7 +6,7 @@ class NoteModel {
   final String? noteTitle;
   final String noteBody;
 
-  final int notePage;
+  final String notePage;
   final String noteBookName;
 
   NoteModel({

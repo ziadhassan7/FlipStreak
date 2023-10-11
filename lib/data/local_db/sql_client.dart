@@ -23,7 +23,7 @@ class SqlClient {
 
   Future<Database> _initDB() async{
     String path = join(await getDatabasesPath(), 'BookDatabase.db');
-    return await openDatabase(path, version: 10, onCreate: _createDB);
+    return await openDatabase(path, version: 12, onCreate: _createDB);
   }
 
 
@@ -50,7 +50,7 @@ class SqlClient {
     $columnNoteId $textType,
     $columnNoteTitle $textType,
     $columnNoteBody $textType,
-    $columnNotePage $intType,
+    $columnNotePage $textType,
     $columnNoteBookName $textType
     )
     ''');

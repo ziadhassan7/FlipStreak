@@ -23,7 +23,7 @@ class CustomFormat{
     );
   }
 
-  static TextStyle normalText({double? size, Color? color, bool isBold = false}){
+  static TextStyle tinos({double? size, Color? color, bool isBold = false}){
     return GoogleFonts.tinos(
       fontSize: size,
       fontWeight: isBold ? FontWeight.bold : FontWeight.normal,

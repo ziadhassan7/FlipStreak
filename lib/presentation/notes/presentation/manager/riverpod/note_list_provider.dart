@@ -18,7 +18,8 @@ class NoteProvider extends StateNotifier<List<NoteModel>> {
 
   /// State Function
   updateNotifier() async {
-    state = await noteClient.readAllElements();
+    List<NoteModel> notes = await noteClient.readAllElements();
+    state = notes.reversed.toList(); //reverse list
   }
 
   /// ---------------------------------------------------------------

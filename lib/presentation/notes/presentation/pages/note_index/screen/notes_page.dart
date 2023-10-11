@@ -21,6 +21,7 @@ class NoteIndexPage extends ConsumerWidget {
      backgroundColor: colorPrimary.withOpacity(0.4), //0.2
 
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
 
           /// Title
@@ -28,24 +29,24 @@ class NoteIndexPage extends ConsumerWidget {
 
           /// Screen Body (Notes / Empty Notes)
           notes.isNotEmpty
-          ? Expanded(
-            child: ListView.builder(
-                itemCount: notes.length,
-                itemBuilder: (context, index){
-                  return NoteItem(note: notes[index],);
-                }
-            ),
-          )
+            ? Expanded(
+              child: ListView.builder(
+                  itemCount: notes.length,
+                  itemBuilder: (context, index){
+                    return NoteItem(note: notes[index],);
+                  }
+                ),
+            )
 
-          : const Expanded(
-            child: Column(
-              children: [
-                Spacer(),
-                EmptyNotesWidget(),
-                Spacer(),
-              ],
+            : const Expanded(
+              child: Column(
+                children: [
+                  Spacer(),
+                  EmptyNotesWidget(),
+                  Spacer(),
+                ],
+              ),
             ),
-          ),
 
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flip_streak/business/route_util.dart';
 import 'package:flip_streak/presentation/notes/presentation/styles/custom_format.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/notes/presentation/views/dialog/delete_note_dialog.dart';
+import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../styles/box_decoration.dart';
@@ -23,7 +24,7 @@ class NoteItem extends ConsumerWidget {
       padding: const CustomPadding(horizontal: 18, vertical: 12),
 
       child: InkWell(
-        ///                                                                     / Handle taps
+        /// Handle taps
         //Tap
         onTap: (){
           NoteController.noteTitle.text = note.noteTitle ?? "";
@@ -38,7 +39,7 @@ class NoteItem extends ConsumerWidget {
         },
 
 
-        ///                                                                     / Widgets
+        /// Widgets
         child: Container(
           //Settings
             width: DeviceScreen(context).width,
@@ -58,13 +59,15 @@ class NoteItem extends ConsumerWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    ///                                                         / Note Title
                     Visibility(
                       visible: note.noteTitle != null,
                       child: Column(
                         children: [
                           Text(
                             note.noteTitle??"",
-                            style: CustomFormat.normalText(color: Colors.black,
+                            style: CustomFormat.tinos(
+                                color: Colors.black,
                                 isBold: true, size: 18),
                           ),
 
@@ -73,14 +76,36 @@ class NoteItem extends ConsumerWidget {
                       ),
                     ),
 
+                    ///                                                         / Note Body
                     SizedBox(
                       height: getHeight(),
                       child: Text(
                         note.noteBody,
-                        style: CustomFormat.normalText(
+                        style: CustomFormat.tinos(
                             color: Colors.brown.shade900, size: 16),
                       ),
                     ),
+
+                    ///                                                         / Bar (Book name , Page number)
+                    Padding(
+                      padding: const CustomPadding(top: 14),
+
+                      child: Row(
+                        children: [
+                          /// Book name
+                          TextInriaSans(note.noteBookName,
+                            weight: FontWeight.bold,
+                            size: 14, color: colorAccent,),
+
+                          const Spacer(),
+
+                          /// Page number
+                          TextInriaSans(getPageNumberText(note.notePage),
+                            weight: FontWeight.bold,
+                            size: 14, color: colorAccent,),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ],
@@ -94,5 +119,13 @@ class NoteItem extends ConsumerWidget {
     return (note.noteBody.length > 150)
         ? 200 //maximum height
         : null; //adaptive
+  }
+
+  String getPageNumberText(int page){
+    if(page == 0){
+      return "";
+    }
+
+    return "pg. $page";
   }
 }

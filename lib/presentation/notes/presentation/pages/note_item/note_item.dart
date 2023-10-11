@@ -122,10 +122,8 @@ class NoteItem extends ConsumerWidget {
   }
 
   String getPageNumberText(int page){
-    if(page == 0){
-      return "";
-    }
+    if(page == 0) return ""; //no value
 
-    return "pg. $page";
+    return "pg. $page"; //pg. 7
   }
 }

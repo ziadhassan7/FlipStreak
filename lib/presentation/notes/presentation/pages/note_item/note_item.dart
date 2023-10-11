@@ -116,7 +116,7 @@ class NoteItem extends ConsumerWidget {
   }
 
   double? getHeight(){
-    return (note.noteBody.length > 150)
+    return (note.noteBody.length > 400)
         ? 200 //maximum height
         : null; //adaptive
   }

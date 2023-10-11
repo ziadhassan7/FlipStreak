@@ -33,8 +33,6 @@ class NoteBottomBar extends ConsumerWidget {
   void _onSave(BuildContext context, WidgetRef ref){
     if (NoteController.formKey.currentState!.validate()) {
       _controller.saveNote(ref);
-      NoteController.noteTitle.clear();
-      NoteController.noteBody.clear();
 
       Navigator.pop(context);
     }

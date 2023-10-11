@@ -36,5 +36,20 @@ class NoteController {
             // book details
             notePage: pageNumber,
             noteBookName: bookName));
+
+    //Start fresh next time
+    _clearAllValues(ref);
+  }
+
+  void _clearAllValues(WidgetRef ref){
+    //clear note details
+    noteTitle.clear();
+    noteBody.clear();
+
+    //clear book related details
+    bookName.clear();
+    pageNumber.clear();
+    ref.read(bookNameProvider.notifier).clear();
+    ref.read(pageNumberProvider.notifier).clear();
   }
 }

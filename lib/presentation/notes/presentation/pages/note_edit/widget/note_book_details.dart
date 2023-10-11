@@ -1,11 +1,14 @@
 import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_detail_provider/book_name_provider.dart';
 import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_detail_provider/page_number_provider.dart';
+import 'package:flip_streak/presentation/notes/presentation/views/dialog/note_detail_dialog/book_name_dialog.dart';
+import 'package:flip_streak/presentation/notes/presentation/views/dialog/note_detail_dialog/page_number_dialog.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
+import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../app_constants/color_constants.dart';
 import '../../../../../styles/box_decoration.dart';
-import '../../../styles/custom_format.dart';
+
 
 class NoteBookDetails extends ConsumerWidget {
   const NoteBookDetails({super.key});
@@ -22,30 +25,45 @@ class NoteBookDetails extends ConsumerWidget {
     return Row(
       children: [
         ///                                                                     / Book Name
-        customViewButton(bookName),
+        customViewButton(
+          onPressed: () => BookNameDialog(context, ref),
+          color: bookName == "" ? Colors.black38 : colorAccent.withOpacity(opacity),
+          text: bookName == "" ? "Book name" : bookName,
+        ),
 
         ///                                                                     / Page Number
-        customViewButton(pageNumber),
+        customViewButton(
+          onPressed: () => PageNumberDialog(context, ref),
+          color: pageNumber == "" ? Colors.black38 : colorAccent.withOpacity(opacity),
+          text: pageNumber == "" ? "Page number" : "pg. $pageNumber",
+        ),
       ],
     );
   }
 
-  Widget customViewButton(String text){
-    return Padding(
-      padding: const CustomPadding(right: 12),
+  Widget customViewButton({
+    required Function()? onPressed,
+    required Color color,
+    required String text,
+  }){
 
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: CustomDecoration(
-            backgroundColor: Colors.white,
-            radius: 30,
-            borderColor: colorAccent.withOpacity(opacity)
-        ),
+    return InkWell(
+      onTap: onPressed,
 
-        child: Text(text, style: CustomFormat.textInriaSans(
-            color: colorAccent.withOpacity(opacity)),
+      child: Padding(
+        padding: const CustomPadding(right: 12),
+
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: CustomDecoration(
+              backgroundColor: Colors.white,
+              radius: 30,
+              borderColor: color
+          ),
+
+          child: TextInriaSans(text, color: color),
+          ),
         ),
-      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flip_streak/presentation/notes/presentation/manager/controller/n
 import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_list_provider.dart';
 import 'package:flip_streak/presentation/notes/presentation/pages/note_edit/screen/note_edit.dart';
 import 'package:flip_streak/presentation/notes/presentation/views/empty_notes_widget.dart';
+import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../app_constants/color_constants.dart';
@@ -51,7 +52,7 @@ class NotesInBookPage extends ConsumerWidget {
             itemCount: currentBookNotes.length,
             itemBuilder: (context, index){
               return Padding(
-                padding: const EdgeInsets.only(right: 24),
+                padding: const CustomPadding(horizontal: 16),
 
                 child: NoteItem(note: currentBookNotes[index]),
               );

@@ -13,7 +13,7 @@ class DiscardDialog {
 
     DialogWidget(
         context,
-        dominantButtonTitle: "Discard",
+        dominantButtonTitle: "Delete",
         dominantButtonColor: colorOrange,
 
         dominantButtonFunction: (){

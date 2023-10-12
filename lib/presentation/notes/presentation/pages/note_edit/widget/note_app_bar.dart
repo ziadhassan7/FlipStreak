@@ -14,7 +14,9 @@ class NoteAppBar extends StatelessWidget {
       child: Row(
         children: [
           ///                                                                   / Back Button
-          IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back_ios)),
+          IconButton(onPressed: (){
+            Navigator.pop(context);
+          }, icon: const Icon(Icons.arrow_back_ios)),
 
           const Spacer(),
 

@@ -31,17 +31,17 @@ class NoteEdit extends StatelessWidget {
 
       onWillPop: ()=> _onWillPop(context),
 
-      child:  const Scaffold(
+      child:  Scaffold(
 
         body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ///                                                               / Back , Share
-              NoteAppBar(),
+              const NoteAppBar(),
 
               ///                                                               / Editing Space
-              Expanded(
+              const Expanded(
                 child: Padding(
                   padding: CustomPadding(horizontal: _padding),
                   child: EditingWindow(),
@@ -50,8 +50,9 @@ class NoteEdit extends StatelessWidget {
 
               ///                                                               / Book name, Page number, Save
               Padding(
-                padding: CustomPadding(horizontal: _padding, vertical: _padding-20),
-                child: NoteBottomBar(),
+                padding: const CustomPadding(horizontal: _padding,
+                    vertical: _padding-20),
+                child: NoteBottomBar(currentNoteId: currentNoteId,),
               ),
             ],
           ),

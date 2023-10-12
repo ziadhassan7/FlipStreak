@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
-import 'package:flip_streak/business/print_debug.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:pdfx/pdfx.dart';
@@ -16,8 +15,6 @@ class AddBookUtil {
   static late BookModel model;
 
   static void addBook(WidgetRef ref, {String? currentCategory}) {
-
-    PrintDebug("waht,", currentCategory);
 
     //pick file
     RouteUtil.pickFiles().then((files) async {

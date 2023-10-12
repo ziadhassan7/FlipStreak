@@ -27,25 +27,46 @@ class NoteController {
     String bookName = ref.watch(bookNameProvider);
     String pageNumber = ref.watch(pageNumberProvider);
 
-    //Add new Note, and refresh providers
+    //Save Note
+    if(currentNoteId == null){
+      saveNew(ref, title, body, bookName, pageNumber);
+    } else {
+      updateNote(ref, currentNoteId, title, body, bookName, pageNumber);
+    }
+
+    //Start fresh next time
+    _clearAllValues(ref);
+  }
+
+  void saveNew(
+      WidgetRef ref,
+      String? title, String body, String bookName, String pageNumber){
+
+    //Update current Note, and refresh providers
     ref.read(noteListProvider.notifier).addNote(
         NoteModel(
-            noteId: currentNoteId ?? DateTime.now().toString(),
+            noteId: DateTime.now().toString(),
             noteTitle: title,
             noteBody: body,
             // book details
             notePage: pageNumber,
             noteBookName: bookName));
 
-    //Start fresh next time
-    _clearAllValues(ref);
   }
 
-  void saveNew(WidgetRef ref){
+  void updateNote(
+      WidgetRef ref, String currentNoteId,
+      String? title, String body, String bookName, String pageNumber){
 
-  }
-
-  void updateNote(){
+    //Add new Note, and refresh providers
+    ref.read(noteListProvider.notifier).updateNote(
+        NoteModel(
+            noteId: currentNoteId,
+            noteTitle: title,
+            noteBody: body,
+            // book details
+            notePage: pageNumber,
+            noteBookName: bookName));
 
   }
 

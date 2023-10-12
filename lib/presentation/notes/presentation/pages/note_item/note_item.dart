@@ -31,7 +31,7 @@ class NoteItem extends ConsumerWidget {
           NoteController.noteBody.text = note.noteBody;
           NoteController.bookName.text = note.noteBookName;
           NoteController.pageNumber.text = note.notePage;
-          RouteUtil.navigateTo(context, const NoteEdit());
+          RouteUtil.navigateTo(context, NoteEdit(currentNoteId: note.noteId,));
         },
 
         //Long Press

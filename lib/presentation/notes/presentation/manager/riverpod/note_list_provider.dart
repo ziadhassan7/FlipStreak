@@ -41,6 +41,16 @@ class NoteProvider extends StateNotifier<List<NoteModel>> {
     await updateNotifier();
   }
 
+  /// Add New Note
+  void updateNote(NoteModel newModel) async {
+
+    //Create new Note Item
+    noteClient.updateItem(newModel);
+
+    //Get List of all books
+    await updateNotifier();
+  }
+
   /// Delete Note
   void deleteNote(String noteId) async {
 

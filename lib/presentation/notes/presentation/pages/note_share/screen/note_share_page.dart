@@ -1,5 +1,5 @@
 import 'package:flip_streak/presentation/notes/presentation/manager/controller/share_note_controller.dart';
-import 'package:flip_streak/presentation/notes/presentation/pages/note_share/widget/share_item.dart';
+import 'package:flip_streak/presentation/notes/presentation/pages/note_share/view/share_item.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';

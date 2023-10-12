@@ -10,7 +10,7 @@ import '../../../../../../app_constants/color_constants.dart';
 import '../../../../../views/text_inria_sans.dart';
 import '../../../../data/model/note_model.dart';
 import '../../../manager/riverpod/note_detail_provider/book_name_provider.dart';
-import '../../note_item/view/note_item.dart';
+import '../../note_item/note_item.dart';
 
 class NotesInBookPage extends ConsumerWidget {
   const NotesInBookPage({Key? key, required this.bookName}) : super(key: key);

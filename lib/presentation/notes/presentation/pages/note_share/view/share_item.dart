@@ -1,6 +1,6 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
-import 'package:flip_streak/presentation/notes/presentation/pages/note_item/widget/note_box.dart';
-import 'package:flip_streak/presentation/notes/presentation/pages/note_item/widget/page_indicator.dart';
+import 'package:flip_streak/presentation/notes/presentation/pages/note_share/widget/note_box.dart';
+import 'package:flip_streak/presentation/notes/presentation/pages/note_share/widget/page_indicator.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
@@ -34,17 +34,24 @@ class ShareItem extends ConsumerWidget {
             children: [
               const Stack(
                 children: [
+                  /// Note
                   NoteBox(),
 
+                  /// Pg.
                   PageIndicator(),
                 ],
               ),
-              
+
+
+              /// Brand Identity
               Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
                     padding: const CustomPadding(horizontal: 12, vertical: 4),
-                    child: TextInriaSans("Shared from FlipStreak", color: colorOrange.withOpacity(0.6), size: 12,),
+                    child: TextInriaSans(
+                      "Shared from FlipStreak",
+                      color: Colors.white38, //colorOrange.withOpacity(0.6)
+                      size: 12,),
                   ))
             ],
           ),

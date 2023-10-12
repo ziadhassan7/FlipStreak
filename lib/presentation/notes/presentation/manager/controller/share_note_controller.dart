@@ -1,5 +1,5 @@
 import 'package:flip_streak/business/share_util.dart';
-import 'package:flip_streak/presentation/notes/presentation/pages/note_share/widget/share_item.dart';
+import 'package:flip_streak/presentation/notes/presentation/pages/note_share/view/share_item.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
@@ -12,7 +12,7 @@ class NoteShareController {
 
   static Future<Uint8List> _getSharedImage() async {
     RenderRepaintBoundary boundary = ShareItem.shareWidgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-    ui.Image image = await boundary.toImage();
+    ui.Image image = await boundary.toImage(pixelRatio: 4.5); //pixelRatio for quality
     ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     Uint8List pngBytes = byteData!.buffer.asUint8List();
 

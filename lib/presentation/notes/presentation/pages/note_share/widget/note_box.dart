@@ -1,3 +1,4 @@
+import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../app_constants/color_constants.dart';
 import '../../../../../styles/box_decoration.dart';
@@ -14,12 +15,13 @@ class NoteBox extends StatelessWidget {
 
     final title = NoteController.noteTitle.text;
     final body = NoteController.noteBody.text;
+    final bookName = NoteController.bookName.text;
 
 
     return Container(
       //Settings
         width: DeviceScreen(context).width,
-        padding: const CustomPadding(horizontal: 28, vertical: 45,),
+        padding: const CustomPadding(horizontal: 28, top: 45, bottom: 12),
 
         decoration: CustomDecoration(
           backgroundColor:  const Color(0xFFFFF5F2),
@@ -59,6 +61,9 @@ class NoteBox extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(height: 20,),
+
+            TextInriaSans("- $bookName", color: colorAccent, size: 12,),
           ],
         )
     );

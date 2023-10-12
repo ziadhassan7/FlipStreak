@@ -15,7 +15,7 @@ class NoteController {
   static final TextEditingController bookName = TextEditingController();
   static final TextEditingController pageNumber = TextEditingController();
 
-  void saveNote(WidgetRef ref,) {
+  void saveNote(WidgetRef ref, String? currentNoteId) {
     //Get Title
     String? title;
     if(noteTitle.text.isNotEmpty) title = noteTitle.text;
@@ -30,7 +30,7 @@ class NoteController {
     //Add new Note, and refresh providers
     ref.read(noteListProvider.notifier).addNote(
         NoteModel(
-            noteId: DateTime.now().toString(),
+            noteId: currentNoteId ?? DateTime.now().toString(),
             noteTitle: title,
             noteBody: body,
             // book details
@@ -39,6 +39,14 @@ class NoteController {
 
     //Start fresh next time
     _clearAllValues(ref);
+  }
+
+  void saveNew(WidgetRef ref){
+
+  }
+
+  void updateNote(){
+
   }
 
   void _clearAllValues(WidgetRef ref){

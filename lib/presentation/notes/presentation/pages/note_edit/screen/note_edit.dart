@@ -7,7 +7,9 @@ import '../widget/note_app_bar.dart';
 import '../widget/note_bottom_bar.dart';
 
 class NoteEdit extends StatelessWidget {
-  const NoteEdit({super.key});
+  const NoteEdit({super.key, this.currentNoteId});
+
+   final String? currentNoteId;
 
   final Color fillColor = Colors.black26;
   static const double _padding = 40;

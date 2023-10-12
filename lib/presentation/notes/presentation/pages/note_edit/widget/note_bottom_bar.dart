@@ -5,7 +5,9 @@ import '../../../manager/controller/note_controller.dart';
 import 'note_book_details.dart';
 
 class NoteBottomBar extends ConsumerWidget {
-  const NoteBottomBar({super.key});
+  const NoteBottomBar({super.key, this.currentNoteId});
+
+  final String? currentNoteId;
 
   static final NoteController _controller = NoteController();
 
@@ -32,7 +34,8 @@ class NoteBottomBar extends ConsumerWidget {
 
   void _onSave(BuildContext context, WidgetRef ref){
     if (NoteController.formKey.currentState!.validate()) {
-      _controller.saveNote(ref);
+
+      _controller.saveNote(ref, currentNoteId);
 
       Navigator.pop(context);
     }

@@ -29,6 +29,8 @@ class NoteItem extends ConsumerWidget {
         onTap: (){
           NoteController.noteTitle.text = note.noteTitle ?? "";
           NoteController.noteBody.text = note.noteBody;
+          NoteController.bookName.text = note.noteBookName;
+          NoteController.pageNumber.text = note.notePage;
           RouteUtil.navigateTo(context, const NoteEdit());
         },
 

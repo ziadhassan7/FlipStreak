@@ -53,9 +53,7 @@ class NotesInBookPage extends ConsumerWidget {
               return Padding(
                 padding: const EdgeInsets.only(right: 24),
 
-                child: SizedBox(
-                    height: 340,
-                    child: NoteItem(note: currentBookNotes[index])),
+                child: NoteItem(note: currentBookNotes[index]),
               );
             }
           )

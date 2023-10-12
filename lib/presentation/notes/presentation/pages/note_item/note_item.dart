@@ -1,5 +1,7 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/business/route_util.dart';
+import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_detail_provider/book_name_provider.dart';
+import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_detail_provider/page_number_provider.dart';
 import 'package:flip_streak/presentation/notes/presentation/styles/custom_format.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/notes/presentation/views/dialog/delete_note_dialog.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../styles/box_decoration.dart';
 import '../../../../styles/device_screen.dart';
 import '../../../data/model/note_model.dart';
+import '../../manager/controller/bottom_bar_controller.dart';
 import '../../manager/controller/note_controller.dart';
 import '../note_edit/screen/note_edit.dart';
 
@@ -31,6 +34,8 @@ class NoteItem extends ConsumerWidget {
           NoteController.noteBody.text = note.noteBody;
           NoteController.bookName.text = note.noteBookName;
           NoteController.pageNumber.text = note.notePage;
+          ref.read(bookNameProvider.notifier).updateValue(note.noteBookName);
+          ref.read(pageNumberProvider.notifier).updateValue(note.notePage);
           RouteUtil.navigateTo(context, NoteEdit(currentNoteId: note.noteId,));
         },
 
@@ -95,16 +100,26 @@ class NoteItem extends ConsumerWidget {
                       child: Row(
                         children: [
                           /// Book name
-                          TextInriaSans(note.noteBookName,
-                            weight: FontWeight.bold,
-                            size: 14, color: colorAccent,),
+                          SizedBox(
+                            width: BottomBarController
+                                .getBookNameWidth(context, note.noteBookName),
+
+                            child: TextInriaSans(note.noteBookName,
+                              weight: FontWeight.bold,
+                              size: 14, color: colorAccent,),
+                          ),
 
                           const Spacer(),
 
                           /// Page number
-                          TextInriaSans(note.notePage,
-                            weight: FontWeight.bold,
-                            size: 14, color: colorAccent,),
+                          SizedBox(
+                            width: BottomBarController
+                                .getPageNumberWidth(context, note.notePage),
+
+                            child: TextInriaSans(getPageNumber(note.notePage),
+                              weight: FontWeight.bold,
+                              size: 14, color: colorAccent,),
+                          ),
                         ],
                       ),
                     )
@@ -115,6 +130,13 @@ class NoteItem extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  String getPageNumber(String text){
+    if(text == ""){
+      return "";
+    }
+    return "pg. $text";
   }
 
   double? getHeight(){

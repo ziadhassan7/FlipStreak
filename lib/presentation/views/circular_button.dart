@@ -2,12 +2,15 @@ import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
 class CircularButton extends StatelessWidget {
-  const CircularButton({Key? key, required this.onPressed, this.color = colorAccent, required this.icon, this.size = 56}) : super(key: key);
+  CircularButton({Key? key, required this.onPressed, this.color = colorAccent, required this.icon, this.size = 56}) : super(key: key);
+  CircularButton.child({Key? key, required this.onPressed, this.color = colorAccent, required this.child, this.size = 56}) : super(key: key);
 
   final Function()? onPressed;
   final Color color;
-  final Icon icon;
+  Icon? icon;
   final double size;
+
+  Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class CircularButton extends StatelessWidget {
             width: size,
             height: size,
 
-            child: icon, // Button Icon
+            child: Center(child: icon ?? child), // Button Icon
           ),
         ),
       ),

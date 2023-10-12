@@ -1,4 +1,4 @@
-import 'package:flip_streak/presentation/detail/widget/action_buttons/category_button.dart';
+import 'package:flip_streak/presentation/detail/widget/action_buttons/book_note_button.dart';
 import 'package:flip_streak/presentation/detail/widget/action_buttons/read_button.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class ActionButtonsRow extends StatelessWidget {
       children: [
 
         /// Button - Circular Favourite
-        CategoryButton(size: size),
+        BookNotesButton(size: size),
 
         /// Button - Continue Reading
         Expanded(child: ReadButton(height: size+10,)),

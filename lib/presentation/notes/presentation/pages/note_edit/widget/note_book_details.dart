@@ -2,6 +2,7 @@ import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/not
 import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_detail_provider/page_number_provider.dart';
 import 'package:flip_streak/presentation/notes/presentation/views/dialog/note_detail_dialog/book_name_dialog.dart';
 import 'package:flip_streak/presentation/notes/presentation/views/dialog/note_detail_dialog/page_number_dialog.dart';
+import 'package:flip_streak/presentation/styles/device_screen.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
@@ -25,17 +26,23 @@ class NoteBookDetails extends ConsumerWidget {
     return Row(
       children: [
         ///                                                                     / Book Name
-        customViewButton(
-          onPressed: () => BookNameDialog(context, ref),
-          color: bookName == "" ? Colors.black38 : colorAccent.withOpacity(opacity),
-          text: bookName == "" ? "Book name" : bookName,
+        SizedBox(
+          width: getBookNameWidth(context, bookName),
+          child: customViewButton(
+            onPressed: () => BookNameDialog(context, ref),
+            color: bookName == "" ? Colors.black38 : colorAccent.withOpacity(opacity),
+            text: bookName == "" ? "Book name" : bookName,
+          ),
         ),
 
         ///                                                                     / Page Number
-        customViewButton(
-          onPressed: () => PageNumberDialog(context, ref),
-          color: pageNumber == "" ? Colors.black38 : colorAccent.withOpacity(opacity),
-          text: pageNumber == "" ? "Page number" : "pg. $pageNumber",
+        SizedBox(
+          width: getPageNumberWidth(context, pageNumber),
+          child: customViewButton(
+            onPressed: () => PageNumberDialog(context, ref),
+            color: pageNumber == "" ? Colors.black38 : colorAccent.withOpacity(opacity),
+            text: pageNumber == "" ? "Page number" : "pg. $pageNumber",
+          ),
         ),
       ],
     );
@@ -65,5 +72,26 @@ class NoteBookDetails extends ConsumerWidget {
           ),
         ),
     );
+  }
+
+
+  double? getBookNameWidth(BuildContext context, String text){
+    double screenWidth = DeviceScreen(context).width;
+
+    if(text.length > screenWidth/7){
+      return screenWidth * 0.4;
+    }
+
+    return null;
+  }
+
+  double? getPageNumberWidth(BuildContext context, String text){
+    double screenWidth = DeviceScreen(context).width;
+
+    if(text.length > screenWidth/20){
+      return screenWidth * 0.28;
+    }
+
+    return null;
   }
 }

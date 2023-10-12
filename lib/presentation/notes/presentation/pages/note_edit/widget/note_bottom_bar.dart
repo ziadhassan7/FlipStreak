@@ -15,7 +15,6 @@ class NoteBottomBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
-
         ///                                                                     / (Book name, Page number)
         const NoteBookDetails(),
 

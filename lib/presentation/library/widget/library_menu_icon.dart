@@ -14,7 +14,6 @@ class LibraryMenuIcon extends ConsumerWidget {
   const LibraryMenuIcon({Key? key, required this.currentBook}) : super(key: key);
 
   final BookModel currentBook;
-  static Function(Function())? _updateState;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,12 +28,7 @@ class LibraryMenuIcon extends ConsumerWidget {
 
         PopupMenuItem<int>(
           value: 1,
-          child: StatefulBuilder(
-              builder: (context, Function(Function()) setState) {
-                _updateState = setState;
-                return TextInriaSans(getCompleteButtonText(), color: colorAccent,);
-              }
-          ),
+          child: TextInriaSans(getCompleteButtonText(), color: colorAccent,),
         ),
 
         PopupMenuItem<int>(
@@ -58,7 +52,6 @@ class LibraryMenuIcon extends ConsumerWidget {
             ref.read(lastBookProvider.notifier).updateLastPage(bookModel, 0);
           }
 
-          _updateState!((){});
         }
 
         if (value == 2) {
@@ -69,7 +62,7 @@ class LibraryMenuIcon extends ConsumerWidget {
   }
 
   String getCompleteButtonText() {
-    int isCompleted = bookModel.isComplete;
+    int isCompleted = currentBook.isComplete;
 
     if(isCompleted == 1){
       return "Mark As Not Complete";

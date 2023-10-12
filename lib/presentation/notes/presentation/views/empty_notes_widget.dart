@@ -1,3 +1,5 @@
+import 'package:flip_streak/presentation/notes/presentation/manager/controller/note_controller.dart';
+import 'package:flip_streak/presentation/notes/presentation/manager/riverpod/note_detail_provider/book_name_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +9,9 @@ import '../../../views/text_inria_sans.dart';
 import '../pages/note_edit/screen/note_edit.dart';
 
 class EmptyNotesWidget extends ConsumerWidget {
-  const EmptyNotesWidget({Key? key}) : super(key: key);
+  const EmptyNotesWidget({Key? key, this.currentBook}) : super(key: key);
+
+  final String? currentBook;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +27,14 @@ class EmptyNotesWidget extends ConsumerWidget {
           Visibility(
               visible: screenSize > 500, //hide when screen rotates
               child: InkWell(
-                  onTap: () => RouteUtil.navigateTo(context, const NoteEdit()),
+                  onTap: () {
+                    if(currentBook != null){
+                      NoteController.bookName.text = currentBook!;
+                      ref.read(bookNameProvider.notifier).
+                      updateValue(currentBook!);
+                    }
+                    RouteUtil.navigateTo(context, const NoteEdit());
+                  },
                   child: SvgPicture.asset("assets/illustrations/note_ill.svg"))),
 
           _verticalPadding(40),

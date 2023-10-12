@@ -5,7 +5,7 @@ import '../../../../../../app_constants/color_constants.dart';
 import '../../../manager/riverpod/note_list_provider.dart';
 import '../../note_item/note_item.dart';
 import '../widget/add_note_fab.dart';
-import '../widget/empty_notes_widget.dart';
+import '../../../views/empty_notes_widget.dart';
 import '../widget/top_widget.dart';
 
 class NoteIndexPage extends ConsumerWidget {

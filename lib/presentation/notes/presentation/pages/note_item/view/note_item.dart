@@ -8,12 +8,12 @@ import 'package:flip_streak/presentation/notes/presentation/views/dialog/delete_
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../styles/box_decoration.dart';
-import '../../../../styles/device_screen.dart';
-import '../../../data/model/note_model.dart';
-import '../../manager/controller/bottom_bar_controller.dart';
-import '../../manager/controller/note_controller.dart';
-import '../note_edit/screen/note_edit.dart';
+import '../../../../../styles/box_decoration.dart';
+import '../../../../../styles/device_screen.dart';
+import '../../../../data/model/note_model.dart';
+import '../../../manager/controller/bottom_bar_controller.dart';
+import '../../../manager/controller/note_controller.dart';
+import '../../note_edit/screen/note_edit.dart';
 
 class NoteItem extends ConsumerWidget {
   const NoteItem({Key? key, required this.note,}) : super(key: key);

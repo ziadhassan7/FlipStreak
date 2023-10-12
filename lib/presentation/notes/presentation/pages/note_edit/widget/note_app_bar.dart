@@ -2,7 +2,7 @@ import 'package:flip_streak/business/route_util.dart';
 import 'package:flutter/material.dart';
 import '../../../manager/controller/note_controller.dart';
 import '../../../views/dialog/discard_dialog.dart';
-import '../../note_share/note_share_page.dart';
+import '../../note_share/screen/note_share_page.dart';
 
 class NoteAppBar extends StatelessWidget {
   const NoteAppBar({super.key});
@@ -43,7 +43,7 @@ class NoteAppBar extends StatelessWidget {
     );
   }
 
-  void _onShare(BuildContext context){
+  Future<void> _onShare(BuildContext context) async {
     RouteUtil.navigateTo(context, const NoteSharePage());
   }
 }

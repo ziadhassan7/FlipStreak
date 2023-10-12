@@ -6,6 +6,8 @@ import '../../../styles/custom_format.dart';
 class EditingWindow extends StatelessWidget {
   const EditingWindow({super.key});
 
+  static bool isChanged = false;
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -21,11 +23,16 @@ class EditingWindow extends StatelessWidget {
 
             style: CustomFormat.formField(isTitle: true),
             textCapitalization: TextCapitalization.sentences,
+            maxLines: null,
 
             decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: 'Title',
             ),
+
+            onChanged: (text){
+              isChanged = true;
+            },
           ),
 
 
@@ -47,6 +54,10 @@ class EditingWindow extends StatelessWidget {
                   border: InputBorder.none,
                   hintText: 'Body',
                 ),
+
+                onChanged: (text){
+                  isChanged = true;
+                },
               ),
             ),
           ),

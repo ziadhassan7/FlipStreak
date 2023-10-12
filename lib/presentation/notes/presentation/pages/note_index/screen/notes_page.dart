@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../app_constants/color_constants.dart';
 import '../../../manager/riverpod/note_list_provider.dart';
-import '../../note_item/note_item.dart';
+import '../../note_item/view/note_item.dart';
 import '../widget/add_note_fab.dart';
 import '../../../views/empty_notes_widget.dart';
 import '../widget/top_widget.dart';

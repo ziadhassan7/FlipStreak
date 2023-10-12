@@ -15,10 +15,15 @@ class NoteEdit extends StatelessWidget {
   static const double _padding = 40;
 
   Future<bool> _onWillPop(BuildContext context) async {
-    // Open Discard Dialog, if there is text
-    if(NoteController.noteBody.text.isNotEmpty ||
-        NoteController.noteTitle.text.isNotEmpty){
-      DiscardDialog(context,);
+
+    //Only if text is changed
+    //And either title or body is not empty
+    //Open discard dialog
+    if (EditingWindow.isChanged){
+      if(NoteController.noteBody.text.isNotEmpty ||
+          NoteController.noteTitle.text.isNotEmpty){
+        DiscardDialog(context,);
+      }
     }
 
     //Close Screen

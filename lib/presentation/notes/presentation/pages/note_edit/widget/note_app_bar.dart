@@ -1,6 +1,7 @@
 import 'package:flip_streak/business/route_util.dart';
 import 'package:flutter/material.dart';
-
+import '../../../manager/controller/note_controller.dart';
+import '../../../views/dialog/discard_dialog.dart';
 import '../../note_share/note_share_page.dart';
 
 class NoteAppBar extends StatelessWidget {
@@ -14,9 +15,19 @@ class NoteAppBar extends StatelessWidget {
       child: Row(
         children: [
           ///                                                                   / Back Button
-          IconButton(onPressed: (){
-            Navigator.pop(context);
-          }, icon: const Icon(Icons.arrow_back_ios)),
+          IconButton(
+            onPressed: (){
+              // Open Discard Dialog, if there is text
+              if(NoteController.noteBody.text.isNotEmpty ||
+                  NoteController.noteTitle.text.isNotEmpty){
+                DiscardDialog(context,);
+
+              } else {
+                Navigator.pop(context);
+              }
+            },
+
+            icon: const Icon(Icons.arrow_back_ios)),
 
           const Spacer(),
 

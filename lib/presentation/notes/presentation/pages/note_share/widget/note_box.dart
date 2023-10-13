@@ -61,19 +61,22 @@ class NoteBox extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 20,),
+            ///                                                                 / Book Name
+            Visibility(
+              visible: bookName != "",
 
-            TextInriaSans("- $bookName", color: colorAccent, size: 12,),
+              child: Column(
+                children: [
+                  const SizedBox(height: 20,),
+
+                  TextInriaSans("- $bookName", color: colorAccent, size: 12,),
+                ],
+              ),
+            )
+
           ],
         )
     );
-  }
-
-  String getPageNumber(String text){
-    if(text == ""){
-      return "";
-    }
-    return "pg. $text";
   }
 
   double? getHeight(String text){

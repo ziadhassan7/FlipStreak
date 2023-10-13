@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../views/text_inria_sans.dart';
 import '../../../../views/dialoq/dialoq_widget.dart';
 import '../../manager/controller/note_controller.dart';
+import '../../pages/note_edit/widget/editing_window.dart';
 
 
 class DiscardDialog {
@@ -30,6 +31,8 @@ class DiscardDialog {
     // Clean Text Fields
     NoteController.noteTitle.clear();
     NoteController.noteBody.clear();
+    //reset FormFields state
+    EditingWindow.isChanged = false;
   }
 
 }

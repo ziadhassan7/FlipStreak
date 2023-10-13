@@ -1,9 +1,7 @@
 import 'package:flip_streak/business/route_util.dart';
 import 'package:flutter/material.dart';
-import '../../../manager/controller/note_controller.dart';
-import '../../../views/dialog/discard_dialog.dart';
+import '../../../manager/controller/back_controller.dart';
 import '../../note_share/screen/note_share_page.dart';
-import 'editing_window.dart';
 
 class NoteAppBar extends StatelessWidget {
   const NoteAppBar({super.key});
@@ -18,17 +16,7 @@ class NoteAppBar extends StatelessWidget {
           ///                                                                   / Back Button
           IconButton(
             onPressed: (){
-              //if text is changed, and either title or body is not empty
-              //Open discard dialog
-              if(EditingWindow.isChanged &&
-              NoteController.noteBody.text.isNotEmpty ||
-                  NoteController.noteTitle.text.isNotEmpty){
-
-                DiscardDialog(context,);
-
-              } else {
-                Navigator.pop(context);
-              }
+              BackController.onBackPressed(context);
             },
 
             icon: const Icon(Icons.arrow_back_ios)),

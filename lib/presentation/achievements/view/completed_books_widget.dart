@@ -6,7 +6,7 @@ import '../../styles/box_decoration.dart';
 import '../../styles/padding.dart';
 import '../../views/text_inria_sans.dart';
 import '../widget/completed_book_item.dart';
-import 'my_grouped_list.dart';
+import 'zi_grouped_list.dart';
 
 class CompletedBooksWidget extends StatelessWidget {
   const CompletedBooksWidget({Key? key, required  this.books}) : super(key: key);
@@ -16,7 +16,6 @@ class CompletedBooksWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    arrangeBooksByCompletionDate();
 
     return Padding(
       padding: const CustomPadding(horizontal: 30, vertical: 20),
@@ -42,11 +41,12 @@ class CompletedBooksWidget extends StatelessWidget {
                 borderColor: colorAccent.withOpacity(0.4)
             ),
 
-            child: MyGroupedList.grid(
+            child: ZiGroupedList.grid(
               shrinkWrap: true,
               crossAxisCount: 3,
               items: books,
               sortBy: (element){
+                //PrintDebug("achiv", "${element.id}, ${element.completeDate}");
                 int year = DateTime.parse(element.completeDate!).year;
                 return year;
               },
@@ -76,10 +76,4 @@ class CompletedBooksWidget extends StatelessWidget {
     return const SizedBox(height: 16,);
   }
 
-
-  void arrangeBooksByCompletionDate(){
-    books.sort((b,a) {
-      return a.completeDate!.compareTo(b.completeDate!);
-    });
-  }
 }

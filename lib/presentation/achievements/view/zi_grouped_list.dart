@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../styles/padding.dart';
 
-class MyGroupedList<T, E> extends StatelessWidget {
+class ZiGroupedList<T, E> extends StatelessWidget {
 
   ///Normal List View
-  MyGroupedList(
+  ZiGroupedList(
       {Key? key,
       required this.shrinkWrap,
       required this.items,
@@ -14,7 +14,7 @@ class MyGroupedList<T, E> extends StatelessWidget {
       : super(key: key);
 
   /// Grid List
-  MyGroupedList.grid(
+  ZiGroupedList.grid(
       {Key? key,
         required this.shrinkWrap,
         required this.items,
@@ -44,23 +44,25 @@ class MyGroupedList<T, E> extends StatelessWidget {
 
     _generateHeaderList();
 
-    return groupWidget();
+    return groupWidget(context);
   }
 
 
   /// Main Widget - (Header & Group)
-  Widget groupWidget(){
+  Widget groupWidget(BuildContext context){
     return Column(
       children: [
 
         for(var header in _sortHeaders)
           Column(
             children: [
+              //header
               Padding(
                 padding: const CustomPadding(vertical: 20),
                 child: groupSeparatorBuilder(header),
               ),
-              sliverList(currentHeaderGroup(header))
+              //group
+              sliverList(getGroupByHeader(header)),
             ],
           ),
 
@@ -70,7 +72,7 @@ class MyGroupedList<T, E> extends StatelessWidget {
   }
 
 
-  /// Current Group widget
+  // Your Group Widget
   Widget sliverList(List currentGroup){
     return Padding(
       padding: const CustomPadding(top: 30),
@@ -81,10 +83,10 @@ class MyGroupedList<T, E> extends StatelessWidget {
         slivers: [
           SliverGrid(
             delegate: SliverChildBuilderDelegate(
-              /// use count of headers
+              // use count of group items
               childCount: currentGroup.length,
               (context, index) {
-                return itemBuilder(context, items[index]);
+                return itemBuilder(context, currentGroup[index]);
               },
             ),
 
@@ -113,12 +115,11 @@ class MyGroupedList<T, E> extends StatelessWidget {
   }
 
   // List of groups
-  currentHeaderGroup(var header){
+  getGroupByHeader(var header){
 
     List currentGroup = [];
 
     for(var item in items){
-
       if(sortBy(item) == header){
         currentGroup.add(item);
       }

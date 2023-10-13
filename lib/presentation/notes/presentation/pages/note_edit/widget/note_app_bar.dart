@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../manager/controller/note_controller.dart';
 import '../../../views/dialog/discard_dialog.dart';
 import '../../note_share/screen/note_share_page.dart';
+import 'editing_window.dart';
 
 class NoteAppBar extends StatelessWidget {
   const NoteAppBar({super.key});
@@ -17,9 +18,12 @@ class NoteAppBar extends StatelessWidget {
           ///                                                                   / Back Button
           IconButton(
             onPressed: (){
-              // Open Discard Dialog, if there is text
-              if(NoteController.noteBody.text.isNotEmpty ||
+              //if text is changed, and either title or body is not empty
+              //Open discard dialog
+              if(EditingWindow.isChanged &&
+              NoteController.noteBody.text.isNotEmpty ||
                   NoteController.noteTitle.text.isNotEmpty){
+
                 DiscardDialog(context,);
 
               } else {

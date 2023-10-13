@@ -13,15 +13,21 @@ class NoteBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    //variables
     final title = NoteController.noteTitle.text;
     final body = NoteController.noteBody.text;
     final bookName = NoteController.bookName.text;
+    final pageNumber = NoteController.pageNumber.text;
+    //checkers
+    final isPageNumberEmpty = (pageNumber == "");
 
 
     return Container(
       //Settings
         width: DeviceScreen(context).width,
-        padding: const CustomPadding(horizontal: 28, top: 45, bottom: 12),
+        padding: CustomPadding(horizontal: 28, bottom: 12,
+          top: isPageNumberEmpty? 18 : 45,
+        ),
 
         decoration: CustomDecoration(
           backgroundColor:  const Color(0xFFFFF5F2),
@@ -52,13 +58,10 @@ class NoteBox extends StatelessWidget {
             ),
 
             ///                                                                 / Note Body
-            SizedBox(
-              height: getHeight(body),
-              child: Text(
-                body,
-                style: CustomFormat.tinos(
-                    color: Colors.brown.shade900, size: 16),
-              ),
+            Text(
+              body,
+              style: CustomFormat.tinos(
+                  color: Colors.brown.shade900, size: 16),
             ),
 
             const SizedBox(height: 20,),

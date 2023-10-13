@@ -61,22 +61,19 @@ class NoteBox extends StatelessWidget {
               ),
             ),
 
-            ///                                                                 / Book Name
-            Visibility(
-              visible: bookName != "",
+            const SizedBox(height: 20,),
 
-              child: Column(
-                children: [
-                  const SizedBox(height: 20,),
-
-                  TextInriaSans("- $bookName", color: colorAccent, size: 12,),
-                ],
-              ),
-            )
-
+            TextInriaSans(getFormattedBookName(bookName), color: colorAccent, size: 12,),
           ],
         )
     );
+  }
+
+  String getFormattedBookName(String name){
+    if(name == ""){
+      return "";
+    }
+    return "- $name";
   }
 
   double? getHeight(String text){

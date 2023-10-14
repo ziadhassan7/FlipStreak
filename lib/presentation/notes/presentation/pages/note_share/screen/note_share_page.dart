@@ -6,28 +6,14 @@ import 'package:flutter/material.dart';
 import '../../../../../../app_constants/color_constants.dart';
 
 
-class NoteSharePage extends StatefulWidget {
+class NoteSharePage extends StatelessWidget {
   const NoteSharePage({super.key});
 
   @override
-  State<NoteSharePage> createState() => _NoteSharePageState();
-}
-
-class _NoteSharePageState extends State<NoteSharePage> {
-
-
-  @override
-  void initState() {
-    super.initState();
-
-    //Open share settings
-    Future.delayed(const Duration(milliseconds: 150), () async {
-      await NoteShareController.share();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+
+    //Open share menu at launch
+    executeShareNote();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -61,15 +47,24 @@ class _NoteSharePageState extends State<NoteSharePage> {
       /// Note Item , Loading
       body: const SafeArea(
           child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ShareItem(),
+            child: Column(
+              children: [
+                ShareItem(),
 
-            Center(child: CircularProgressIndicator(color: Colors.white,),),
-          ],
-        ),
-      )),
+                Center(child: CircularProgressIndicator(color: Colors.white,),),
+              ],
+            ),
+          )),
     );
   }
-}
 
+
+
+  /// Function
+  //Execute function after build
+  Future<void> executeShareNote() async {
+    await Future.delayed(const Duration(milliseconds: 100), () async {
+      await NoteShareController.share();
+    });
+  }
+}

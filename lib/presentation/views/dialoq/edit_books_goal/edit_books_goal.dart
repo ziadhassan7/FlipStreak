@@ -15,7 +15,7 @@ class EditBooksGoal {
 
     PickerDialog(
         context,
-        title: "Edit Books' Goal",
+        title: "Edit Goal",
 
         initialValue: currentGoal,
         maxValue: 1000,

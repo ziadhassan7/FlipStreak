@@ -15,7 +15,7 @@ class EditTodayGoal {
 
     PickerDialog(
         context,
-        title: "Edit Today's Goal",
+        title: "Edit Goal",
 
         initialValue: currentGoal,
         maxValue: 1000,

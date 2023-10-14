@@ -1,6 +1,8 @@
 import 'package:flip_streak/business/route_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../manager/controller/back_controller.dart';
+import '../../../manager/riverpod/share_loading_provider.dart';
 import '../../note_share/screen/note_share_page.dart';
 
 class NoteAppBar extends StatelessWidget {
@@ -25,9 +27,13 @@ class NoteAppBar extends StatelessWidget {
 
           ///                                                                   / Share Button
 
-          IconButton(
-            onPressed: ()=> _onShare(context),
-            icon: const Icon(Icons.share_outlined)
+          Consumer(
+            builder: (context, ref, _) {
+              return IconButton(
+                onPressed: ()=> _onShare(context, ref),
+                icon: const Icon(Icons.share_outlined)
+              );
+            }
           )
 
         ],
@@ -35,7 +41,10 @@ class NoteAppBar extends StatelessWidget {
     );
   }
 
-  Future<void> _onShare(BuildContext context) async {
+  Future<void> _onShare(BuildContext context, WidgetRef ref) async {
+    //reset loading provider before opening screen
+    ref.invalidate(shareLoadingProvider);
+    //open share screen
     RouteUtil.navigateTo(context, const NoteSharePage());
   }
 }

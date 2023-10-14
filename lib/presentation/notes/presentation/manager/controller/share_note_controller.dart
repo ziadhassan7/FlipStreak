@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 class NoteShareController {
 
   static share() async {
-    ShareUtil.shareImage(await _getNoteImage());
+    await ShareUtil.shareImage(await _getNoteImage());
   }
 
   static Future<Uint8List> _getNoteImage() async

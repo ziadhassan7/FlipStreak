@@ -4,7 +4,6 @@ import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../app_constants/color_constants.dart';
-import '../../../../../../business/share_util.dart';
 
 
 class NoteSharePage extends StatefulWidget {
@@ -22,8 +21,8 @@ class _NoteSharePageState extends State<NoteSharePage> {
     super.initState();
 
     //Open share settings
-    Future.delayed(const Duration(milliseconds: 100), () async {
-      ShareUtil.shareImage(await NoteShareController.share());
+    Future.delayed(const Duration(milliseconds: 150), () async {
+      await NoteShareController.share();
     });
   }
 
@@ -43,7 +42,8 @@ class _NoteSharePageState extends State<NoteSharePage> {
         actions: [
           TextButton(
               onPressed: () async {
-                ShareUtil.shareImage(await NoteShareController.share());
+                //Open share settings
+                await NoteShareController.share();
               },
 
               child: Padding(
@@ -65,7 +65,7 @@ class _NoteSharePageState extends State<NoteSharePage> {
           children: [
             ShareItem(),
 
-            Center(child: CircularProgressIndicator(color: Colors.white,),)
+            Center(child: CircularProgressIndicator(color: Colors.white,),),
           ],
         ),
       )),

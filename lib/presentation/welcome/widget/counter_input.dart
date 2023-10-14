@@ -23,11 +23,15 @@ class CounterInput extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-            onPressed: decreaseFunction,
-            icon: Icon(Icons.remove, color: colorAccent.withOpacity(0.4))
+
+        /// Decrease
+        customButton(
+          onPressed: decreaseFunction,
+          icon: Icons.remove,
         ),
 
+
+        /// Current Goal
         InkWell(
           onTap: counterPickerFunction,
 
@@ -44,10 +48,32 @@ class CounterInput extends StatelessWidget {
           ),
         ),
 
-        IconButton(
-            onPressed: increaseFunction,
-            icon: Icon(Icons.add, color: colorAccent.withOpacity(0.4),)
+        /// Increase
+        customButton(
+          onPressed: increaseFunction,
+          icon: Icons.add,
         ),
       ],);
+  }
+
+
+  Widget customButton({required Function() onPressed, required IconData icon}){
+    return InkWell(
+      onTap: onPressed,
+
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: const CustomPadding.all(8),
+          decoration: CustomDecoration(
+            radius: 30,
+            borderColor: colorAccent.withOpacity(0.4),
+            backgroundColor: Colors.white,
+          ),
+
+          child: Icon(icon, color: colorAccent.withOpacity(0.4),),
+        ),
+      ),
+    );
   }
 }

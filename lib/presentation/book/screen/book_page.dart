@@ -1,7 +1,6 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/presentation/book/widget/bookmark_fab.dart';
 import 'package:flip_streak/presentation/book/screen/pdf_viewer.dart';
-import 'package:flip_streak/presentation/views/scroll_bar/scroll_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../business/app_wise/exit_book_util.dart';
@@ -10,6 +9,7 @@ import '../../../provider/bright_mode_provider.dart';
 import '../../../provider/top_bar_provider.dart';
 import '../../../provider/pdf_view_loaded_provider.dart';
 import '../../views/topbar/main_topbar/base_top_bar.dart';
+import '../views/scroll_bar/scroll_bar.dart';
 import '../widget/screen_touch_detector.dart';
 
 class BookPage extends ConsumerWidget {

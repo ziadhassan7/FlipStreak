@@ -1,11 +1,11 @@
 import 'package:flip_streak/provider/scroll_view_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../business/app_wise/controllers/book_controller.dart';
-import '../../../provider/scroll_page_indicator_provider.dart';
-import '../../styles/box_decoration.dart';
-import '../../styles/padding.dart';
-import '../text_inria_sans.dart';
+import '../../../../business/app_wise/controllers/book_controller.dart';
+import '../../../../provider/scroll_page_indicator_provider.dart';
+import '../../../styles/box_decoration.dart';
+import '../../../styles/padding.dart';
+import '../../../views/text_inria_sans.dart';
 
 class ScrollPagesIndicator extends ConsumerWidget {
   const ScrollPagesIndicator({super.key});

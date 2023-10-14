@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../business/app_wise/controllers/book_controller.dart';
 import '../../../../business/app_wise/exit_book_util.dart';
-import '../../../book/widget/menu/book_menu_button.dart';
+import '../../../book/views/menu/book_menu_button.dart';
 import '../../text_inria_sans.dart';
 
 class TopBar extends StatelessWidget {

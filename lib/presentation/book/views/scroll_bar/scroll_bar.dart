@@ -1,5 +1,5 @@
-import 'package:flip_streak/presentation/views/scroll_bar/scroll_icon.dart';
-import 'package:flip_streak/presentation/views/scroll_bar/scroll_pages_indicator.dart';
+import 'package:flip_streak/presentation/book/views/scroll_bar/scroll_icon.dart';
+import 'package:flip_streak/presentation/book/views/scroll_bar/scroll_pages_indicator.dart';
 import 'package:flip_streak/provider/scroll_view_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -12,7 +12,7 @@ import '../../../provider/page_filter_provider.dart';
 import '../../../provider/pdf_view_loaded_provider.dart';
 import '../../../provider/scroll_view_provider.dart';
 import '../../styles/device_screen.dart';
-import '../../views/scroll_bar/scroll_bar.dart';
+import '../views/scroll_bar/scroll_bar.dart';
 
 class PdfViewer extends ConsumerWidget {
   const PdfViewer({Key? key, this.initialPage}) : super(key: key);

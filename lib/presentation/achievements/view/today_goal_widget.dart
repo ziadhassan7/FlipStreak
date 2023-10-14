@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../provider/pages_read_provider.dart';
 import '../../views/dialoq/edit_today_goal/edit_today_goal.dart';
+import '../../views/dialoq/reset_pages_read/reset_pages_read_dialog.dart';
 
 class TodayGoalWidget extends ConsumerWidget {
   const TodayGoalWidget({Key? key}) : super(key: key);
@@ -26,6 +27,10 @@ class TodayGoalWidget extends ConsumerWidget {
         onEditPress: (){
           EditTodayGoal(context, ref);
         },
+
+        onLongPress: (){
+          ResetPagesReadDialog(context, ref);
+        }
     );
   }
 }

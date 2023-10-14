@@ -23,4 +23,9 @@ class PagesReadProvider extends StateNotifier<int>{
     hiveClient.updatePageReadCounter(value);
     state = value;
   }
+
+  reset() {
+    hiveClient.updatePageReadCounter(0);
+    state = 0;
+  }
 }

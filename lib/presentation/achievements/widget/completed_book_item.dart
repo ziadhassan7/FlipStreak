@@ -1,5 +1,6 @@
 import 'package:flip_streak/app_constants/color_constants.dart';
 import 'package:flip_streak/presentation/detail/screen/detail_page.dart';
+import 'package:flip_streak/presentation/views/dialoq/decomplete_book/decomplete_book_dialog.dart';
 import 'package:flip_streak/presentation/views/text_inria_sans.dart';
 import 'package:flip_streak/presentation/views/book_thumbnail.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../business/app_wise/controllers/book_controller.dart';
 import '../../../business/route_util.dart';
 import '../../../data/model/book_model.dart';
-import '../../views/dialoq/delete_dialog/delete_book_dialoq.dart';
 
 class CompletedBookItem extends ConsumerWidget {
   const CompletedBookItem({Key? key, required this.bookName, required this.bookModel}) : super(key: key);
@@ -34,7 +34,7 @@ class CompletedBookItem extends ConsumerWidget {
       /// Long Press
       onLongPress: () {
         //open dialog to delete book
-        DeleteBookDialog(context, ref, bookId: bookName!,);
+        DecompleteBookDialog(context, ref, bookModel);
       },
 
 

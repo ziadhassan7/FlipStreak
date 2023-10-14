@@ -14,6 +14,7 @@ class GoalWidget extends StatelessWidget {
     required this.currentProgress,
     required this.goal,
     required this.onEditPress,
+    this.onLongPress,
     this.showTotalPagesCount = false,
   }) : super(key: key);
 
@@ -23,6 +24,7 @@ class GoalWidget extends StatelessWidget {
   final int currentProgress;
   final int goal;
   final Function() onEditPress;
+  final Function()? onLongPress;
   final bool showTotalPagesCount;
 
   final Color goalReachedColor = Colors.lightGreen;
@@ -30,7 +32,7 @@ class GoalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const CustomPadding(horizontal: 30, vertical: 10),
+      padding: const CustomPadding(horizontal: 30, vertical: 24),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,9 +50,22 @@ class GoalWidget extends StatelessWidget {
               const Spacer(),
 
               /// Edit - Button
-              IconButton(
-                  onPressed: onEditPress,
-                  icon: const Icon(Icons.edit_outlined, size: 18, color: Colors.black87))
+              InkWell(
+                  onTap: onEditPress,
+                  child: Container(
+                      padding: const CustomPadding(vertical: 4, horizontal: 12),
+                      decoration: CustomDecoration(
+                          isCircular: true, radius: 40,
+                          borderWidth: 1,
+                          backgroundColor: Colors.white,
+                          borderColor: colorAccent.withOpacity(0.4)),
+
+                      child: Row(
+                        children: [
+                          TextInriaSans("Edit Goal"),
+                          const Icon(Icons.edit_outlined, size: 18, color: Colors.black87),
+                        ],
+                      )))
             ],
           ),
 
@@ -82,10 +97,14 @@ class GoalWidget extends StatelessWidget {
                 const SizedBox(width: 10,),
 
                 /// Progress - Circular Widget
-                CircularGoalWidget(
-                  currentProgress: currentProgress,
-                  goal: goal,
-                  color: isGoalReached()? Colors.lightGreen : colorAccent,),
+                InkWell(
+                  onLongPress: onLongPress,
+
+                  child: CircularGoalWidget(
+                    currentProgress: currentProgress,
+                    goal: goal,
+                    color: isGoalReached()? Colors.lightGreen : colorAccent,),
+                ),
               ],
             ),
           )

@@ -8,8 +8,8 @@ import '../../../business/system_util.dart';
 import '../../../provider/bright_mode_provider.dart';
 import '../../../provider/top_bar_provider.dart';
 import '../../../provider/pdf_view_loaded_provider.dart';
-import '../../views/topbar/main_topbar/base_top_bar.dart';
 import '../views/scroll_bar/scroll_bar.dart';
+import '../views/topbar/main_topbar/base_top_bar.dart';
 import '../widget/screen_touch_detector.dart';
 
 class BookPage extends ConsumerWidget {

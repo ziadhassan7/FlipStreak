@@ -1,10 +1,10 @@
-import 'package:flip_streak/presentation/views/topbar/main_topbar/views/page_count_box.dart';
+import 'package:flip_streak/presentation/book/views/topbar/main_topbar/views/page_count_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../business/app_wise/controllers/book_controller.dart';
-import '../../../../business/app_wise/exit_book_util.dart';
-import '../../../book/views/menu/book_menu_button.dart';
-import '../../text_inria_sans.dart';
+import '../../../../../business/app_wise/controllers/book_controller.dart';
+import '../../../../../business/app_wise/exit_book_util.dart';
+import '../../../../views/text_inria_sans.dart';
+import '../../menu/book_menu_button.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({Key? key, required this.backgroundColor, required this.foregroundColor, }) : super(key: key);

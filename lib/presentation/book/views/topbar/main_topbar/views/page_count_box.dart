@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../provider/bright_mode_provider.dart';
-import '../../../../../provider/pages_read_provider.dart';
-import '../../../text_inria_sans.dart';
+import '../../../../../../provider/bright_mode_provider.dart';
+import '../../../../../../provider/pages_read_provider.dart';
+import '../../../../../views/text_inria_sans.dart';
 import '../controllers/page_count_box_controller.dart';
 
 class PageCountBox extends ConsumerWidget {

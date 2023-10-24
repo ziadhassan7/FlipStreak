@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../app_constants/color_constants.dart';
-import '../../../../../data/shared_pref/hive_client.dart';
+import '../../../../../../app_constants/color_constants.dart';
+import '../../../../../../data/shared_pref/hive_client.dart';
 
 class PageCountBoxController {
 

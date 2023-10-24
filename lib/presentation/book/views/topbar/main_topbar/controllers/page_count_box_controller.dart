@@ -16,7 +16,7 @@ class PageCountBoxController {
   /// Colors
   static Color getBackgroundColor(bool isBright){
 
-    if(_getPagesRead() >= getPagesGoal()){
+    if(isGoalReached()){
       return Color.fromRGBO(248, 233, 193, isBright ? 0.6 : 0.2);
     }
 

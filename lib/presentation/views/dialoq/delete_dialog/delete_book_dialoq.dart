@@ -31,7 +31,7 @@ class DeleteBookDialog {
 
         child: TextInriaSans("Delete this book?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
   Future<void> deleteBook() async {

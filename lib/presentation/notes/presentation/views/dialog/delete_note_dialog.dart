@@ -25,7 +25,7 @@ class DeleteNoteDialog {
 
         child: TextInriaSans("Delete this item?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
   void deleteNote(WidgetRef ref, String noteId) {

@@ -27,7 +27,7 @@ class DecompleteBookDialog {
 
         child: TextInriaSans("Remove from completed?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
 }

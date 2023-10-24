@@ -25,7 +25,7 @@ class ResetPagesReadDialog {
 
         child: TextInriaSans("Reset your progress?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
 }

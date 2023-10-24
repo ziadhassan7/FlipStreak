@@ -33,7 +33,7 @@ class CategoryAttacherDialog {
 
         child: AttacherView(currentBook: currentBook,)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
   static Future<List> getBookCategories(BookModel currentBook) async {

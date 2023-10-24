@@ -1,3 +1,4 @@
+import 'package:flip_streak/presentation/views/dialoq/streak_info/streak_info_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,9 +25,12 @@ class StreakWidget extends ConsumerWidget {
             padding: const EdgeInsets.only(left: 0),
             alignment: AlignmentDirectional.bottomCenter,
 
-            child: SvgPicture.asset(
-                getBeacon(streakCount),
-              width: MediaQuery.of(context).size.width * getBeaconWidth(streakCount),
+            child: InkWell(
+              onTap: ()=> StreakInfoDialog(context),
+              child: SvgPicture.asset(
+                  getBeacon(streakCount),
+                width: MediaQuery.of(context).size.width * getBeaconWidth(streakCount),
+              ),
             ),
           ),
 

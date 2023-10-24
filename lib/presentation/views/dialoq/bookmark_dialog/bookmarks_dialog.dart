@@ -12,7 +12,7 @@ class BookmarksDialog {
 
         child: BookmarkView(list: bookmarks)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
 }

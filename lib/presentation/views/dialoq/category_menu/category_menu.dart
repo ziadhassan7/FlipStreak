@@ -20,7 +20,7 @@ class CategoryMenu {
 
         child: CategoryMenuView(currentCategory: currentCategory,),
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
 }

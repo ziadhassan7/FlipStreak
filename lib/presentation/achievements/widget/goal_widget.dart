@@ -62,8 +62,8 @@ class GoalWidget extends StatelessWidget {
 
                       child: Row(
                         children: [
-                          TextInriaSans("Edit Goal"),
-                          const Icon(Icons.edit_outlined, size: 18, color: Colors.black87),
+                          TextInriaSans("Edit Goal ", size: 12,),
+                          const Icon(Icons.edit_outlined, size: 12, color: Colors.black87),
                         ],
                       )))
             ],

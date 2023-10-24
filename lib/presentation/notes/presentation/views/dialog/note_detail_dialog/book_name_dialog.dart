@@ -28,7 +28,7 @@ class BookNameDialog {
           isNumericValue: false,
         ),
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
   _save(WidgetRef ref){

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../pages/note_edit/widget/editing_window.dart';
+import '../../pages/note_edit/views/editing_window.dart';
 import '../../views/dialog/discard_dialog.dart';
 import 'note_controller.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flip_streak/presentation/notes/presentation/manager/controller/back_controller.dart';
 import 'package:flip_streak/presentation/styles/padding.dart';
 import 'package:flutter/material.dart';
-import '../widget/editing_window.dart';
-import '../widget/note_app_bar.dart';
-import '../widget/note_bottom_bar.dart';
+import '../views/editing_window.dart';
+import '../views/note_app_bar.dart';
+import '../views/note_bottom_bar.dart';
 
 class NoteEdit extends StatelessWidget {
   const NoteEdit({super.key, this.currentNoteId});

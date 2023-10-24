@@ -9,13 +9,13 @@ class DialogWidget {
 
   final Color backgroundColor;
   final bool disableTintColor;
-  final bool isDisableButtons;
+  bool? isDisableButtons;
 
   final String dominantButtonTitle;
   final Color dominantButtonColor;
-  final Function()? dominantButtonFunction;
+  Function()? dominantButtonFunction;
 
-  final bool dominateButtonCloseAfterFunction;
+  bool? dominateButtonCloseAfterFunction;
 
   final Widget child;
 
@@ -40,55 +40,106 @@ class DialogWidget {
       ); // You can either have (isDisableButtons = true or dominantButtonFunction = object), both cannot violate the assert
 
 
-  showAlert() {
+
+  DialogWidget.info(
+      this.context,
+      {this.backgroundColor = Colors.white,
+        this.disableTintColor = true,
+        this.dominantButtonTitle = "Got it!",
+        this.dominantButtonColor = colorOrange,
+
+        required this.child,
+
+      }){
+    _showInformationDialog();
+  }
+
+
+  showStandardDialog() {
     showDialog<String>(
         context: context,
         builder: (BuildContext context)
         {
-              return AlertDialog(
-                surfaceTintColor: disableTintColor ? backgroundColor : null,
-                /// Background Color
-                backgroundColor: backgroundColor,
+          return AlertDialog(
+            surfaceTintColor: disableTintColor ? backgroundColor : null,
+            /// Background Color
+            backgroundColor: backgroundColor,
 
-                /// Child Content Widget
-                content: child,
+            /// Child Content Widget
+            content: child,
 
-                actions: isDisableButtons
-                    ? null
-                    : <Widget>[
-                        /// Cancel Button
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: TextInriaSans(
-                            'Cancel',
-                            color: colorDark,
-                          ),
+            actions: isDisableButtons!
+                ? null
+                : <Widget>[
+                    /// Cancel Button
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: TextInriaSans('Cancel', color: colorDark,),
+                    ),
+
+                    /// Confirm Button
+                    TextButton(
+                        onPressed: (){
+                          dominantButtonFunction!();
+                          //close window
+                          if(dominateButtonCloseAfterFunction!){
+                            Navigator.pop(context);
+                          }
+                        },
+
+                        style: ButtonStyle(
+                          //color
+                          backgroundColor: MaterialStateProperty.all(
+                              dominantButtonColor),
                         ),
-
-                        /// Confirm Button
-                        TextButton(
-                            onPressed: (){
-                              dominantButtonFunction!();
-                              //close window
-                              if(dominateButtonCloseAfterFunction){
-                                Navigator.pop(context);
-                              }
-                            },
-
-                            style: ButtonStyle(
-                              //color
-                              backgroundColor: MaterialStateProperty.all(
-                                  dominantButtonColor),
-                            ),
-                            //text
-                            child: TextInriaSans(
-                              dominantButtonTitle,
-                              color: backgroundColor,
-                            )),
-                      ],
-              );
-            });
+                        //text
+                        child: TextInriaSans(
+                          dominantButtonTitle,
+                          color: backgroundColor,
+                        )),
+                  ],
+          );
+        });
 
   }
 
+  _showInformationDialog() {
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context)
+        {
+          return AlertDialog(
+            surfaceTintColor: disableTintColor ? backgroundColor : null,
+            /// Background Color
+            backgroundColor: backgroundColor,
+
+            /// Child Content Widget
+            content: SingleChildScrollView(child: child),
+
+            actions: <Widget>[
+              /// Confirm Button
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: ()=> Navigator.pop(context),
+
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            dominantButtonColor),
+                      ),
+
+                      child: TextInriaSans(
+                        dominantButtonTitle,
+                        color: backgroundColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        });
+
+  }
 }

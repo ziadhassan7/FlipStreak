@@ -13,6 +13,6 @@ class CustomBorder extends Border{
   );
 
   // I had to do this, because it seems like you can't override a factory constructor
-  // Instead I would just have called super.all
+  // Instead I would have just called super.all
 
 }

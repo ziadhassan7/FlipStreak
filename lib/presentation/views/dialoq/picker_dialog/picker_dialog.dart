@@ -34,7 +34,7 @@ class PickerDialog {
         maxValue: maxValue,
       ),
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
 }

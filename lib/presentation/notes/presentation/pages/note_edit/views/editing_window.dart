@@ -66,6 +66,8 @@ class EditingWindow extends StatelessWidget {
     );
   }
 
+
+
   String? _validator(String? value){
     if (value == null || value.isEmpty) {
       return "Note can't be empty";

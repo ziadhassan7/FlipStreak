@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../views/text_inria_sans.dart';
 import '../../../../views/dialoq/dialoq_widget.dart';
 import '../../manager/controller/note_controller.dart';
-import '../../pages/note_edit/widget/editing_window.dart';
+import '../../pages/note_edit/views/editing_window.dart';
 
 
 class DiscardDialog {
@@ -23,7 +23,7 @@ class DiscardDialog {
 
         child: TextInriaSans("Discard changes?", size: 16,)
 
-    ).showAlert();
+    ).showStandardDialog();
   }
 
   void exit() {

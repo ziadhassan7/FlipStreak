@@ -1,2 +1,0 @@
-const TOPBAR_MAIN = 0;
-const TOPBAR_SEARCH = 3;

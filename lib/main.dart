@@ -1,14 +1,11 @@
-import 'package:flip_streak/app_constants/color_constants.dart';
-import 'package:flip_streak/app_constants/hive_keys.dart';
-import 'package:flip_streak/business/notification_util.dart';
-import 'package:flip_streak/data/shared_pref/hive_client.dart';
-import 'package:flip_streak/presentation/index/index_page.dart';
-import 'package:flip_streak/presentation/welcome/screen/welcome_screen.dart';
+import 'package:flip_streak/core/constants/color_constants.dart';
+import 'package:flip_streak/index_page/index_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'business/app_wise/streak/streak_state_util.dart';
-import 'business/system_util.dart';
+import 'core/shared_pref/hive_client.dart';
+import 'core/utils/system_util.dart';
+import 'futures/goal/presentation/pages/welcome/welcome_screen.dart';
+import 'injection.dart' as inject;
 
 Future<void> main() async {
   //When you are initializing any future function, it is better to call,
@@ -22,16 +19,8 @@ Future<void> main() async {
     to make sure that you have an instance of the WidgetsBinding.
    */
   WidgetsFlutterBinding.ensureInitialized();
-
-  //Initialize Notification
-  NotificationUtil.init();
-
-  //Initialize Hive
-  await Hive.initFlutter();
-  await Hive.openBox(GLOBAL_DATA_BOX);
-
-  //Update Streak
-  StreakStateUtil.updateStreakState();
+  //initialization
+  await inject.init();
 
   runApp(
     // Adding ProviderScope enables Riverpod for the entire project

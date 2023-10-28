@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../app_common_views/circular_button.dart';
+import '../../../manager/controller/note_controller.dart';
+import 'note_book_details.dart';
+
+class NoteBottomBar extends ConsumerWidget {
+  const NoteBottomBar({super.key, this.currentNoteId});
+
+  final String? currentNoteId;
+
+  static final NoteController _controller = NoteController();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Row(
+      children: [
+        ///                                                                     / (Book name, Page number)
+        const NoteBookDetails(),
+
+        const Spacer(),
+
+        ///                                                                     / Save Button
+        CircularButton(
+          onPressed: () => _onSave(context, ref),
+          size: 42,
+          icon: const Icon(Icons.done, color: Colors.white,),
+        ),
+      ],
+    );
+  }
+
+
+  void _onSave(BuildContext context, WidgetRef ref){
+    if (NoteController.formKey.currentState!.validate()) {
+
+      _controller.saveNote(ref, currentNoteId);
+
+      Navigator.pop(context);
+    }
+  }
+}

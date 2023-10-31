@@ -23,7 +23,7 @@ class DiscardDialog {
 
         child: const TextView("Discard changes?", size: 16,)
 
-    ).showStandardDialog();
+    );
   }
 
   void exit() {

@@ -12,15 +12,13 @@ class CategoryMenu {
 
   CategoryMenu(BuildContext context, String currentCategory) {
 
-    ZDialog(
+    ZDialog.custom(
         context,
-
         disableTintColor: true,
-        isDisableButtons: true,
 
-        child: CategoryMenuView(currentCategory: currentCategory,),
+        view: CategoryMenuView(currentCategory: currentCategory,),
 
-    ).showStandardDialog();
+    );
   }
 
 }

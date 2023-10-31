@@ -27,7 +27,7 @@ class PageNumberDialog {
         isNumericValue: true,
       ),
 
-    ).showStandardDialog();
+    );
   }
 
 

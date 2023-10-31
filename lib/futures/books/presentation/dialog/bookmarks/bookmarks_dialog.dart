@@ -5,14 +5,12 @@ import 'bookmark_view.dart';
 class BookmarksDialog {
 
   BookmarksDialog(BuildContext context, List bookmarks) {
-    ZDialog(
+    ZDialog.custom(
         context,
 
-        isDisableButtons: true,
+        view: BookmarkView(list: bookmarks)
 
-        child: BookmarkView(list: bookmarks)
-
-    ).showStandardDialog();
+    );
   }
 
 }

@@ -25,7 +25,7 @@ class DeleteNoteDialog {
 
         child: const TextView("Delete this item?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showStandardDialog();
+    );
   }
 
   void deleteNote(WidgetRef ref, String noteId) {

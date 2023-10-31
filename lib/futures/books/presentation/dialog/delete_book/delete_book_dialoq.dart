@@ -31,7 +31,7 @@ class DeleteBookDialog {
 
         child: const TextView("Delete this book?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showStandardDialog();
+    );
   }
 
   Future<void> deleteBook() async {

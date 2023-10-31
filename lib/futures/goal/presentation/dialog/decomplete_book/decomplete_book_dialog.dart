@@ -27,7 +27,7 @@ class DecompleteBookDialog {
 
         child: const TextView("Remove from completed?", weight: FontWeight.bold, color: colorDark,)
 
-    ).showStandardDialog();
+    );
   }
 
 }

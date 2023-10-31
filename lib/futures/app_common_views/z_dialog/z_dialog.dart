@@ -9,7 +9,6 @@ class ZDialog {
 
   final Color backgroundColor;
   final bool disableTintColor;
-  bool? isDisableButtons;
 
   String? dominantButtonTitle;
   Color? dominantButtonColor;
@@ -32,17 +31,16 @@ class ZDialog {
         this.dominantButtonTitle = "Save",
         this.dominantButtonColor = colorAccent,
         this.dominantButtonFunction,
-        this.isDisableButtons = false,
 
         this.dominateButtonCloseAfterFunction = true,
 
         required this.child,
 
-      }) : assert(isDisableButtons != false || dominantButtonFunction != null,
-        'You cannot pass a function, with isDisableButtons as true'
-      ); // You can either have (isDisableButtons = true or dominantButtonFunction = object), both cannot violate the assert
+      }){
+        _showStandardDialog();
+      }
 
-  showStandardDialog() {
+  _showStandardDialog() {
     showDialog<String>(
         context: context,
         builder: (BuildContext context)
@@ -55,9 +53,7 @@ class ZDialog {
             /// Child Content Widget
             content: child,
 
-            actions: isDisableButtons!
-                ? null
-                : <Widget>[
+            actions: <Widget>[
               /// Cancel Button
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -225,9 +221,9 @@ class ZDialog {
     {
       this.backgroundColor = Colors.white,
       this.disableTintColor = true,
-      required Widget widget,
+      required Widget view,
     }){
-    _showCustomDialog(widget);
+    _showCustomDialog(view);
   }
 
   _showCustomDialog(Widget widget) {

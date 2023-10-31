@@ -19,13 +19,29 @@ class BooksGoalProvider extends StateNotifier<int>{
     state = _hiveClient.getBooksGoal();
   }
 
-  void increaseGoal() => state++;
+  ///Increase
+  void increaseGoal() {
+    int currentGoal = state;
+    currentGoal++; //increase
 
-  void decreaseGoal() {
-    if(state >1) state--;
+    _hiveClient.updateBooksGoal(currentGoal);
+    state = currentGoal;
   }
 
-  void changeGoal(value) => state = value;
+  ///Decrease
+  void decreaseGoal() {
+    if(state >1) {
+      int currentGoal = state;
+      currentGoal--; //decrease
 
-  get goal => state;
+      _hiveClient.updateBooksGoal(currentGoal);
+      state = currentGoal;
+    }
+  }
+
+  ///Change
+  void changeGoal(value) {
+    _hiveClient.updateBooksGoal(value);
+    state = value;
+  }
 }

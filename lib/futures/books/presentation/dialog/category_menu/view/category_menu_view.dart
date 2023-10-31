@@ -1,4 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
+import 'package:flip_streak/core/styles/device_screen.dart';
 import 'package:flip_streak/futures/books/presentation/dialog/category_menu/view/widget/add_item_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +17,7 @@ class CategoryMenuView extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height *0.7,
+      height: getHeight(context),
       width: MediaQuery.of(context).size.width *0.8,
 
       child: Column(
@@ -87,5 +88,12 @@ class CategoryMenuView extends StatelessWidget {
     //[0,1,2,3,4]
     //[4,3,2,1,0]
     return length - index;
+  }
+
+  double getHeight(BuildContext context){
+    double screenHeight = AppScreen(context).height;
+    if(screenHeight>450) return 450;
+
+    return screenHeight - 60;
   }
 }

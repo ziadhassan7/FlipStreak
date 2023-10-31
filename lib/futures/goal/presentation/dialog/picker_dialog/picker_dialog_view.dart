@@ -1,4 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
+import 'package:flip_streak/core/styles/device_screen.dart';
 import 'package:flip_streak/futures/goal/presentation/dialog/picker_dialog/picker_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -20,36 +21,41 @@ class _PickerDialogViewState extends State<PickerDialogView> {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width *0.8,
+      height: getHeight(context),
 
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
 
-          child: TextView(
-            widget.title,
-            size: 18,
-            weight: FontWeight.bold,
-            color: colorAccent,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18),
+
+            child: TextView(
+              widget.title,
+              size: 18,
+              weight: FontWeight.bold,
+              color: colorAccent,
+            ),
           ),
-        ),
 
-        Expanded(
-          child: NumberPicker(
-            value: getCurrentValue(),
-            minValue: 0,
-            maxValue: widget.maxValue,
-            textStyle: getTextStyle(isSelected: false),
-            selectedTextStyle: getTextStyle(isSelected: true),
-            onChanged: (value) {
-              setState(() {
-                PickerDialog.currentValue = value;
-              });
-            },
-          ),
-        )
-      ],
+          Expanded(
+            child: NumberPicker(
+              value: getCurrentValue(),
+              minValue: 0,
+              maxValue: widget.maxValue,
+              textStyle: getTextStyle(isSelected: false),
+              selectedTextStyle: getTextStyle(isSelected: true),
+              onChanged: (value) {
+                setState(() {
+                  PickerDialog.currentValue = value;
+                });
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -69,5 +75,13 @@ class _PickerDialogViewState extends State<PickerDialogView> {
       fontSize: isSelected? 30 : 18 ,
       fontWeight: isSelected? FontWeight.bold : FontWeight.normal ,
     );
+  }
+
+  double getHeight(BuildContext context){
+    double screenHeight = AppScreen(context).height;
+
+    if(screenHeight > 250) return 200;
+
+    return screenHeight-60;
   }
 }

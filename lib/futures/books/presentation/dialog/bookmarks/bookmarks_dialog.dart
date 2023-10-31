@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import '../../../../app_common_views/dialoq_widget.dart';
+import '../../../../app_common_views/z_dialog/z_dialog.dart';
 import 'bookmark_view.dart';
 
 class BookmarksDialog {
 
   BookmarksDialog(BuildContext context, List bookmarks) {
-    DialogWidget(
+    ZDialog(
         context,
 
         isDisableButtons: true,

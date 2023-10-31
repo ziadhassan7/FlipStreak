@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/constants/color_constants.dart';
 import '../../../../books/data/model/book_model.dart';
 import 'view/book_goal_widget.dart';
-import 'view/completed_books_widget.dart';
+import 'view/completed_books_view.dart';
 
 class AchievementsPage extends ConsumerWidget {
   const AchievementsPage({Key? key}) : super(key: key);

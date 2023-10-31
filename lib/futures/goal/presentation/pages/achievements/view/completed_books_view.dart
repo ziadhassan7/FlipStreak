@@ -65,6 +65,12 @@ class CompletedBooksWidget extends StatelessWidget {
                     color: colorAccent,
                   );
                 },
+
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 2 / 3.1,
+                  crossAxisSpacing: 25,
+                  mainAxisSpacing: 15),
             )
           ),
         ],

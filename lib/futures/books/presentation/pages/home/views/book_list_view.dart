@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
-import 'book_list_item.dart';
+import '../widget/book_list_item.dart';
 
 class BookListView extends ConsumerWidget {
   const BookListView({Key? key, required this.list}) : super(key: key);

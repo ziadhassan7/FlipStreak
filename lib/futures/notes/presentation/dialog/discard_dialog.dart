@@ -1,6 +1,6 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
-import '../../../app_common_views/dialoq_widget.dart';
+import '../../../app_common_views/z_dialog/z_dialog.dart';
 import '../../../app_common_views/text_view/text_view.dart';
 import '../manager/controller/note_controller.dart';
 import '../pages/note_edit/views/editing_window.dart';
@@ -12,7 +12,7 @@ class DiscardDialog {
 
   DiscardDialog(this.context,) {
 
-    DialogWidget(
+    ZDialog(
         context,
         dominantButtonTitle: "Discard",
         dominantButtonColor: colorOrange,

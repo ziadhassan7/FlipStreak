@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/shared_pref/hive_client.dart';
 import '../../../../../../core/utils/file_util.dart';
-import '../../../../app_common_views/dialoq_widget.dart';
+import '../../../../app_common_views/z_dialog/z_dialog.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
 import '../../../../notes/presentation/manager/state_manager/note_list_provider.dart';
 import '../../managers/state_manager/book_list_provider.dart';
@@ -20,7 +20,7 @@ class DeleteBookDialog {
 
   DeleteBookDialog( this.context, this.ref, {required this.bookId}) {
 
-    DialogWidget(
+    ZDialog(
         context,
         dominantButtonTitle: "Delete",
         dominantButtonColor: const Color.fromRGBO(140, 0, 0, 1),

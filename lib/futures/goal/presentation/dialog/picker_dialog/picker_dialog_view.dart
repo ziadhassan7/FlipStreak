@@ -20,24 +20,23 @@ class _PickerDialogViewState extends State<PickerDialogView> {
   @override
   Widget build(BuildContext context) {
 
-    return SizedBox(
-      width: MediaQuery.of(context).size.width *0.8,
-      height: 250,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
 
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18),
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 18),
 
-            child: TextView(
-              widget.title,
-              size: 18,
-              weight: FontWeight.bold,
-              color: colorAccent,
-            ),
+          child: TextView(
+            widget.title,
+            size: 18,
+            weight: FontWeight.bold,
+            color: colorAccent,
           ),
+        ),
 
-          NumberPicker(
+        Expanded(
+          child: NumberPicker(
             value: getCurrentValue(),
             minValue: 0,
             maxValue: widget.maxValue,
@@ -48,9 +47,9 @@ class _PickerDialogViewState extends State<PickerDialogView> {
                 PickerDialog.currentValue = value;
               });
             },
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 

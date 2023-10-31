@@ -29,7 +29,7 @@ class PageCountBox extends ConsumerWidget {
 
     return InkWell(
 
-      onTap: ()=> LampInfoDialog(context, _pagesRead, _pagesGoal),
+      onTap: ()=> LampInfoDialog(context, ref, _pagesRead, _pagesGoal),
 
       child: Container(
         decoration: BoxDecoration(

@@ -1,6 +1,6 @@
 import 'package:flip_streak/futures/goal/presentation/dialog/picker_dialog/picker_dialog_view.dart';
 import 'package:flutter/material.dart';
-import '../../../../app_common_views/dialoq_widget.dart';
+import '../../../../app_common_views/z_dialog/z_dialog.dart';
 
 
 class PickerDialog {
@@ -21,7 +21,7 @@ class PickerDialog {
         required this.maxValue,
         required this.onSave}) {
 
-    DialogWidget(
+    ZDialog(
       context,
       dominantButtonFunction: () {
         onSave(currentValue);

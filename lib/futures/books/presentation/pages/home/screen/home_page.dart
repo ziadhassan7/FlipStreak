@@ -6,7 +6,7 @@ import '../../../../data/model/book_model.dart';
 import '../../../managers/state_manager/book_list_provider.dart';
 import '../views/last_book_widget.dart';
 import '../widget/add_widget/add_widget.dart';
-import '../widget/book_list_view.dart';
+import '../views/book_list_view.dart';
 import '../widget/streak_widget.dart';
 
 class HomePage extends ConsumerWidget {

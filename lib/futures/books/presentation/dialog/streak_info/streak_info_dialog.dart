@@ -1,5 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
-import 'package:flip_streak/futures/app_common_views/dialoq_widget.dart';
+import 'package:flip_streak/futures/app_common_views/z_dialog/z_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
@@ -8,7 +8,7 @@ class StreakInfoDialog {
 
 
   StreakInfoDialog(BuildContext context){
-    DialogWidget.info(
+    ZDialog.info(
       context,
 
       child: view(),

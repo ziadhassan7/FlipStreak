@@ -1,5 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
-import 'package:flip_streak/futures/app_common_views/dialoq_widget.dart';
+import 'package:flip_streak/futures/app_common_views/z_dialog/z_dialog.dart';
 import 'package:flip_streak/futures/books/presentation/managers/state_manager/book_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +16,7 @@ class DecompleteBookDialog {
   DecompleteBookDialog( this.context, this.ref, this.bookItem) {
 
 
-    DialogWidget(
+    ZDialog(
         context,
         dominantButtonTitle: "Remove",
         dominantButtonColor: Colors.red,

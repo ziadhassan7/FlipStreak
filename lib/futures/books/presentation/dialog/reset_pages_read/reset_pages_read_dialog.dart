@@ -1,5 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
-import 'package:flip_streak/futures/app_common_views/dialoq_widget.dart';
+import 'package:flip_streak/futures/app_common_views/z_dialog/z_dialog.dart';
 import 'package:flip_streak/futures/goal/presentation/managers/state_manager/pages_read_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +14,7 @@ class ResetPagesReadDialog {
   ResetPagesReadDialog( this.context, this.ref,) {
 
 
-    DialogWidget(
+    ZDialog(
         context,
         dominantButtonTitle: "Reset",
         dominantButtonColor: Colors.red,

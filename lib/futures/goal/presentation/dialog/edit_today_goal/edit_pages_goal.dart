@@ -4,12 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../picker_dialog/picker_dialog.dart';
 
 
-class EditTodayGoal {
+class EditPagesGoal {
 
   final BuildContext context;
   final WidgetRef ref;
 
-  EditTodayGoal( this.context, this.ref,) {
+  EditPagesGoal( this.context, this.ref,) {
 
     final currentGoal = ref.watch(pagesGoalProvider);
 

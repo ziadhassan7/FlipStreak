@@ -2,7 +2,7 @@ import 'package:flip_streak/futures/goal/presentation/managers/state_manager/pag
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../books/presentation/dialog/reset_pages_read/reset_pages_read_dialog.dart';
-import '../../../dialog/edit_today_goal/edit_today_goal.dart';
+import '../../../dialog/edit_today_goal/edit_pages_goal.dart';
 import '../../../managers/state_manager/pages_read_provider.dart';
 import '../widget/goal_widget.dart';
 
@@ -25,7 +25,7 @@ class TodayGoalWidget extends ConsumerWidget {
         goal: goal,
 
         onEditPress: (){
-          EditTodayGoal(context, ref);
+          EditPagesGoal(context, ref);
         },
 
         onLongPress: (){

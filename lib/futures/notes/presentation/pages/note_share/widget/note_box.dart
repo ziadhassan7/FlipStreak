@@ -24,7 +24,7 @@ class NoteBox extends StatelessWidget {
 
     return Container(
       //Settings
-        width: DeviceScreen(context).width,
+        width: AppScreen(context).width,
         padding: CustomPadding(horizontal: 28, bottom: 12,
           top: isPageNumberEmpty? 18 : 45,
         ),

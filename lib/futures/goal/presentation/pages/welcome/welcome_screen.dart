@@ -90,7 +90,7 @@ class WelcomeScreen extends ConsumerWidget {
     double height;
 
     if(isBig) {
-      height = DeviceScreen(context).height *0.18;
+      height = AppScreen(context).height *0.18;
     } else {
       height = 40;
     }

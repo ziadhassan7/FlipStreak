@@ -15,7 +15,7 @@ class EmptyList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    double screenSize = DeviceScreen(context).height;
+    double screenSize = AppScreen(context).height;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

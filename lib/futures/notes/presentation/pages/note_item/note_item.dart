@@ -49,7 +49,7 @@ class NoteItem extends ConsumerWidget {
         /// Widgets
         child: Container(
           //Settings
-            width: DeviceScreen(context).width,
+            width: AppScreen(context).width,
             padding: const CustomPadding(horizontal: 28, vertical: 28),
 
             decoration: CustomDecoration(

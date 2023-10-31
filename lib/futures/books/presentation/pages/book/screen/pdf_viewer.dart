@@ -157,7 +157,7 @@ class PdfViewer extends ConsumerWidget {
 
   updateScrollIndicatorPosition(BuildContext context, WidgetRef ref, int currentPage){
     double minScreenLimit = 80;
-    double maxScreenLimit = DeviceScreen(context).height - CustomScrollBar.limit;
+    double maxScreenLimit = AppScreen(context).height - CustomScrollBar.limit;
     ref.read(scrollViewPositionProvider.notifier).updateWithPage(context, currentPage, minScreenLimit, maxScreenLimit);
   }
 }

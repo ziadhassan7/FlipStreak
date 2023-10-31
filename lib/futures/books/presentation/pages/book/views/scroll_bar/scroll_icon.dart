@@ -17,7 +17,7 @@ class ScrollIcon extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    double screenHeight = DeviceScreen(context).height;
+    double screenHeight = AppScreen(context).height;
 
     return GestureDetector(
       onPanDown: (det){

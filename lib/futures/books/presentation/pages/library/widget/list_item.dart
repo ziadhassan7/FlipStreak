@@ -1,3 +1,4 @@
+import 'package:flip_streak/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/app_router.dart';
 import '../../../../../app_common_views/book_thumbnail.dart';
@@ -76,9 +77,9 @@ class ListItem extends StatelessWidget {
 
 
 
-              /// Category Icon
+              /// menu Icon
               Theme(
-                data: ThemeData(useMaterial3: true),
+                data: ThemeData(useMaterial3: true, colorScheme: ColorScheme.fromSeed(seedColor: colorAccent),),
 
                 child: Expanded(
                   flex: 1,

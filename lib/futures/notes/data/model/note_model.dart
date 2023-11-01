@@ -18,6 +18,24 @@ class NoteModel {
     required this.noteBookName,
   });
 
+  // Take only the changed value,
+  // and assign the rest to the same data
+  NoteModel copyWith({
+    String? noteId,
+    String? noteTitle,
+    String? noteBody,
+
+    String? notePage,
+    String? noteBookName,
+  }){
+    return NoteModel(
+        noteId: noteId ?? this.noteId,
+        noteTitle: noteTitle ?? this.noteTitle,
+        noteBody: noteBody ?? this.noteBody,
+        notePage: notePage ?? this.notePage,
+        noteBookName: noteBookName ?? this.noteBookName,);
+  }
+
 
   factory NoteModel.fromMap(Map<String, dynamic> map) {
     return NoteModel(

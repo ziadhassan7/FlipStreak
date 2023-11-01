@@ -78,6 +78,12 @@ class BookProvider extends StateNotifier<Future<List<BookModel>>>{
     updateNotifier();
   }
 
+  /// update Book Name
+  void renameBook(String name, BookModel book){
+    updateBookName(name, book);
+    updateNotifier();
+  }
+
   /// Update / Delete from all books
   Future<void> updateAllBooksWithNewCat(String oldCatItem, String newCatItem) async {
     List<BookModel> list = await bookClient.readAllElements();

@@ -26,14 +26,14 @@ class BookClient {
   }
 
 /// Update
-  Future<void> updateItem(BookModel bookModel) async {
+  Future<void> updateItem(BookModel bookModel, {String? oldId}) async {
     final db = await SqlClient.instance.database;
 
     db!.update(
       tableBook,
       bookModel.toMap(),
       where: '$columnBookId = ?',
-      whereArgs: [bookModel.id],
+      whereArgs: [oldId ?? bookModel.id],
     );
   }
 

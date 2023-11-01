@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../data/local_db/note_client.dart';
 import '../../../data/model/note_model.dart';
+import '../controller/note_controller.dart';
 
 final noteListProvider = StateNotifierProvider<NoteProvider, List<NoteModel>>((ref) {
 
@@ -37,7 +38,7 @@ class NoteProvider extends StateNotifier<List<NoteModel>> {
     //Create new Note Item
     noteClient.createItem(newModel);
 
-    //Get List of all books
+    //Get List of all notes
     await updateNotifier();
   }
 
@@ -47,7 +48,14 @@ class NoteProvider extends StateNotifier<List<NoteModel>> {
     //Create new Note Item
     noteClient.updateItem(newModel);
 
-    //Get List of all books
+    //Get List of all notes
+    await updateNotifier();
+  }
+
+  Future<void> renameBookForAllNotes(String oldName, String newName) async {
+    await NoteController.updateAllNotesWithNewBookName(oldName, newName); //update all notes associated with this book
+
+    //Get List of all notes
     await updateNotifier();
   }
 
@@ -57,22 +65,7 @@ class NoteProvider extends StateNotifier<List<NoteModel>> {
     //Create new Note Item
     noteClient.deleteItem(noteId);
 
-    //Get List of all books
-    await updateNotifier();
-  }
-
-  /// Delete Note
-  void deleteAllNotesInBook(String bookId) async {
-
-    //Delete all notes in a book
-    List<NoteModel> notes = await noteClient.readAllElements();
-    for(var item in notes){
-      if(item.noteBookName == bookId){
-        noteClient.deleteItem(item.noteId);
-      }
-    }
-
-    //Get List of all books
+    //Get List of all notes
     await updateNotifier();
   }
 }

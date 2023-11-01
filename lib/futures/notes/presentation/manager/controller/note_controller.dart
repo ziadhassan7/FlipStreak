@@ -1,3 +1,4 @@
+import 'package:flip_streak/futures/notes/data/local_db/note_client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../data/model/note_model.dart';
@@ -67,6 +68,21 @@ class NoteController {
             // book details
             notePage: pageNumber,
             noteBookName: bookName));
+
+  }
+
+
+  static Future<void> updateAllNotesWithNewBookName(String oldName, String newName) async {
+    NoteClient noteClient = NoteClient.instance;
+
+    //Check if there is a note with that name
+    List<NoteModel> notes = await noteClient.readAllElements();
+    for(var item in notes){
+      if(item.noteBookName == oldName){
+        //update name of each note, for that book
+        noteClient.updateItem(item.copyWith(noteBookName: newName));
+      }
+    }
 
   }
 

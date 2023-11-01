@@ -5,7 +5,6 @@ import '../../../../../../core/shared_pref/hive_client.dart';
 import '../../../../../../core/utils/file_util.dart';
 import '../../../../app_common_views/z_dialog/z_dialog.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
-import '../../../../notes/presentation/manager/state_manager/note_list_provider.dart';
 import '../../managers/state_manager/book_list_provider.dart';
 import '../../managers/state_manager/last_book_provider.dart';
 
@@ -41,8 +40,6 @@ class DeleteBookDialog {
     if(isDeleted) {
       //delete book from lastBookWidget
       deleteLastBookWidget();
-      //Delete all book's note
-      ref.read(noteListProvider.notifier).deleteAllNotesInBook(bookId);
       //Refresh List
       ref.refresh(bookListProvider);
       print('delete successful');

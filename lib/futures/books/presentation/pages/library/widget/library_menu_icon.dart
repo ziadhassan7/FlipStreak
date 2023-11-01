@@ -1,3 +1,4 @@
+import 'package:flip_streak/futures/books/presentation/dialog/rename/rename_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/constants/color_constants.dart';
@@ -11,9 +12,9 @@ import '../../../managers/state_manager/book_list_provider.dart';
 import '../../../managers/state_manager/last_book_provider.dart';
 
 class LibraryMenuIcon extends ConsumerWidget {
-  const LibraryMenuIcon({Key? key, required this.currentBook}) : super(key: key);
+  const LibraryMenuIcon({Key? key, required this.selectedBook}) : super(key: key);
 
-  final BookModel currentBook;
+  final BookModel selectedBook;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,27 +24,37 @@ class LibraryMenuIcon extends ConsumerWidget {
       menuItems: [
         const PopupMenuItem<int>(
           value: 0,
+          child: TextView("Rename", color: colorAccent,),
+        ),
+
+        const PopupMenuItem<int>(
+          value: 1,
           child: TextView("Add category", color: colorAccent,),
         ),
 
         PopupMenuItem<int>(
-          value: 1,
+          value: 2,
           child: TextView(getCompleteButtonText(), color: colorAccent,),
         ),
 
         const PopupMenuItem<int>(
-          value: 2,
+          value: 3,
           child: TextView("Delete book", color: colorAccent,),
         ),
       ],
 
       functions: (value) {
+
         if(value == 0){
-          CategoryAttacherDialog(context, ref, currentBook: currentBook);
+          RenameDialog(context, ref, book: selectedBook);
         }
 
-        if (value == 1) {
-          ref.read(bookListProvider.notifier).toggleAsCompleted(currentBook);
+        if(value == 1){
+          CategoryAttacherDialog(context, ref, currentBook: selectedBook);
+        }
+
+        if (value == 2) {
+          ref.read(bookListProvider.notifier).toggleAsCompleted(selectedBook);
 
           // Also change it in the last book widget
           if(bookModel.isComplete == 1){
@@ -54,15 +65,15 @@ class LibraryMenuIcon extends ConsumerWidget {
 
         }
 
-        if (value == 2) {
-          DeleteBookDialog(context, ref, bookId: currentBook.id,);
+        if (value == 3) {
+          DeleteBookDialog(context, ref, bookId: selectedBook.id,);
         }
       }
     );
   }
 
   String getCompleteButtonText() {
-    int isCompleted = currentBook.isComplete;
+    int isCompleted = selectedBook.isComplete;
 
     if(isCompleted == 1){
       return "Mark As Not Complete";

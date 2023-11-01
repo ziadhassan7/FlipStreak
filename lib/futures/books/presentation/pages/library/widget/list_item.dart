@@ -82,7 +82,7 @@ class ListItem extends StatelessWidget {
 
                 child: Expanded(
                   flex: 1,
-                  child: LibraryMenuIcon(currentBook: book,),
+                  child: LibraryMenuIcon(selectedBook: book,),
                 ),
               )
             ],

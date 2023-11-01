@@ -132,4 +132,13 @@ updateLastReadDate ({BookModel? book}) {
   updateBookDetails();
 }
 
+///                                                                             / Book Name
+updateBookName (String newName, BookModel book) async {
+  String oldName = book.id;
+
+  bookModel = book.copyWith(id: newName,); //rename model
+
+  await bookClient.updateItem(bookModel, oldId: oldName); //update book
+}
+
 

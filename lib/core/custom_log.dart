@@ -1,14 +1,17 @@
 import 'package:flutter/foundation.dart';
+import 'dart:developer' as developer;
 
-class PrintDebug {
+class Log {
 
-  PrintDebug(String tag, dynamic obj){
-    debugPrint("$tag:  $obj");
+  Log(String tag, dynamic obj, {String? message}){
+    if (kDebugMode) {
+      developer.log(message ?? "-", name: tag, error: obj);
+    }
   }
 
-  PrintDebug.log(String tag, dynamic obj){
+  Log.p(String message, {String? tag}){
     if (kDebugMode) {
-      print("$tag:  $obj");
+      developer.log(message, name: "Log: $tag");
     }
   }
 }

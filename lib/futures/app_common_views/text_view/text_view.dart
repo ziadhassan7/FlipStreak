@@ -31,7 +31,7 @@ class TextView extends StatelessWidget {
         this.maxLine,
         this.softWrap,
         this.overflow = TextOverflow.ellipsis,
-        this.textAlign = TextAlign.center,
+        this.textAlign = TextAlign.start,
         this.textDirection,
         this.scale = 1,
         this.fontFamily

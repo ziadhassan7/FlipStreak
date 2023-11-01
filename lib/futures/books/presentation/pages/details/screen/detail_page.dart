@@ -1,12 +1,14 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
+import 'package:flip_streak/futures/books/presentation/managers/state_manager/book_list_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/app_router.dart';
 import '../../../../../app_common_views/book_thumbnail.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
 import '../../../managers/controllers/book_controller.dart';
 import '../../book/screen/book_page.dart';
 import '../widget/action_buttons/action_buttons_row.dart';
-import '../widget/details_page_menu.dart';
+import '../widget/details_menu_icon.dart';
 import '../widget/bookmarks/bookmark_list.dart';
 import '../widget/edit_button.dart';
 import '../widget/page_number_widget.dart';
@@ -23,7 +25,15 @@ class DetailPage extends StatelessWidget {
 
       /// App Bar
       appBar: AppBar(
-        title: TextView(bookModel.id, color: colorAccent, weight: FontWeight.bold,),
+        //Title
+        title: Consumer(
+          builder: (context, ref, _) {
+            ref.watch(bookListProvider);
+            return TextView(bookModel.id, color: colorAccent, weight: FontWeight.bold,);
+          }
+        ),
+
+        //settings
         elevation: 0,
         foregroundColor: colorAccent,
         backgroundColor: _backgroundColor,
@@ -31,15 +41,18 @@ class DetailPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
+
+        //action button
         actions: const [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            child: DetailsPageMenu(),
+            child: DetailsMenuIcon(),
           )
         ],
       ),
 
 
+      /// Body
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

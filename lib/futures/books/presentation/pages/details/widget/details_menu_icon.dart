@@ -4,12 +4,13 @@ import '../../../../../../core/constants/color_constants.dart';
 import '../../../../../app_common_views/menu/menu_widget.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
 import '../../../dialog/edit_last_page/edit_last_page_dialoq.dart';
+import '../../../dialog/rename/rename_dialog.dart';
 import '../../../managers/controllers/book_controller.dart';
 import '../../../managers/state_manager/book_list_provider.dart';
 import '../../../managers/state_manager/last_book_provider.dart';
 
-class DetailsPageMenu extends StatelessWidget {
-  const DetailsPageMenu({Key? key}) : super(key: key);
+class DetailsMenuIcon extends StatelessWidget {
+  const DetailsMenuIcon({Key? key}) : super(key: key);
 
   static Function(Function())? _updateState;
 
@@ -22,11 +23,16 @@ class DetailsPageMenu extends StatelessWidget {
               menuItems: [
                 const PopupMenuItem<int>(
                   value: 0,
+                  child: TextView("Rename", color: colorAccent,),
+                ),
+
+                const PopupMenuItem<int>(
+                  value: 1,
                   child: TextView("Edit Last Page", color: colorAccent,),
                 ),
 
                 PopupMenuItem<int>(
-                  value: 1,
+                  value: 2,
                   child: StatefulBuilder(
                     builder: (context, Function(Function()) setState) {
                       _updateState = setState;
@@ -38,11 +44,16 @@ class DetailsPageMenu extends StatelessWidget {
 
               functions: (value) {
                 if(value == 0){
+                  //open Dialog to rename book
+                  RenameDialog(context, ref, book: bookModel);
+                }
+
+                if(value == 1){
                   //open Dialog showing list of bookmarks
                   EditLastPageDialog(context, ref);
                 }
 
-                if (value == 1) {
+                if (value == 2) {
                   ref.read(bookListProvider.notifier).toggleAsCompleted(bookModel);
 
                   // Also change it in the last book widget

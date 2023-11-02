@@ -2,6 +2,8 @@
 const String tableBook = "book";
 const String columnBookId = "id";
 const String columnPath = "path";
+const String columnThumbnail = "thumbnail";
+
 const String columnBookmark = "bookmark";
 const String columnLastPage = "last_page";
 const String columnTotalPages = "total_pages";

@@ -4,10 +4,11 @@ class BookModel {
 
   final String id;
   final String path;
+  final String? thumbnail;//
   final String? bookmarks;
   final int lastPage;
-  final int totalPages;//
-  final String? category;
+  final int totalPages;
+  final String? category;//
   final String addDate;
   final String? completeDate;
   final int isComplete;
@@ -16,6 +17,7 @@ class BookModel {
   BookModel({
     required this.id,
     required this.path,
+    this.thumbnail,
     this.bookmarks,
     required this.lastPage,
     required this.totalPages,//
@@ -32,6 +34,7 @@ class BookModel {
   BookModel copyWith({
     String? id,
     String? path,
+    String? thumbnail,
     String? bookmarks,
     int? lastPage,
     int? totalPages,//
@@ -44,6 +47,7 @@ class BookModel {
     return BookModel(
         id: id ?? this.id,
         path: path ?? this.path,
+        thumbnail: thumbnail ?? this.thumbnail,
         bookmarks: bookmarks ?? this.bookmarks,
         lastPage: lastPage ?? this.lastPage,
         totalPages: totalPages ?? this.totalPages,//
@@ -60,6 +64,7 @@ class BookModel {
     return BookModel(
       id: map[columnBookId],
       path: map[columnPath],
+      thumbnail: map[columnThumbnail],
       bookmarks: map[columnBookmark],
       lastPage: map[columnLastPage],
       totalPages: map[columnTotalPages],//
@@ -76,6 +81,7 @@ class BookModel {
     return {
       columnBookId: id,
       columnPath: path,
+      columnThumbnail: thumbnail,
       columnBookmark: bookmarks,
       columnLastPage: lastPage,
       columnTotalPages: totalPages,//

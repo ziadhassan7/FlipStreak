@@ -29,6 +29,7 @@ class AddBookUtil {
 
             model = BookModel(id: basename(file.path!),
                 path: newPath,
+                thumbnail: null,
                 bookmarks: null,
                 lastPage: 0,
                 totalPages: await _getTotalPages(newPath),

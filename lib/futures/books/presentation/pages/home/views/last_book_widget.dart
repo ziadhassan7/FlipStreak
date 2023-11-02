@@ -107,6 +107,11 @@ class LastBookWidget extends ConsumerWidget {
 
   ///                                                                           / Custom Widgets
   Widget progressBar(BookModel model) {
+
+    // Prevent division by 0
+    if(model.totalPages == 0) return const SizedBox();
+    //
+
     return Row(
       children: [
         /// Progress Bar
@@ -146,14 +151,6 @@ class LastBookWidget extends ConsumerWidget {
   }
 
   //percent
-  double getPercent(int page, int total) {
-
-    double value = page/total;
-    if (value == 1) return 100;
-
-    return (page/total)*100;
-  }
-
   int getPercentText(BookModel model){
     double value = getPercent(model.lastPage,model.totalPages);
 
@@ -163,6 +160,15 @@ class LastBookWidget extends ConsumerWidget {
       return value.floor();
     }
   }
+
+  double getPercent(int page, int total) {
+
+    double value = page/total;
+    if (value == 1) return 100;
+
+    return (page/total)*100;
+  }
+
 
   Future<void> onTap(BuildContext context, BookModel model) async {
     // Globalize new bookModel data

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 import '../widget/book_list_item.dart';
 
 class BookListView extends ConsumerWidget {
@@ -29,11 +28,7 @@ class BookListView extends ConsumerWidget {
             mainAxisSpacing: 15),
 
         itemBuilder: (BuildContext context, int index) {
-          String name = basename(list[index].id); //removes .pdf
-          return BookListItem(
-            bookName: name,
-            bookModel: list[index]
-          );
+          return BookListItem(bookModel: list[index]);
         },
       ),
     );

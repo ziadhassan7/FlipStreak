@@ -1,8 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'constants/db_constants/book_db_constanst.dart';
-import 'constants/db_constants/general_config.dart';
-import 'constants/db_constants/note_db_constants.dart';
+import '../futures/books/data/local_db/book_table.dart';
+import '../futures/notes/data/local_db/note_table.dart';
 
 class SqlClient {
 
@@ -21,38 +20,26 @@ class SqlClient {
     return _database!;
   }
 
+  //initialize database
   Future<Database> _initDB() async{
     String path = join(await getDatabasesPath(), 'BookDatabase.db');
-    return await openDatabase(path, version: 12, onCreate: _createDB);
+    return await openDatabase(path, version: 15, onCreate: _createDB, onUpgrade: _onUpgrade);
   }
 
 
-  Future<void> _createDB(Database database, int version) async {
+  //create new db
+  Future<void> _createDB(Database db, int version) async {
     // Book Table
-    await database.execute('''  
-    CREATE TABLE $tableBook (
-    $columnBookId $textType,
-    $columnPath $textType,
-    $columnBookmark $textType,
-    $columnLastPage $intType,
-    $columnTotalPages $intType,
-    $columnCategory $textType,
-    $columnAddDate $textType,
-    $columnCompleteDate $textType,
-    $columnIsComplete $intType,
-    $columnLastReadDate $textType
-    )
-    ''');
-
+    await BookTable.create(db);
     // Note Table
-    await database.execute('''  
-    CREATE TABLE $tableNote (
-    $columnNoteId $textType,
-    $columnNoteTitle $textType,
-    $columnNoteBody $textType,
-    $columnNotePage $textType,
-    $columnNoteBookName $textType
-    )
-    ''');
+    await NoteTable.create(db);
+  }
+
+  // This is called for users who have old db
+  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    // Book Table
+    await BookTable.upgrade(db, oldVersion, newVersion);
+    // Note Table
+    await NoteTable.upgrade(db, oldVersion, newVersion);
   }
 }

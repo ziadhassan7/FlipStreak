@@ -54,14 +54,12 @@ class _MyAppState extends State<MyApp> {
     _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
         .listen((List<SharedFile> value) {
       setState(() {list = value;});
-      Log.p("Shared: getMediaStream ${value.map((f) => f.value).join(",")}");
     }, onError: (err) {
       Log.p("getIntentDataStream error: $err");
     });
 
     // For sharing images coming from outside the app while the app is closed
     FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
-      Log.p("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
       setState(() {list = value;});
     });
   }

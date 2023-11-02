@@ -1,6 +1,5 @@
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../core/custom_log.dart';
 import '../../../../../core/shared_pref/hive_client.dart';
 import '../state_manager/bookmark_list_provider.dart';
 import '../../../data/local_db/book_client.dart';
@@ -43,7 +42,6 @@ refreshLastPageFromHiveAndGetBook(BookModel model) async {
   BookClient bookClient = BookClient.instance;
   int savedPageNumber = await hiveClient.getLastPage();
 
-  Log.p("-----${model.id}");
 
   if(savedPageNumber != 0) {
     model = model.copyWith(lastPage: savedPageNumber);

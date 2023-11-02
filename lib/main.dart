@@ -58,6 +58,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
 
+        // you can just use
+        //colorScheme: ColorScheme.fromSeed(seedColor: colorAccent),
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
           primary: colorAccent,

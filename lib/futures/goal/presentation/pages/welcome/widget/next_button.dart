@@ -5,6 +5,7 @@ import '../../../../../../core/constants/color_constants.dart';
 import '../../../../../../core/shared_pref/hive_client.dart';
 import '../../../../../../index_page/index_page.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
+import '../../../dialog/battery_optimization/battery_optimization_dialog.dart';
 import '../../../managers/state_manager/welcome_screen_provider.dart';
 
 class NextButton extends ConsumerWidget {
@@ -46,6 +47,8 @@ class NextButton extends ConsumerWidget {
         break;
 
       case Pages.thirdPage:
+        //Ask for battery optimization
+        BatteryOptimizationDialog(context);
         //Navigate to Home Page
         AppRouter.navigateTo(context, IndexPage(), isReplace: true);
         //App First Open: false

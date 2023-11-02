@@ -31,7 +31,7 @@ class EmptyList extends ConsumerWidget {
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,
 
-                onTap: () async => AddBookUtil.addBook(ref,
+                onTap: () async => AddBookUtil.importBookFromSystem(ref,
                     currentCategory: await getCategory(currentFilter)),
 
                 child: SvgPicture.asset(

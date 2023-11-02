@@ -13,7 +13,7 @@ class ZDialog {
   String? dominantButtonTitle;
   Color? dominantButtonColor;
   Function()? dominantButtonFunction;
-  bool? dominateButtonCloseAfterFunction;
+  bool? closeOnDominateButton;
 
   String? trailingButtonTitle;
   Function()? trailingButtonFunction;
@@ -30,9 +30,9 @@ class ZDialog {
 
         this.dominantButtonTitle = "Save",
         this.dominantButtonColor = colorAccent,
-        this.dominantButtonFunction,
+        required this.dominantButtonFunction,
 
-        this.dominateButtonCloseAfterFunction = true,
+        this.closeOnDominateButton = true,
 
         required this.child,
 
@@ -65,7 +65,7 @@ class ZDialog {
                   onPressed: (){
                     dominantButtonFunction!();
                     //close window
-                    if(dominateButtonCloseAfterFunction!){
+                    if(closeOnDominateButton!){
                       Navigator.pop(context);
                     }
                   },
@@ -96,7 +96,7 @@ class ZDialog {
         this.disableTintColor = true,
 
         this.dominantButtonTitle = "Got it!",
-        this.dominantButtonColor = colorOrange,
+        this.dominantButtonColor = colorAccent,
 
         required this.child,
 

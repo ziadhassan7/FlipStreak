@@ -1,7 +1,12 @@
+import 'dart:async';
 import 'package:flip_streak/core/constants/color_constants.dart';
 import 'package:flip_streak/index_page/index_page.dart';
+import 'package:flip_streak/recieve_share_intent/recieve_share_intent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
+import 'package:flutter_sharing_intent/model/sharing_file.dart';
+import 'core/custom_log.dart';
 import 'core/shared_pref/hive_client.dart';
 import 'core/utils/system_util.dart';
 import 'futures/goal/presentation/pages/welcome/welcome_screen.dart';
@@ -29,14 +34,54 @@ Future<void> main() async {
 }
 
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   static final HiveClient hiveClient = HiveClient();
 
-  Widget getFirstScreen(){
-    bool isAppFirstOpen = hiveClient.getFirstOpenState();
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+
+  late StreamSubscription _intentDataStreamSubscription;
+  List<SharedFile>? list;
+  @override
+  void initState() {
+    super.initState();
+    // For sharing images coming from outside the app while the app is in the memory
+    _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
+        .listen((List<SharedFile> value) {
+      setState(() {list = value;});
+      Log.p("Shared: getMediaStream ${value.map((f) => f.value).join(",")}");
+    }, onError: (err) {
+      Log.p("getIntentDataStream error: $err");
+    });
+
+    // For sharing images coming from outside the app while the app is closed
+    FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
+      Log.p("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
+      setState(() {list = value;});
+    });
+  }
+
+  @override
+  void dispose() {
+    _intentDataStreamSubscription.cancel();
+    super.dispose();
+  }
+
+
+  Widget getFirstScreen(){
+    bool isAppFirstOpen = MyApp.hiveClient.getFirstOpenState();
+
+    // If user shared a book to the app
+    if(list != null && list!.isNotEmpty){
+      return ReceiveShareIntent(list!);
+    }
+
+    // On first start, open guide screens
     if(isAppFirstOpen){
       return const WelcomeScreen();
 

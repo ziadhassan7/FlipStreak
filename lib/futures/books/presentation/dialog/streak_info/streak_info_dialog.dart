@@ -10,7 +10,7 @@ class StreakInfoDialog {
   StreakInfoDialog(BuildContext context){
     ZDialog.info(
       context,
-
+      dominantButtonColor: colorOrange,
       child: view(),
     );
   }

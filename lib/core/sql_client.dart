@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import '../futures/books/data/local_db/book_table.dart';
-import '../futures/notes/data/local_db/note_table.dart';
+import '../futures/books/data/local_db/book_table_mangment.dart';
+import '../futures/notes/data/local_db/note_table_mangment.dart';
 
 class SqlClient {
 

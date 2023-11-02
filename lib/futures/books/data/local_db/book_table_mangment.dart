@@ -27,8 +27,8 @@ class BookTable {
 
     //Migrate from version...
 
-    //Migrate from version 14
-    if (oldVersion == 14) {
+    //Migrate from version 14 or older
+    if (oldVersion <= 14) {
       await db.execute('''
       ALTER TABLE $tableBook
       ADD COLUMN $columnThumbnail $textType;

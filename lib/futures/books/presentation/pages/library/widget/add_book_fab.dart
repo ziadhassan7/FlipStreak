@@ -14,7 +14,7 @@ class AddBookFab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton.small(
       heroTag: "btn1",
-      onPressed: () async => AddBookUtil.addBook(ref, currentCategory: await getCategory(currentFilter)),
+      onPressed: () async => AddBookUtil.importBookFromSystem(ref, currentCategory: await getCategory(currentFilter)),
 
       backgroundColor: const Color.fromRGBO(255, 242, 233, 1.0), //Color.fromRGBO(255, 231, 220, 1.0),
       child: const Icon(Icons.add, color: colorBrown,),

@@ -1,3 +1,4 @@
+import 'package:flip_streak/core/styles/device_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/constants/color_constants.dart';
@@ -18,6 +19,7 @@ class NoteIndexPage extends ConsumerWidget {
 
 
    return Scaffold(
+     resizeToAvoidBottomInset: false, //to prevent keyboard from missing with the layout
      backgroundColor: colorPrimary.withOpacity(0.4), //0.2
 
       body: Column(
@@ -38,15 +40,14 @@ class NoteIndexPage extends ConsumerWidget {
                 ),
             )
 
-            : const Expanded(
-              child: Column(
+            : Expanded(
+              child: SingleChildScrollView(child: Column(
                 children: [
-                  Spacer(),
-                  EmptyNotesWidget(),
-                  Spacer(),
+                  SizedBox(height: AppScreen(context).height * 0.1,),
+                  const EmptyNotesWidget(),
                 ],
+              ))
               ),
-            ),
 
         ],
       ),

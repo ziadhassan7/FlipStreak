@@ -23,6 +23,7 @@ class NotesInBookPage extends ConsumerWidget {
     final currentBookNotes = getFilteredList(ref.watch(noteListProvider));
 
     return Scaffold(
+      resizeToAvoidBottomInset: false, //to prevent keyboard from missing with the layout
 
       /// App Bar
       appBar: AppBar(

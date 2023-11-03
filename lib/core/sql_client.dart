@@ -23,7 +23,7 @@ class SqlClient {
   //initialize database
   Future<Database> _initDB() async{
     String path = join(await getDatabasesPath(), 'BookDatabase.db');
-    return await openDatabase(path, version: 15, onCreate: _createDB, onUpgrade: _onUpgrade);
+    return await openDatabase(path, version: 20, onCreate: _createDB, onUpgrade: _onUpgrade);
   }
 
 

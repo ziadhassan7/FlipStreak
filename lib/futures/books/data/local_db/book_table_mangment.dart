@@ -27,7 +27,8 @@ class BookTable {
 
     //Migrate from version...
 
-    //Migrate from version 14 or older
+    ///Migrate from version 14 or older
+    //(Adding a new column)
     if (oldVersion <= 14) {
       await db.execute('''
       ALTER TABLE $tableBook

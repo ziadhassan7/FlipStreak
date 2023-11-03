@@ -7,7 +7,7 @@ class BottomBarController {
     double screenWidth = AppScreen(context).width;
 
     if(text.length > screenWidth/20){
-      return screenWidth * 0.4;
+      return screenWidth * 0.38;
     }
 
     return null;

@@ -32,10 +32,11 @@ class AllowNotificationButton extends StatelessWidget {
   }
 
   void actAsFinishButton(BuildContext context){
-    NotificationUtil.requestPermission().then((value) {
-      //Navigate to Home Page
-      AppRouter.navigateTo(context, IndexPage(), isReplace: true);
-      //App First Open: false
+    NotificationUtil.requestPermission().then((isGranted) {
+      //Navigate to Home Page,
+      //and Open battery_optimization if permission granted
+      AppRouter.navigateTo(context, IndexPage(askForBatteryOptimization: isGranted ?? false,), isReplace: true);
+      //App First-Open-State: false
       hiveClient.updateFirstOpenState();
     });
   }

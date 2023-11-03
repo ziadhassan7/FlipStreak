@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flip_streak/core/constants/color_constants.dart';
-import 'package:flip_streak/index_page/index_page.dart';
 import 'package:flip_streak/recieve_share_intent/recieve_share_intent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -84,7 +83,7 @@ class _MyAppState extends State<MyApp> {
       return const WelcomeScreen();
 
     } else {
-      return IndexPage();
+      return WelcomeScreen();
     }
   }
 

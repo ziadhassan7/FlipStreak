@@ -1,5 +1,5 @@
 import 'package:flip_streak/futures/goal/presentation/managers/state_manager/welcome_screen_provider.dart';
-import 'package:flip_streak/futures/goal/presentation/pages/welcome/view/allow_notification_button.dart';
+import 'package:flip_streak/futures/goal/presentation/pages/welcome/widget/allow_notification_button.dart';
 import 'package:flip_streak/futures/goal/presentation/pages/welcome/view/info_widget.dart';
 import 'package:flip_streak/futures/goal/presentation/pages/welcome/view/navigation_widget.dart';
 import 'package:flutter/material.dart';

@@ -47,8 +47,8 @@ class NextButton extends ConsumerWidget {
 
       case Pages.thirdPage:
         //Navigate to Home Page
-        AppRouter.navigateTo(context, IndexPage(askForBatteryOptimization: true,), isReplace: true);
-        //App First Open: false
+        AppRouter.navigateTo(context, IndexPage(), isReplace: true);
+        //App First-Open-State: false
         hiveClient.updateFirstOpenState();
         break;
     }

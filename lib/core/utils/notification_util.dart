@@ -66,10 +66,11 @@ class NotificationUtil {
 
   ///Permission
   //Request Permissions, for android 13 or higher
-  static Future<void> requestPermission() async {
+  static Future<bool?> requestPermission() async {
     FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
-    await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+
+    return await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
   }
 

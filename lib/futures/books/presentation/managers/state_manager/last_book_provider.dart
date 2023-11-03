@@ -25,6 +25,12 @@ class LastBookProvider extends StateNotifier<BookModel?>{
     state = bookModel;
   }
 
+  void updateBookName(BookModel oldBook, String newName){
+    BookModel newBook = oldBook.copyWith(id: newName);
+    hive.saveLastBook(newName);
+    state = newBook;
+  }
+
   void updateLastPage(BookModel bookModel, int page){
     bookModel = bookModel.copyWith(lastPage: page);
     state = bookModel;

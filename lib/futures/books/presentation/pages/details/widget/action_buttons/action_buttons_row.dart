@@ -11,28 +11,30 @@ class ActionButtonsRow extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 
         /// Button - Circular Favourite
         BookNotesButton(size: size),
 
         /// Button - Continue Reading
-        Expanded(child: ReadButton(height: size+10,)),
+        Expanded(child: ReadButton(height: size+10,))
 
       ],
     );
   }
 
-  //adaptive but not suitable for landscape tablets
-  double getWidgetAdaptiveWidth(context){
-    double screenWidth = MediaQuery.of(context).size.width;
 
-    //on breakpoint
-    if(screenWidth > 650){
-      return 500;
+  Widget _adaptiveReadButton(double screenWidth, double widgetHeight){
+
+    if(screenWidth > 700) {
+      return SizedBox(
+        width: 300,
+        child: ReadButton(height: widgetHeight,),
+      );
 
     } else {
-      return screenWidth *0.65;
+      return Expanded(child: ReadButton(height: widgetHeight,));
     }
   }
 }

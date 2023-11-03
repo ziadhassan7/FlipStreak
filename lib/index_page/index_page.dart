@@ -146,7 +146,7 @@ class IndexPage extends ConsumerWidget {
       return screenWidth*0.1;
 
     }else {
-      return 45;
+      return 25;
     }
   }
 }

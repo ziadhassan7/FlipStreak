@@ -46,12 +46,16 @@ class AddBookUtil {
     // dismiss if filePath is empty
     if(filePath == null) return ShareIntentStatus.failure;
 
+
+    //--------------
+    String fileName = basename(filePath).replaceAll(".pdf", "");
+
     // check for duplicates
-    if(await _isDuplicate(basename(filePath)) == false) {
+    if(await _isDuplicate(fileName) == false) {
       String newPath = await FileUtility.copyFile(File(filePath));
 
       model = BookModel(
-          id: basename(filePath).replaceAll(".pdf", ""),
+          id: fileName,
           path: newPath,
           bookmarks: null,
           lastPage: 0,

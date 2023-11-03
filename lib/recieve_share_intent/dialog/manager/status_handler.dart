@@ -13,9 +13,9 @@ class StatusHandler {
 
 
   openBook(BuildContext context, String filePath) {
-    String bookId = basename(filePath);
+    String bookId = basename(filePath).replaceAll(".pdf", "");
 
-    //Get bookModel from filePath
+    //Get bookModel
     _bookClient.readOneElement(bookId).then((receivedBook) {
 
       //Globalize this book across application

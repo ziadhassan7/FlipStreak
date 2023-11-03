@@ -66,7 +66,7 @@ class LibraryMenuIcon extends ConsumerWidget {
         }
 
         if (value == 3) {
-          DeleteBookDialog(context, ref, bookId: selectedBook.id,);
+          DeleteBookDialog(context, ref, bookId: selectedBook.id, filePath: selectedBook.path);
         }
       }
     );

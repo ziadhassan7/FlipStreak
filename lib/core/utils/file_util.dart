@@ -38,10 +38,8 @@ class FileUtility {
   }
 
 
-  static Future<bool> deleteFile(String fileName) async {
+  static Future<bool> deleteFile(String fileName, String filePath) async {
     BookClient bookClient = BookClient.instance;
-    String dist = await getAppPath();
-    String filePath = '$dist/$fileName';
     File file = File(filePath);
 
     try {

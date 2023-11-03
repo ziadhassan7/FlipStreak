@@ -50,7 +50,8 @@ class AddBookUtil {
     if(await _isDuplicate(basename(filePath)) == false) {
       String newPath = await FileUtility.copyFile(File(filePath));
 
-      model = BookModel(id: basename(filePath),
+      model = BookModel(
+          id: basename(filePath).replaceAll(".pdf", ""),
           path: newPath,
           bookmarks: null,
           lastPage: 0,

@@ -14,10 +14,11 @@ class DeleteBookDialog {
   BuildContext context;
   WidgetRef ref;
   String bookId;
+  String filePath;
 
   HiveClient hiveClient = HiveClient();
 
-  DeleteBookDialog( this.context, this.ref, {required this.bookId}) {
+  DeleteBookDialog( this.context, this.ref, {required this.bookId, required this.filePath}) {
 
     ZDialog(
         context,
@@ -34,7 +35,7 @@ class DeleteBookDialog {
   }
 
   Future<void> deleteBook() async {
-    bool isDeleted = await FileUtility.deleteFile(bookId);
+    bool isDeleted = await FileUtility.deleteFile(bookId, filePath);
 
 
     if(isDeleted) {

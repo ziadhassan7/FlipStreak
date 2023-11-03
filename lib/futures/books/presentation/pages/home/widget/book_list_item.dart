@@ -10,9 +10,8 @@ import '../../../managers/controllers/book_controller.dart';
 import '../../details/screen/detail_page.dart';
 
 class BookListItem extends ConsumerWidget {
-  const BookListItem({Key? key, required this.bookName, required this.bookModel}) : super(key: key);
+  const BookListItem({Key? key,required this.bookModel}) : super(key: key);
 
-  final String? bookName;
   static int selectedCard = -1;
 
   final BookModel bookModel;
@@ -34,7 +33,7 @@ class BookListItem extends ConsumerWidget {
       /// Long Press
       onLongPress: () {
         //open dialog to delete book
-        DeleteBookDialog(context, ref, bookId: bookName!,);
+        DeleteBookDialog(context, ref, bookId: bookModel.id, filePath: bookModel.path);
       },
 
 
@@ -48,7 +47,7 @@ class BookListItem extends ConsumerWidget {
 
           Padding(
             padding: const EdgeInsets.only(top: 5.0),
-            child: customTextWidget(bookName ?? "No Name", true),
+            child: customTextWidget(bookModel.id, true),
           ),
         ],
       ),

@@ -49,7 +49,7 @@ class PdfViewer extends ConsumerWidget {
           pdfController = controller;
 
           //show scrollbar, unless total pages is 0
-          if(bookModel.lastPage != 0){
+          if(bookModel.totalPages != 0){
             ref.read(pdfViewLoadedProvider.notifier).show();
           }
           //show topBar

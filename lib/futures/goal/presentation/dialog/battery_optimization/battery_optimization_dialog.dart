@@ -12,7 +12,7 @@ class BatteryOptimizationDialog {
       context,
 
       disableTintColor: true,
-      dominantButtonTitle: "Disable",
+      dominantButtonTitle: "Turn Off",
       dominantButtonFunction: () async => await askToDisableBatteryOptimization(),
 
       child: const OptimizationView(),

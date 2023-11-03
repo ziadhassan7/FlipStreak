@@ -36,49 +36,48 @@ class PdfViewer extends ConsumerWidget {
     return ColorFiltered(
       colorFilter: _pageFilter,
 
-      child: Stack(
-        children: [
+      child: PDFView(
+        filePath: bookModel.path,
+        defaultPage: openInitialPage(),
+        swipeHorizontal: false,
+        autoSpacing: false, //
+        pageFling: false, //
+        pageSnap: false, //
+        nightMode: false,
 
-          PDFView(
-            filePath: bookModel.path,
-            defaultPage: openInitialPage(),
-            swipeHorizontal: false,
-            autoSpacing: false, //
-            pageFling: false, //
-            pageSnap: false, //
-            nightMode: false,
+        onViewCreated: (controller){
+          pdfController = controller;
 
-            onViewCreated: (controller){
-              pdfController = controller;
+          //show scrollbar, unless total pages is 0
+          if(bookModel.lastPage != 0){
+            ref.read(pdfViewLoadedProvider.notifier).show();
+          }
+          //show topBar
+          ref.read(topbarProvider.notifier).keepOpen();
+        },
 
-              ref.read(pdfViewLoadedProvider.notifier).show();
-              ref.read(topbarProvider.notifier).keepOpen();
-            },
+        onPageChanged: (int? page, int? total) {
+          int lastPage = bookModel.lastPage;
+          int currentPage = page ?? 0;
 
-            onPageChanged: (int? page, int? total) {
-              int lastPage = bookModel.lastPage;
-              int currentPage = page ?? 0;
+          // update counters & states
+          if (currentPage > lastPage) {
+            updateOnPageScroll(ref, newPage: currentPage, isIncrement: true);
+          }
+          if (currentPage < lastPage){
+            updateOnPageScroll(ref, newPage: currentPage, isIncrement: false);
+          }
 
-              // update counters & states
-              if (currentPage > lastPage) {
-                updateOnPageScroll(ref, newPage: currentPage, isIncrement: true);
-              }
-              if (currentPage < lastPage){
-                updateOnPageScroll(ref, newPage: currentPage, isIncrement: false);
-              }
+          //update completion state
+          if(currentPage == bookModel.totalPages) {
+            markAsComplete();
+          }
 
-              //update completion state
-              if(currentPage == bookModel.totalPages) {
-                markAsComplete();
-              }
-
-              //refresh fab button
-              checkFab(ref);
-              //update scroll view position
-              updateScrollIndicatorPosition(context, ref, currentPage);
-            },
-          ),
-        ],
+          //refresh fab button
+          checkFab(ref);
+          //update scroll view position
+          updateScrollIndicatorPosition(context, ref, currentPage);
+        },
       ),
     );
   }

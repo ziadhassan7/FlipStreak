@@ -1,9 +1,10 @@
 import 'package:flip_streak/futures/books/presentation/managers/controllers/helpers/add_book_util.dart';
-import 'package:flip_streak/futures/books/presentation/pages/library/screen/library_page.dart';
+import 'package:flip_streak/index_page/index_page.dart';
 import 'package:flip_streak/recieve_share_intent/dialog/failure_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sharing_intent/model/sharing_file.dart';
+import '../index_page/nav_bar_provider.dart';
 import 'dialog/already_added_dialog.dart';
 import 'dialog/success_dialog.dart';
 
@@ -28,7 +29,9 @@ class ReceiveShareIntent extends ConsumerWidget {
               WidgetsBinding.instance
                   .addPostFrameCallback((_) => _openShareIntentDialogIfExist(context, status));
 
-              return const LibraryPage();
+              //open on library page
+              ref.read(navBarProvider.notifier).changeIndex(1);
+              return IndexPage();
 
             } else {
               return const Center(child: CircularProgressIndicator(),);

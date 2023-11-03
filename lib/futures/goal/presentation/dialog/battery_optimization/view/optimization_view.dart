@@ -32,6 +32,7 @@ class OptimizationView extends StatelessWidget {
 
             size: 12,
             color: Colors.black38,
+            maxLine: 5,
           ),
 
           _alignmentSpace(),
@@ -42,6 +43,7 @@ class OptimizationView extends StatelessWidget {
             size: 12,
             weight: FontWeight.bold,
             color: Colors.black38,
+            maxLine: 5,
           ),
 
         ],
@@ -55,7 +57,7 @@ class OptimizationView extends StatelessWidget {
     return Padding(
       padding: const CustomPadding.all(15),
 
-      child: SvgPicture.asset("assets/illustrations/done.svg"),
+      child: SvgPicture.asset("assets/illustrations/optimize_battery_ill.svg"),
     );
   }
 

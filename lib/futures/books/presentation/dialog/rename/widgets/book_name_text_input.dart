@@ -15,7 +15,7 @@ class BookNameTextInput extends StatelessWidget {
       children: [
         alignmentSpace(),
 
-        const TextView("Rename Book", size: 16, color: colorAccent,),
+        const TextView("Rename Book", size: 16, weight: FontWeight.bold,),
 
         alignmentSpace(),
 
@@ -35,6 +35,6 @@ class BookNameTextInput extends StatelessWidget {
   }
 
   Widget alignmentSpace(){
-    return const SizedBox(height: 10,);
+    return const SizedBox(height: 6,);
   }
 }

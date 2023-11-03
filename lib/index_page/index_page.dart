@@ -1,4 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
+import 'package:flip_streak/futures/goal/presentation/dialog/battery_optimization/battery_optimization_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,12 +11,20 @@ import '../futures/notes/presentation/pages/note_index/screen/notes_page.dart';
 import 'nav_bar_provider.dart';
 
 class IndexPage extends ConsumerWidget {
-  IndexPage({Key? key}) : super(key: key);
+  IndexPage({Key? key, this.askForBatteryOptimization = false}) : super(key: key);
 
   int _currentIndex = 0;
+  bool askForBatteryOptimization;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    //ask for battery optimization, if allowed
+    if(askForBatteryOptimization){
+      WidgetsBinding.instance
+          .addPostFrameCallback((_) => BatteryOptimizationDialog(context));
+    }
+
 
     _currentIndex = ref.watch(navBarProvider);
 

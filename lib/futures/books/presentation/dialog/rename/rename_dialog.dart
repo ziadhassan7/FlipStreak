@@ -18,6 +18,7 @@ class RenameDialog {
 
   RenameDialog(this.context, this.ref, {required this.book}) {
 
+    controller.text = book.id; //set initial value to old name
 
     ZDialog(
         context,

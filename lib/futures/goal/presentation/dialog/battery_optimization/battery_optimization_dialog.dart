@@ -11,15 +11,17 @@ class BatteryOptimizationDialog {
     ZDialog(
       context,
 
-      dominantButtonFunction: () => askToDisableBatteryOptimization,
+      disableTintColor: true,
+      dominantButtonTitle: "Disable",
+      dominantButtonFunction: () async => await askToDisableBatteryOptimization(),
 
       child: const OptimizationView(),
     );
   }
 
 
-  askToDisableBatteryOptimization(){
-    BatteryOptimizationUtil.disableBatteryOptimization();
+  askToDisableBatteryOptimization() async {
+    await BatteryOptimizationUtil.disableBatteryOptimization();
   }
 
 }

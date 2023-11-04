@@ -38,15 +38,12 @@ class ListItem extends StatelessWidget {
             children: [
 
               /// Thumbnail Book
-              Expanded(
-                flex: 2,
-                child: SizedBox(
-                  height: 90,
-                  child: BookThumbnail(filePath: book.path)),
-              ),
+              SizedBox(
+                height: 90,
+                width: 70,
+                child: BookThumbnail(filePath: book.path)),
 
               Expanded(
-                flex: 7,
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   height: 60,
@@ -75,16 +72,11 @@ class ListItem extends StatelessWidget {
                 ),
               ),
 
-
-
               /// menu Icon
               Theme(
                 data: ThemeData(useMaterial3: true, colorScheme: ColorScheme.fromSeed(seedColor: colorAccent),),
 
-                child: Expanded(
-                  flex: 1,
-                  child: LibraryMenuIcon(selectedBook: book,),
-                ),
+                child: LibraryMenuIcon(selectedBook: book,),
               )
             ],
           ),

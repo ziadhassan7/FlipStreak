@@ -46,7 +46,6 @@ class CompletedBooksWidget extends StatelessWidget {
               crossAxisCount: 3,
               items: books,
               sortBy: (element){
-                //PrintDebug("achiv", "${element.id}, ${element.completeDate}");
                 int year = DateTime.parse(element.completeDate!).year;
                 return year;
               },
@@ -67,8 +66,8 @@ class CompletedBooksWidget extends StatelessWidget {
                 },
 
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 2 / 3.1,
+                  maxCrossAxisExtent: 80,
+                  childAspectRatio: 5 / 9,
                   crossAxisSpacing: 25,
                   mainAxisSpacing: 15),
             )

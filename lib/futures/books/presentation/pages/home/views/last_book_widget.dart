@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/app_router.dart';
 import '../../../../../../core/constants/color_constants.dart';
+import '../../../../../../core/styles/padding.dart';
 import '../../../../../app_common_views/book_thumbnail.dart';
 import '../../../../data/model/book_model.dart';
 import '../../../managers/controllers/book_controller.dart';
@@ -61,17 +62,19 @@ class LastBookWidget extends ConsumerWidget {
                 children: [
 
                   /// Book Thumbnail
-                  Expanded(
-                    flex: 4,
-                    child: InkWell(
-                      onTap: () async => await onTap(context, model),
-                      child: BookThumbnail(filePath: model.path, page: model.lastPage,)),
+                  Padding(
+                    padding: const CustomPadding(right: 25),
+                    child: SizedBox(
+                      height: 100, width: 75,
+
+                      child: InkWell(
+                        onTap: () async => await onTap(context, model),
+                        child: BookThumbnail(filePath: model.path, page: model.lastPage,)),
+                    ),
                   ),
 
-                  const Spacer(),
 
                   Expanded(
-                    flex: 7, //it takes this space
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,

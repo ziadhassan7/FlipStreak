@@ -119,7 +119,7 @@ class LastBookWidget extends ConsumerWidget {
       children: [
         /// Progress Bar
         Expanded(
-            flex: 3,
+            flex: 4,
             child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 child: LinearProgressIndicator(

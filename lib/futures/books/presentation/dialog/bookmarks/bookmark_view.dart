@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flip_streak/core/styles/padding.dart';
+import 'package:flutter/widgets.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
 import 'bookmark_dialog_list.dart';
 
@@ -16,9 +17,10 @@ class BookmarkView extends StatelessWidget {
       child: Column(
         children: [
 
-          const TextView("Saved Bookmarks"),
-
-          const SizedBox(height: 20,),
+          const Padding(
+            padding: CustomPadding(top: 8, bottom: 26),
+            child: TextView("Saved Bookmarks", size: 16, weight: FontWeight.bold,),
+          ),
 
           Expanded(
             child: GridView.builder(

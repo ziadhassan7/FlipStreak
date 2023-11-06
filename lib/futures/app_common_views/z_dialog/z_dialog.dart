@@ -220,7 +220,7 @@ class ZDialog {
     this.context,
     {
       this.backgroundColor = Colors.white,
-      this.disableTintColor = true,
+      this.disableTintColor = false,
       required Widget view,
     }){
     _showCustomDialog(view);
@@ -232,6 +232,8 @@ class ZDialog {
         builder: (BuildContext context)
         {
           return AlertDialog(
+            surfaceTintColor: disableTintColor ? backgroundColor : null,
+            backgroundColor: backgroundColor,
             /// Child Content Widget
             content: SingleChildScrollView(child: widget),
           );

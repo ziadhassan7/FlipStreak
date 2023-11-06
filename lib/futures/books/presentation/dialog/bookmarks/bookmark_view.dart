@@ -1,7 +1,7 @@
 import 'package:flip_streak/core/styles/padding.dart';
 import 'package:flutter/widgets.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
-import 'bookmark_dialog_list.dart';
+import 'bookmark_dialog_item.dart';
 
 class BookmarkView extends StatelessWidget {
   const BookmarkView({Key? key, required this.list}) : super(key: key);
@@ -34,7 +34,7 @@ class BookmarkView extends StatelessWidget {
                 itemCount: list.length,
                 itemBuilder: (context, index) {
 
-                  return BookmarkDialogList(dialogContext: context, page: list[index]);
+                  return BookmarkDialogItem(dialogContext: context, page: list[index]);
                 }
             ),
           ),

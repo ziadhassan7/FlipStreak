@@ -4,8 +4,8 @@ import '../../../../app_common_views/text_view/text_view.dart';
 import '../../managers/controllers/book_controller.dart';
 import '../../managers/controllers/page_controller.dart';
 
-class BookmarkDialogList extends StatelessWidget {
-  const BookmarkDialogList({Key? key, required this.dialogContext, required this.page}) : super(key: key);
+class BookmarkDialogItem extends StatelessWidget {
+  const BookmarkDialogItem({Key? key, required this.dialogContext, required this.page}) : super(key: key);
 
   final BuildContext dialogContext;
   final String page;

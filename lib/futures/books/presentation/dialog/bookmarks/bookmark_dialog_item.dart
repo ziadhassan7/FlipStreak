@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app_common_views/book_thumbnail.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
 import '../../managers/controllers/book_controller.dart';
 import '../../managers/controllers/page_controller.dart';
+import '../remove_bookmark/remove_bookmark_dialog.dart';
 
-class BookmarkDialogItem extends StatelessWidget {
+class BookmarkDialogItem extends ConsumerWidget {
   const BookmarkDialogItem({Key? key, required this.dialogContext, required this.page}) : super(key: key);
 
   final BuildContext dialogContext;
   final String page;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
 
       // click handler
       onTap: () {
         pdfController.setPage(int.parse(page));
         Navigator.pop(dialogContext);
+      },
+      onLongPress: (){
+        RemoveBookmarkDialog(context, ref, page);
       },
 
       // widget

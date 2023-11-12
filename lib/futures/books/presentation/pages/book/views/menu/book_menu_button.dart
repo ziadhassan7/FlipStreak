@@ -36,7 +36,7 @@ class BookMenuButton extends StatelessWidget {
               functions: (value) async{
                 if(value == 0){
                   //open Dialog showing list of bookmarks
-                  BookmarksDialog(context, ref);
+                  BookmarksDialog(context);
                 }
               }
 

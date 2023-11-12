@@ -15,14 +15,13 @@ class BookmarkList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    //Get Bookmarks
-    final List<String> bookmarks = ref.watch(bookmarkListProvider);
+    List<String> allBookmarks = ref.watch(bookmarkListProvider);
 
     return Padding(
       padding: const CustomPadding(horizontal: 10),
 
       child:
-        (bookmarks.isNotEmpty)
+        (allBookmarks.isNotEmpty)
         ? Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,10 +37,10 @@ class BookmarkList extends ConsumerWidget {
             Expanded(
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: bookmarks.length,
+                    itemCount: allBookmarks.length,
                     itemBuilder: (context, index){
 
-                      return BookmarkListItem(page: bookmarks[index]);
+                      return BookmarkListItem(page: allBookmarks[index]);
                     })
               ),
           ],

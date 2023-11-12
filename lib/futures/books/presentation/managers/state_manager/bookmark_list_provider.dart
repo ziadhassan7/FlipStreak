@@ -23,13 +23,13 @@ class BookmarkListProvider extends StateNotifier<List<String>> {
 
 
   /// Returns All Items
-  void listFiles() async {
+  Future<void> listFiles() async {
     //Get List of all bookmarks
     await updateNotifier();
   }
 
-  /// Add New Note
-  void updateList(String currentPage, List<String> allBookmarks) async {
+  /// Add New Page
+  Future<void> updateList(String currentPage, List<String> allBookmarks) async {
     //Add / Remove
     if (!allBookmarks.contains(currentPage)) {
       // add page to bookmarks
@@ -51,8 +51,27 @@ class BookmarkListProvider extends StateNotifier<List<String>> {
     await updateNotifier();
   }
 
-  /// Add New Note
-  void toggleBookmarkButton() async {
+  /// Remove Page
+  void removePageFromBookmark(String page) async {
+
+    //get list of bookmarks from current book
+    List<String> allBookmarks = await getBookmarkedPages(bookModel.id);
+
+    // remove bookmarked page
+    allBookmarks.remove(page);
+    //update BookModel
+    bookModel = bookModel.copyWith(bookmarks: allBookmarks.toString(),);
+
+    //Update Database
+    bookClient.updateItem(bookModel);
+
+    //Get List of all bookmarks
+    await updateNotifier();
+  }
+
+
+  /// Refresh Fab
+  Future<void> toggleBookmarkButton() async {
     //Get List of all bookmarks
     await updateNotifier();
   }

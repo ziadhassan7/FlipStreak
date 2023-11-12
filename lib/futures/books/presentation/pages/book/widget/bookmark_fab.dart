@@ -17,7 +17,7 @@ class BookmarkFab extends ConsumerWidget {
     final Color backgroundColor = isBright ? dominateColor : darkPrimary;
     final Color foregroundColor = isBright ? subColor : darkSecondary;
 
-    //listen for bookmarks list
+    //Bookmarked Pages
     List<String> allBookmarks = ref.watch(bookmarkListProvider);
 
     return FutureBuilder(

@@ -4,7 +4,6 @@ import '../../../../../../../core/constants/color_constants.dart';
 import '../../../../../../app_common_views/menu/menu_widget.dart';
 import '../../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../dialog/bookmarks/bookmarks_dialog.dart';
-import '../../../../managers/controllers/book_controller.dart';
 import '../../../../managers/state_manager/bright_mode_provider.dart';
 import 'color_picker.dart';
 
@@ -37,8 +36,7 @@ class BookMenuButton extends StatelessWidget {
               functions: (value) async{
                 if(value == 0){
                   //open Dialog showing list of bookmarks
-                  BookmarksDialog(context,
-                      await getBookmarkedPages(bookModel.id));
+                  BookmarksDialog(context, ref);
                 }
               }
 

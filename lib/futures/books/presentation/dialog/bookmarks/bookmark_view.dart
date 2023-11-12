@@ -1,15 +1,17 @@
 import 'package:flip_streak/core/styles/padding.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
 import 'bookmark_dialog_item.dart';
 
-class BookmarkView extends StatelessWidget {
+class BookmarkView extends ConsumerWidget {
   const BookmarkView({Key? key, required this.list}) : super(key: key);
 
   final List list;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
     return SizedBox(
       width: MediaQuery.of(context).size.width *0.8,
       height: MediaQuery.of(context).size.height *0.6,

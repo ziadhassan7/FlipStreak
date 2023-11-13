@@ -34,7 +34,7 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
   @override
   Widget build(BuildContext context,) {
 
-    final categoriesList = ref.watch(categoriesProvider);
+    final categoriesList = ref.watch(categoriesProvider).reversed.toList();
 
     return SizedBox(
       height: getHeight(context),
@@ -60,7 +60,8 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
               itemBuilder: (context, index){
 
                 return AttacherCategoryMenuItem(
-                  categoriesList[index], index,
+                  categoriesList[index],
+                  flipIndex(index, categoriesList.length),
                   currentBook: widget.currentBook,);
               },
 
@@ -76,6 +77,13 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
         ],
       ),
     );
+  }
+
+  //list is inverted so you need to flip the index
+  int flipIndex(int index, int length){
+    //[0,1,2,3,4]
+    //[4,3,2,1,0]
+    return length - index;
   }
 
   //category height

@@ -1,3 +1,4 @@
+import 'package:flip_streak/futures/books/presentation/dialog/category/category_attacher/view/widget/checkbox_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/color_constants.dart';
@@ -5,7 +6,6 @@ import '../../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../../data/model/book_model.dart';
 import '../../../../managers/state_manager/categories_provider.dart';
 import '../../../category/add_item_button.dart';
-import '../widget/checkbox_item.dart';
 
 class AttacherView extends ConsumerWidget {
   const AttacherView({Key? key, required this.currentBook}) : super(key: key);

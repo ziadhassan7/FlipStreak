@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../../core/constants/color_constants.dart';
-import '../../../../../../app_common_views/text_view/text_view.dart';
-import '../../../../managers/state_manager/filter_provider.dart';
+import '../../../../../../../app_common_views/text_view/text_view.dart';
+import '../../../../../managers/state_manager/filter_provider.dart';
 
 class NormalCheckboxItemState extends ConsumerWidget {
   const NormalCheckboxItemState(

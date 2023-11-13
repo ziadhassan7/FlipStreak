@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widget/edit_checkbox_item_state.dart';
-import '../widget/normal_checkbox_item_state.dart';
+import 'widget/edit_checkbox_item_state.dart';
+import 'widget/normal_checkbox_item_state.dart';
 
 class AttacherCategoryMenuItem extends StatefulWidget {
   const AttacherCategoryMenuItem(

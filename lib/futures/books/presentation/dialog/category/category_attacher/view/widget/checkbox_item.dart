@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../../../core/constants/color_constants.dart';
-import '../../../../../../app_common_views/text_view/text_view.dart';
-import '../../../../../data/model/book_model.dart';
-import '../category_attacher_dialog.dart';
+import '../../../../../../../../core/constants/color_constants.dart';
+import '../../../../../../../app_common_views/text_view/text_view.dart';
+import '../../../../../../data/model/book_model.dart';
+import '../../category_attacher_dialog.dart';
 
 class CheckboxItem extends StatefulWidget {
   const CheckboxItem({Key? key, required this.catTitle, required this.currentBook}) : super(key: key);

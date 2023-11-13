@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widget/edit_item_state.dart';
-import '../widget/normal_item_state.dart';
+import 'widget/edit_item_state.dart';
+import 'widget/normal_item_state.dart';
 
 
 class CategoryMenuItem extends StatefulWidget {

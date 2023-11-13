@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../managers/state_manager/book_list_provider.dart';
 import '../../../../../managers/state_manager/categories_provider.dart';
-import '../../../../../managers/state_manager/filter_provider.dart';
 
 
 class EditCheckboxItemState extends ConsumerWidget {
   const EditCheckboxItemState(this.itemTitle, this.itemIndex,
-      {Key? key, required this.updateState, required this.currentCategory}) : super(key: key);
+      {Key? key, required this.updateState,}) : super(key: key);
 
   final String itemTitle;
   final int itemIndex;
   final Function() updateState;
-  final String currentCategory;
 
   static final TextEditingController editingController = TextEditingController();
 
@@ -34,12 +32,6 @@ class EditCheckboxItemState extends ConsumerWidget {
               //refresh list
               await ref.read(bookListProvider.notifier)
                   .deleteCatFromAllBooks(itemTitle);
-
-              //if current category got deleted, go back to All list
-              if (currentCategory == itemTitle) {
-                ref.read(filterProvider.notifier)
-                    .updateCategory("All");
-              }
 
               //call setState on widget
               updateState();
@@ -63,11 +55,6 @@ class EditCheckboxItemState extends ConsumerWidget {
               //refresh list
               await ref.read(bookListProvider.notifier)
                   .updateAllBooksWithNewCat(itemTitle, editingController.text);
-
-              if(currentCategory == itemTitle){
-                ref.read(filterProvider.notifier)
-                    .updateCategory(editingController.text);
-              }
 
               updateState();
             },

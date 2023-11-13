@@ -1,90 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../../core/constants/color_constants.dart';
 import '../../../../../../../app_common_views/text_view/text_view.dart';
-import '../../../../../managers/state_manager/filter_provider.dart';
+import '../../../../../../data/model/book_model.dart';
+import '../../category_attacher_dialog.dart';
 
-class NormalCheckboxItemState extends ConsumerWidget {
+class NormalCheckboxItemState extends StatefulWidget {
   const NormalCheckboxItemState(
-      this.itemTitle,
       {Key? key,
-        required this.currentCategory,
-        required this.isFirstWidget,
-        required this.paddingInBetween,
-        required this.updateState
-      }) : super(key: key);
+        required this.catTitle,
+        required this.currentBook,
+        required this.updateState,
+      })
+      : super(key: key);
 
-  final String itemTitle;
-  final String currentCategory;
-  final bool isFirstWidget;
-  final double paddingInBetween;
+  final String catTitle;
+  final BookModel currentBook;
   final Function() updateState;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    bool isCurrent = (currentCategory == itemTitle);
+  State<NormalCheckboxItemState> createState() => _NormalCheckboxItemStateState();
+}
 
-    /// OnTap
-    return InkWell(
-      onTap: (){
-        ref.read(filterProvider.notifier)
-            .updateCategory(itemTitle);
-        Navigator.pop(context);
-      },
+class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
+  static bool isChecked = false;
 
-      /// Decoration - if selected
-      child: Row(
-        children: [
-          Expanded(
-            flex: 5,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              decoration: isCurrent
-                  ? BoxDecoration(
-                  color: colorAccent.withOpacity(0.05),
-                  borderRadius: const BorderRadius.all(Radius.circular(30))
-              )
-              : null,
-
-              child: Row(
-                children: [
-                  /// Icon - if current category
-                  isCurrent
-                      ? Padding(
-                        padding: EdgeInsets.only(left: 10, right: paddingInBetween),
-                        child: Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color: colorAccent.withOpacity(0.1),
-                                borderRadius: const BorderRadius.all(Radius.circular(50))
-                            ),
-                            child: const Icon(Icons.done, color: colorAccent,)),
-                      )
-                      : SizedBox(width: 25+paddingInBetween,),
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        FutureBuilder(
+            future: CategoryAttacherDialog.getBookCategories(widget.currentBook),
+            builder: (context, AsyncSnapshot snapshot) {
 
 
-                  /// Text/Title
-                  Expanded(
-                      flex: 3,
-                      child: TextView(itemTitle, weight: FontWeight.bold, )),
-                ],
-              ),
-            ),
-          ),
+              if (snapshot.hasData){
+                //list all manu categories
+                List categories = snapshot.data!;
+                //check if book has this label
+                isChecked = categories.contains(widget.catTitle);
+                //show checkbox with current status
+                return customCheckbox();
 
-          const Spacer(),
+              } else {
+                return const Center(child: CircularProgressIndicator(),);
+              }
+            }
+        ),
 
-          /// Edit button, unless it's first widget
-          isFirstWidget
-              ? const SizedBox(height: 45,)
-              : IconButton(
-              onPressed: () {
-                updateState();
-              },
-              icon: const Icon(Icons.edit_rounded, color: Colors.black, size: 18,)
-          )
-        ],
-      ),
+        TextView(widget.catTitle),
+
+        const Spacer(),
+
+        IconButton(
+            onPressed: () {
+              widget.updateState();
+            },
+            icon: const Icon(Icons.edit_rounded, color: Colors.black, size: 18,)
+        )
+      ],
     );
   }
+
+  Widget customCheckbox(){
+
+    //Inside a dialog, checkboxes do not work correctly
+    //You need to wrap them in a statefulBuilder
+    return StatefulBuilder(
+      builder: (context, setState) {
+
+        return Checkbox(
+            activeColor: colorAccent,
+            value: isChecked,
+            onChanged: (newValue){
+
+              setState((){
+                isChecked = newValue!; //using newValue caused problems
+              });
+
+              newValue!
+                  ? CategoryAttacherDialog.currentCategories.add(widget.catTitle)
+                  : CategoryAttacherDialog.currentCategories.remove(widget.catTitle);
+            }
+        );
+      }
+    );
+  }
+
 }

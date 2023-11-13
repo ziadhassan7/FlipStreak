@@ -78,11 +78,11 @@ class NormalItemState extends ConsumerWidget {
           isFirstWidget
               ? const SizedBox(height: 45,)
               : IconButton(
-              onPressed: () {
-                updateState();
-              },
-              icon: const Icon(Icons.edit_rounded, color: Colors.black, size: 18,)
-          )
+                  onPressed: () {
+                    updateState();
+                  },
+                  icon: const Icon(Icons.edit_rounded, color: Colors.black, size: 18,)
+              )
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../data/model/book_model.dart';
 import 'widget/edit_checkbox_item_state.dart';
 import 'widget/normal_checkbox_item_state.dart';
 
@@ -7,15 +8,11 @@ class AttacherCategoryMenuItem extends StatefulWidget {
       this.itemTitle,
       this.itemIndex,
       {Key? key,
-        required this.currentCategory,
-        required this.isFirstWidget,
-        required this.paddingInBetween,}) : super(key: key);
+        required this.currentBook,}) : super(key: key);
 
+  final BookModel currentBook;
   final String itemTitle;
   final int itemIndex;
-  final String currentCategory;
-  final bool isFirstWidget;
-  final double paddingInBetween;
 
   @override
   State<AttacherCategoryMenuItem> createState() => _AttacherCategoryMenuItemState();
@@ -34,16 +31,13 @@ class _AttacherCategoryMenuItemState extends State<AttacherCategoryMenuItem> {
         widget.itemTitle,
         widget.itemIndex,
         updateState: toggleState,
-        currentCategory: widget.currentCategory,
-    )
+      )
 
       : NormalCheckboxItemState(
-        widget.itemTitle,
-        currentCategory: widget.currentCategory,
-        isFirstWidget: widget.isFirstWidget,
-        paddingInBetween: widget.paddingInBetween,
+        catTitle: widget.itemTitle,
+        currentBook: widget.currentBook,
         updateState: toggleState,
-    );
+      );
   }
 
 

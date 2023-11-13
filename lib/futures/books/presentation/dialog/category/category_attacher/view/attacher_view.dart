@@ -1,3 +1,4 @@
+import 'package:flip_streak/futures/books/presentation/dialog/category/save_buttons/save_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/color_constants.dart';
@@ -49,6 +50,11 @@ class AttacherView extends ConsumerWidget {
               separatorBuilder: (BuildContext context, int index)
               => const Divider(color: Colors.black12,) ,),
           ),
+
+
+
+          /// (Cancel-Save) Buttons
+          SaveButtons(currentBook: currentBook),
         ],
       ),
     );

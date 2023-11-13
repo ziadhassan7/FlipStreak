@@ -6,7 +6,6 @@ import '../../../../../app_common_views/z_dialog/z_dialog.dart';
 import '../../../../data/local_db/book_client.dart';
 import '../../../../data/model/book_model.dart';
 import '../../../managers/controllers/book_controller.dart';
-import '../../../managers/state_manager/book_list_provider.dart';
 
 class CategoryAttacherDialog {
 
@@ -21,18 +20,12 @@ class CategoryAttacherDialog {
 
     getBookCategories(currentBook);
 
-    ZDialog(
+    ZDialog.custom(
         context,
 
         disableTintColor: true,
 
-        dominantButtonFunction: (){
-          //Update book labels
-          ref.read(bookListProvider.notifier)
-              .updateBookCategories(currentBook, currentCategories);
-        },
-
-        child: AttacherView(currentBook: currentBook,)
+        view: AttacherView(currentBook: currentBook,)
 
     );
   }

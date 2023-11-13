@@ -1,4 +1,4 @@
-import 'package:flip_streak/futures/books/presentation/dialog/category/save_buttons/save_buttons.dart';
+import 'package:flip_streak/futures/books/presentation/dialog/category/category_attacher/view/save_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/color_constants.dart';
@@ -8,14 +8,21 @@ import '../../../../managers/state_manager/categories_provider.dart';
 import '../../../category/add_item_button.dart';
 import 'attacher_category_menu_item.dart';
 
-class AttacherView extends ConsumerWidget {
+class AttacherView extends ConsumerStatefulWidget {
   const AttacherView({Key? key, required this.currentBook}) : super(key: key);
 
   final BookModel currentBook;
   static const double _paddingInBetween = 20;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AttacherView> createState() => _AttacherViewState();
+}
+
+class _AttacherViewState extends ConsumerState<AttacherView> {
+  bool isVisible = false;
+
+  @override
+  Widget build(BuildContext context) {
 
     final categoriesList = ref.watch(categoriesProvider);
 
@@ -33,7 +40,7 @@ class AttacherView extends ConsumerWidget {
           ),
 
           /// Add new menu item -  Button
-          const AddItemButton(paddingInBetween: _paddingInBetween),
+          const AddItemButton(paddingInBetween: AttacherView._paddingInBetween),
 
 
           Expanded(
@@ -44,7 +51,7 @@ class AttacherView extends ConsumerWidget {
 
                 return AttacherCategoryMenuItem(
                     categoriesList[index], index,
-                    currentBook: currentBook);
+                    currentBook: widget.currentBook);
               },
 
               separatorBuilder: (BuildContext context, int index)
@@ -54,9 +61,18 @@ class AttacherView extends ConsumerWidget {
 
 
           /// (Cancel-Save) Buttons
-          SaveButtons(currentBook: currentBook),
+          // show when adding new category to a book
+          Visibility(
+              visible: isVisible,
+              child: SaveButtons(currentBook: widget.currentBook)),
         ],
       ),
     );
+  }
+
+  void showSaveButton(){
+    setState(() {
+      isVisible = true;
+    });
   }
 }

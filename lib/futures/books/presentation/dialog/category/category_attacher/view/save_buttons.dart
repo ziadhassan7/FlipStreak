@@ -1,16 +1,15 @@
 import 'package:flip_streak/futures/books/presentation/dialog/category/category_attacher/category_attacher_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../core/constants/color_constants.dart';
-import '../../../../../app_common_views/text_view/text_view.dart';
-import '../../../../data/model/book_model.dart';
-import '../../../managers/state_manager/book_list_provider.dart';
+import '../../../../../../../core/constants/color_constants.dart';
+import '../../../../../../app_common_views/text_view/text_view.dart';
+import '../../../../../data/model/book_model.dart';
+import '../../../../managers/state_manager/book_list_provider.dart';
 
 class SaveButtons extends ConsumerWidget {
   const SaveButtons({super.key, required this.currentBook});
 
   final BookModel currentBook;
-
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

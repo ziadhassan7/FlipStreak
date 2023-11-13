@@ -80,6 +80,9 @@ class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
               newValue!
                   ? CategoryAttacherDialog.currentCategories.add(widget.catTitle)
                   : CategoryAttacherDialog.currentCategories.remove(widget.catTitle);
+
+              //show save button
+
             }
         );
       }

@@ -62,7 +62,7 @@ class LampInfoDialog {
                 color: colorBrown,
               ),
               children: <TextSpan>[
-                TextSpan(text: 'When you finish your goal,\nthe lamp will'),
+                TextSpan(text: 'When you finish your goal, the \nlamp will'),
                 TextSpan(text: ' glow!', style: TextStyle(fontWeight: FontWeight.bold, color: _foregroundColor,)),
               ],
             ),

@@ -37,9 +37,7 @@ class AttacherView extends ConsumerWidget {
 
           Expanded(
             child:
-            categoriesList.isEmpty
-            ? const SizedBox()
-            : ListView.separated(
+            ListView.separated(
               itemCount: categoriesList.length,
               itemBuilder: (context, index){
 

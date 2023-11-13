@@ -2,6 +2,7 @@ import 'package:flip_streak/futures/books/presentation/dialog/category/category_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/color_constants.dart';
+import '../../../../../../../core/styles/device_screen.dart';
 import '../../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../../data/model/book_model.dart';
 import '../../../../managers/state_manager/categories_provider.dart';
@@ -27,7 +28,7 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
     final categoriesList = ref.watch(categoriesProvider);
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height *0.4,
+      height: getHeight(context),
       width: MediaQuery.of(context).size.width *0.8,
 
       child: Column(
@@ -71,9 +72,19 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
     );
   }
 
+  //save button state: show
   void showSaveButton(){
     setState(() {
       isVisible = true;
     });
+  }
+
+
+  //category height
+  double getHeight(BuildContext context){
+    double screenHeight = AppScreen(context).height;
+    if(screenHeight>450) return 450;
+
+    return screenHeight - 60;
   }
 }

@@ -10,12 +10,14 @@ class NormalCheckboxItemState extends StatefulWidget {
         required this.catTitle,
         required this.currentBook,
         required this.updateState,
+        required this.updateSaveButtonState,
       })
       : super(key: key);
 
   final String catTitle;
   final BookModel currentBook;
   final Function() updateState;
+  final Function() updateSaveButtonState;
 
   @override
   State<NormalCheckboxItemState> createState() => _NormalCheckboxItemStateState();
@@ -82,7 +84,7 @@ class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
                   : CategoryAttacherDialog.currentCategories.remove(widget.catTitle);
 
               //show save button
-
+              widget.updateSaveButtonState();
             }
         );
       }

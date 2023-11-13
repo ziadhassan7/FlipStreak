@@ -51,7 +51,8 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
 
                 return AttacherCategoryMenuItem(
                     categoriesList[index], index,
-                    currentBook: widget.currentBook);
+                    currentBook: widget.currentBook,
+                    saveButtonState: showSaveButton);
               },
 
               separatorBuilder: (BuildContext context, int index)

@@ -25,6 +25,7 @@ class CategoryAttacherDialog {
         context,
 
         disableTintColor: true,
+
         dominantButtonFunction: (){
           //Update book labels
           ref.read(bookListProvider.notifier)

@@ -46,7 +46,7 @@ class CategoryMenuView extends StatelessWidget {
                     itemBuilder: (context, index){
 
                       return categoriesList.isEmpty
-                          //Empty list should show just, "All"
+                          //Empty list should show just ("All")
                           ? CategoryMenuItem(
                               "All",
                               index-1,
@@ -55,7 +55,8 @@ class CategoryMenuView extends StatelessWidget {
                               paddingInBetween: _paddingInBetween,)
 
 
-                          //First item should be "All"
+                          //List not Empty
+                          //(First item should be "All", ...)
                           : index == 0
                             ? CategoryMenuItem(
                                 "All",

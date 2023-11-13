@@ -5,7 +5,7 @@ import '../../../../../../core/constants/color_constants.dart';
 import '../../../../../app_common_views/menu/menu_widget.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../data/model/book_model.dart';
-import '../../../dialog/category_attacher/category_attacher_dialog.dart';
+import '../../../dialog/category/category_attacher/category_attacher_dialog.dart';
 import '../../../dialog/delete_book/delete_book_dialoq.dart';
 import '../../../managers/controllers/book_controller.dart';
 import '../../../managers/state_manager/book_list_provider.dart';

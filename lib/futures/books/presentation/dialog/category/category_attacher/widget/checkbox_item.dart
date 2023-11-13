@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../../../core/constants/color_constants.dart';
-import '../../../../../app_common_views/text_view/text_view.dart';
-import '../../../../data/model/book_model.dart';
+import '../../../../../../app_common_views/text_view/text_view.dart';
+import '../../../../../data/model/book_model.dart';
 import '../category_attacher_dialog.dart';
 
 class CheckboxItem extends StatefulWidget {

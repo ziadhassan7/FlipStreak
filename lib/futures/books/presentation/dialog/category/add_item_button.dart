@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../managers/state_manager/categories_provider.dart';
+import '../../managers/state_manager/categories_provider.dart';
 
 
 class AddItemButton extends ConsumerStatefulWidget {

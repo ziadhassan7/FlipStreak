@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/constants/color_constants.dart';
 import '../../../../../../core/shared_pref/hive_client.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
-import '../../../dialog/category_menu/category_menu.dart';
+import '../../../dialog/category/category_menu/category_menu.dart';
 import '../../../managers/state_manager/filter_provider.dart';
 
 class FilterBar extends ConsumerWidget {

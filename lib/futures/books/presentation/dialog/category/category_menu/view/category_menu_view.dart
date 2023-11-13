@@ -1,10 +1,10 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
 import 'package:flip_streak/core/styles/device_screen.dart';
-import 'package:flip_streak/futures/books/presentation/dialog/category_menu/view/widget/add_item_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../app_common_views/text_view/text_view.dart';
-import '../../../managers/state_manager/categories_provider.dart';
+import '../../../../../../app_common_views/text_view/text_view.dart';
+import '../../../../managers/state_manager/categories_provider.dart';
+import '../../add_item_button.dart';
 import 'category_menu_item.dart';
 
 class CategoryMenuView extends StatelessWidget {

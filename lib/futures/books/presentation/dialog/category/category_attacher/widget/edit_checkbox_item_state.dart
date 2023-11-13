@@ -5,8 +5,8 @@ import '../../../../managers/state_manager/categories_provider.dart';
 import '../../../../managers/state_manager/filter_provider.dart';
 
 
-class EditItemState extends ConsumerWidget {
-  const EditItemState(this.itemTitle, this.itemIndex,
+class EditCheckboxItemState extends ConsumerWidget {
+  const EditCheckboxItemState(this.itemTitle, this.itemIndex,
       {Key? key, required this.updateState, required this.currentCategory}) : super(key: key);
 
   final String itemTitle;

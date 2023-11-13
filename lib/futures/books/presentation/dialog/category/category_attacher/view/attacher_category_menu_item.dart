@@ -7,15 +7,11 @@ class AttacherCategoryMenuItem extends StatefulWidget {
   const AttacherCategoryMenuItem(
       this.itemTitle,
       this.itemIndex,
-      {Key? key,
-        required this.currentBook,
-        required this.saveButtonState,
-      }) : super(key: key);
+      {Key? key, required this.currentBook,}) : super(key: key);
 
   final String itemTitle;
   final int itemIndex;
   final BookModel currentBook;
-  final Function() saveButtonState;
 
   @override
   State<AttacherCategoryMenuItem> createState() => _AttacherCategoryMenuItemState();
@@ -40,7 +36,6 @@ class _AttacherCategoryMenuItemState extends State<AttacherCategoryMenuItem> {
         catTitle: widget.itemTitle,
         currentBook: widget.currentBook,
         updateState: toggleState,
-        updateSaveButtonState: widget.saveButtonState
       );
   }
 

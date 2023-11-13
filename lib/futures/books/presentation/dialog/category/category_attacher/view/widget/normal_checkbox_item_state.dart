@@ -1,29 +1,29 @@
+import 'package:flip_streak/futures/books/presentation/managers/state_manager/category_save_button_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../../core/constants/color_constants.dart';
 import '../../../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../../../data/model/book_model.dart';
 import '../../category_attacher_dialog.dart';
 
-class NormalCheckboxItemState extends StatefulWidget {
+class NormalCheckboxItemState extends ConsumerStatefulWidget {
   const NormalCheckboxItemState(
       {Key? key,
         required this.catTitle,
         required this.currentBook,
         required this.updateState,
-        required this.updateSaveButtonState,
       })
       : super(key: key);
 
   final String catTitle;
   final BookModel currentBook;
   final Function() updateState;
-  final Function() updateSaveButtonState;
 
   @override
-  State<NormalCheckboxItemState> createState() => _NormalCheckboxItemStateState();
+  ConsumerState<NormalCheckboxItemState> createState() => _NormalCheckboxItemStateState();
 }
 
-class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
+class _NormalCheckboxItemStateState extends ConsumerState<NormalCheckboxItemState> {
   static bool isChecked = false;
 
   @override
@@ -41,7 +41,7 @@ class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
                 //check if book has this label
                 isChecked = categories.contains(widget.catTitle);
                 //show checkbox with current status
-                return customCheckbox();
+                return customCheckbox(ref);
 
               } else {
                 return const Center(child: CircularProgressIndicator(),);
@@ -63,7 +63,7 @@ class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
     );
   }
 
-  Widget customCheckbox(){
+  Widget customCheckbox(WidgetRef ref){
 
     //Inside a dialog, checkboxes do not work correctly
     //You need to wrap them in a statefulBuilder
@@ -84,7 +84,7 @@ class _NormalCheckboxItemStateState extends State<NormalCheckboxItemState> {
                   : CategoryAttacherDialog.currentCategories.remove(widget.catTitle);
 
               //show save button
-              widget.updateSaveButtonState();
+              ref.read(categorySaveButtonProvider.notifier).showSaveButton();
             }
         );
       }

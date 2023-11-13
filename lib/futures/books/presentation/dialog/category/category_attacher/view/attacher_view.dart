@@ -9,21 +9,15 @@ import '../../../../managers/state_manager/categories_provider.dart';
 import '../../../category/add_item_button.dart';
 import 'attacher_category_menu_item.dart';
 
-class AttacherView extends ConsumerStatefulWidget {
+class AttacherView extends ConsumerWidget {
   const AttacherView({Key? key, required this.currentBook}) : super(key: key);
 
   final BookModel currentBook;
   static const double _paddingInBetween = 20;
 
-  @override
-  ConsumerState<AttacherView> createState() => _AttacherViewState();
-}
-
-class _AttacherViewState extends ConsumerState<AttacherView> {
-  bool isVisible = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     final categoriesList = ref.watch(categoriesProvider);
 
@@ -51,9 +45,8 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
               itemBuilder: (context, index){
 
                 return AttacherCategoryMenuItem(
-                    categoriesList[index], index,
-                    currentBook: widget.currentBook,
-                    saveButtonState: showSaveButton);
+                  categoriesList[index], index,
+                  currentBook: currentBook,);
               },
 
               separatorBuilder: (BuildContext context, int index)
@@ -64,19 +57,10 @@ class _AttacherViewState extends ConsumerState<AttacherView> {
 
           /// (Cancel-Save) Buttons
           // show when adding new category to a book
-          Visibility(
-              visible: isVisible,
-              child: SaveButtons(currentBook: widget.currentBook)),
+          SaveButtons(currentBook: currentBook),
         ],
       ),
     );
-  }
-
-  //save button state: show
-  void showSaveButton(){
-    setState(() {
-      isVisible = true;
-    });
   }
 
 

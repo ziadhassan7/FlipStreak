@@ -21,12 +21,18 @@ class EditItemState extends ConsumerWidget {
 
     editingController.text = itemTitle;
 
-    /// OnTap
     return Row(
       children: [
 
+        /// Delete button
         IconButton(
             onPressed: () async {
+              //if current category got deleted, go back to All list
+              if (currentCategory == itemTitle) {
+                ref.read(filterProvider.notifier)
+                    .updateCategory("All");
+              }
+
               //delete item
               await ref.read(categoriesProvider.notifier)
                   .deleteCategoryItem(itemTitle);
@@ -35,24 +41,20 @@ class EditItemState extends ConsumerWidget {
               await ref.read(bookListProvider.notifier)
                   .deleteCatFromAllBooks(itemTitle);
 
-              //if current category got deleted, go back to All list
-              if (currentCategory == itemTitle) {
-                ref.read(filterProvider.notifier)
-                    .updateCategory("All");
-              }
-
               //call setState on widget
               updateState();
             },
             icon: const Icon(Icons.delete_rounded, color: Colors.black, size: 20,)
         ),
 
+        /// TextInput
         Expanded(
           child: TextFormField(
             controller: editingController,
           ),
         ),
 
+        /// Save
         IconButton(
             onPressed: () async {
               await ref.read(categoriesProvider.notifier).updateCategoryItem(

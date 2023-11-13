@@ -19,10 +19,10 @@ class EditCheckboxItemState extends ConsumerWidget {
 
     editingController.text = itemTitle;
 
-    /// OnTap
     return Row(
       children: [
 
+        /// Delete Button
         IconButton(
             onPressed: () async {
               //delete item
@@ -39,12 +39,14 @@ class EditCheckboxItemState extends ConsumerWidget {
             icon: const Icon(Icons.delete_rounded, color: Colors.black, size: 20,)
         ),
 
+        /// TextInput
         Expanded(
           child: TextFormField(
             controller: editingController,
           ),
         ),
 
+        /// Save
         IconButton(
             onPressed: () async {
               await ref.read(categoriesProvider.notifier).updateCategoryItem(

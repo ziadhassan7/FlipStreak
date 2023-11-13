@@ -1,4 +1,5 @@
 import 'package:flip_streak/futures/books/presentation/dialog/category/category_attacher/view/save_buttons.dart';
+import 'package:flip_streak/futures/books/presentation/managers/state_manager/category_save_button_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/color_constants.dart';
@@ -9,15 +10,29 @@ import '../../../../managers/state_manager/categories_provider.dart';
 import '../../../category/add_item_button.dart';
 import 'attacher_category_menu_item.dart';
 
-class AttacherView extends ConsumerWidget {
+class AttacherView extends ConsumerStatefulWidget {
   const AttacherView({Key? key, required this.currentBook}) : super(key: key);
 
   final BookModel currentBook;
-  static const double _paddingInBetween = 20;
-
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AttacherView> createState() => _AttacherViewState();
+}
+
+class _AttacherViewState extends ConsumerState<AttacherView> {
+  static const double _paddingInBetween = 20;
+
+  @override
+  void initState() {
+    super.initState();
+    //wait till widget is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref.read(categorySaveButtonProvider.notifier).hideSaveButton();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context,) {
 
     final categoriesList = ref.watch(categoriesProvider);
 
@@ -35,7 +50,7 @@ class AttacherView extends ConsumerWidget {
           ),
 
           /// Add new menu item -  Button
-          const AddItemButton(paddingInBetween: AttacherView._paddingInBetween),
+          const AddItemButton(paddingInBetween: _paddingInBetween),
 
 
           Expanded(
@@ -46,7 +61,7 @@ class AttacherView extends ConsumerWidget {
 
                 return AttacherCategoryMenuItem(
                   categoriesList[index], index,
-                  currentBook: currentBook,);
+                  currentBook: widget.currentBook,);
               },
 
               separatorBuilder: (BuildContext context, int index)
@@ -57,12 +72,11 @@ class AttacherView extends ConsumerWidget {
 
           /// (Cancel-Save) Buttons
           // show when adding new category to a book
-          SaveButtons(currentBook: currentBook),
+          SaveButtons(currentBook: widget.currentBook),
         ],
       ),
     );
   }
-
 
   //category height
   double getHeight(BuildContext context){

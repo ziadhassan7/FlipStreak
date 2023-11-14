@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DetailDialogView extends StatefulWidget {
-  const DetailDialogView(
+class PageDialogView extends StatefulWidget {
+  const PageDialogView(
       {super.key,
       required this.label,
       required this.controller,
@@ -12,10 +12,10 @@ class DetailDialogView extends StatefulWidget {
   final bool isNumericValue;
 
   @override
-  State<DetailDialogView> createState() => _DetailDialogViewState();
+  State<PageDialogView> createState() => _PageDialogViewState();
 }
 
-class _DetailDialogViewState extends State<DetailDialogView> {
+class _PageDialogViewState extends State<PageDialogView> {
 
   @override
   Widget build(BuildContext context) {

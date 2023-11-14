@@ -6,7 +6,7 @@ import '../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../data/model/book_model.dart';
 import '../../../managers/controllers/book_controller.dart';
 import '../../details/screen/detail_page.dart';
-import 'library_menu_icon.dart';
+import 'menu/library_menu_icon.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({Key? key, required this.book}) : super(key: key);

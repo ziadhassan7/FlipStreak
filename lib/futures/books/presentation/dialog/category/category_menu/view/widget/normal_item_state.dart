@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../../core/constants/color_constants.dart';
 import '../../../../../../../app_common_views/text_view/text_view.dart';
-import '../../../../../managers/state_manager/filter_provider.dart';
+import '../../../../../managers/state_manager/search_filter_provider.dart';
 
 class NormalItemState extends ConsumerWidget {
   const NormalItemState(
@@ -27,7 +27,7 @@ class NormalItemState extends ConsumerWidget {
     /// OnTap
     return InkWell(
       onTap: (){
-        ref.read(filterProvider.notifier)
+        ref.read(searchFilterProvider.notifier)
             .updateCategory(itemTitle);
         Navigator.pop(context);
       },

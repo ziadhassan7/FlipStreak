@@ -5,7 +5,7 @@ import '../../../../../../core/constants/color_constants.dart';
 import '../../../managers/state_manager/search_filter_provider.dart';
 import '../widget/add_book_fab.dart';
 import '../widget/book_list/book_list.dart';
-import '../widget/filter_bar.dart';
+import '../widget/search_filter_bar.dart';
 import '../widget/top_widget.dart';
 
 class LibraryPage extends ConsumerWidget {

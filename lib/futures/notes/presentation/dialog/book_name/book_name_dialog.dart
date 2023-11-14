@@ -1,5 +1,5 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
-import 'package:flip_streak/futures/notes/presentation/dialog/note_detail_dialog/view/detail_dialog_view.dart';
+import 'package:flip_streak/futures/notes/presentation/dialog/book_name/book_dialog_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app_common_views/z_dialog/z_dialog.dart';
@@ -16,17 +16,17 @@ class BookNameDialog {
   BookNameDialog(this.context, this.ref) {
 
     ZDialog(
-        context,
-        dominantButtonTitle: "Save",
-        dominantButtonColor: colorOrange,
+      context,
+      dominantButtonTitle: "Save",
+      dominantButtonColor: colorOrange,
 
-        dominantButtonFunction: ()=> _save(ref),
+      dominantButtonFunction: ()=> _save(ref),
 
-        child: DetailDialogView(
-          label: "Enter book name",
-          controller: NoteController.bookName,
-          isNumericValue: false,
-        ),
+      child: BookDialogView(
+        label: "Enter book name",
+        controller: NoteController.bookName,
+        isNumericValue: false,
+      ),
 
     );
   }

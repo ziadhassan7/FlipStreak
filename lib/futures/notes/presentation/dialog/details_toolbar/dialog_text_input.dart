@@ -1,32 +1,43 @@
 import 'package:flutter/material.dart';
 
-class PageDialogView extends StatefulWidget {
-  const PageDialogView(
-      {super.key,
-      required this.label,
-      required this.controller,
-      required this.isNumericValue});
+class DialogTextInput extends StatefulWidget {
+  DialogTextInput({
+    super.key,
+    required this.labelText,
+    required this.textController,
+    required this.isNumericValue,
+    this.focusNode,
+    this.onFieldSubmitted,
+  });
 
-  final String label;
-  final TextEditingController controller;
+  final String labelText;
+  final TextEditingController textController;
   final bool isNumericValue;
+  FocusNode? focusNode;
+  VoidCallback? onFieldSubmitted;
 
   @override
-  State<PageDialogView> createState() => _PageDialogViewState();
+  State<DialogTextInput> createState() => _DialogTextInputState();
 }
 
-class _PageDialogViewState extends State<PageDialogView> {
-
+class _DialogTextInputState extends State<DialogTextInput> {
   @override
   Widget build(BuildContext context) {
 
     //Should you show suffix button?
-    bool isShowClearButton = (widget.controller.text != "");
+    bool isShowClearButton = (widget.textController.text != "");
 
     return TextFormField(
       ///                                                                       / settings
-      controller: widget.controller,
+      focusNode: widget.focusNode,
+      controller: widget.textController,
+      onFieldSubmitted: (String value) {
+        if(widget.onFieldSubmitted != null) {
+          widget.onFieldSubmitted!();
+        }
+      },
       keyboardType: widget.isNumericValue? TextInputType.number : null,
+
       ///                                                                       / Listen to text change
       onChanged: (text) {
         setState((){
@@ -38,20 +49,20 @@ class _PageDialogViewState extends State<PageDialogView> {
 
       decoration: InputDecoration(
         ///                                                                     / label
-        labelText: widget.label,
+        labelText: widget.labelText,
 
         ///                                                                     / suffix icon
         suffixIcon: clearIcon(
-            shouldShow: isShowClearButton,
+          shouldShow: isShowClearButton,
 
-            onPressed: (){
-              //clear
-              widget.controller.clear();
-              //update
-              setState((){
-                isShowClearButton = false;
-              });
-            },
+          onPressed: (){
+            //clear
+            widget.textController.clear();
+            //update
+            setState((){
+              isShowClearButton = false;
+            });
+          },
         ),
 
       ),);

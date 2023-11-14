@@ -4,10 +4,10 @@ import '../../../../../../core/constants/color_constants.dart';
 import '../../../../../../core/shared_pref/hive_client.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
 import '../../../dialog/category/category_menu/category_menu.dart';
-import '../../../managers/state_manager/filter_provider.dart';
+import '../../../managers/state_manager/search_filter_provider.dart';
 
-class FilterBar extends ConsumerWidget {
-  const FilterBar({super.key, required this.currentFilter});
+class SearchFilterBar extends ConsumerWidget {
+  const SearchFilterBar({super.key, required this.currentFilter});
 
   final String currentFilter;
   static final HiveClient _hiveClient = HiveClient();
@@ -40,7 +40,7 @@ class FilterBar extends ConsumerWidget {
                   hintStyle: TextStyle(color: colorAccent.withOpacity(0.2)),
                 ),
                 onChanged: (search){
-                  ref.read(filterProvider.notifier).updateCategory(search);
+                  ref.read(searchFilterProvider.notifier).updateCategory(search);
                 },
               ),
             ),

@@ -5,10 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/app_router.dart';
 import '../../../../../app_common_views/book_thumbnail.dart';
 import '../../../../../app_common_views/text_view/text_view.dart';
+import '../../../../../confetti/binding/confetti_details_page.dart';
 import '../../../managers/controllers/book_controller.dart';
 import '../../book/screen/book_page.dart';
 import '../widget/action_buttons/action_buttons_row.dart';
-import '../widget/details_menu_icon.dart';
+import '../widget/menu/details_menu_icon.dart';
 import '../widget/bookmarks/bookmark_list.dart';
 import '../widget/edit_button.dart';
 import '../widget/page_number_widget.dart';
@@ -57,7 +58,6 @@ class DetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Padding(
               padding: const EdgeInsets.only(left: 40, right: 25, top: 30, bottom: 60),
 
@@ -93,8 +93,12 @@ class DetailPage extends StatelessWidget {
             /// Bookmarks
             SizedBox(
                 height: 340,
-                child: BookmarkList())
+                child: BookmarkList()),
 
+            ///Confetti - Congratulations
+            const Align(
+                alignment: Alignment.topCenter,
+                child: ConfettiDetailsPage(),),
           ],
         ),
       )

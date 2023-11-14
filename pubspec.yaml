@@ -55,6 +55,7 @@ dependencies:
   disable_battery_optimization: ^1.1.0+1
   share_plus: ^7.1.0
   flutter_sharing_intent: ^1.1.0
+  confetti: ^0.7.0
 
 dependency_overrides:
   win32: ^3.0.0

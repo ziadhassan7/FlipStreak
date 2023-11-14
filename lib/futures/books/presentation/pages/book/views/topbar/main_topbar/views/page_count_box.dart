@@ -1,5 +1,8 @@
+import 'package:flip_streak/futures/confetti/binding/confetti_lamp_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../../../../../core/styles/padding.dart';
+import '../../../../../../../../confetti/state_manager/confetti_lamp_provider.dart';
 import '../../../../../../../../goal/presentation/managers/state_manager/pages_read_provider.dart';
 import '../../../../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../../../dialog/lamp_info/lamp_info_dialog.dart';
@@ -27,25 +30,40 @@ class PageCountBox extends ConsumerWidget {
     _foregroundColor = PageCountBoxController.getForegroundColor(isBright);
     _pagesGoal = PageCountBoxController.getPagesGoal().toString();
 
-    return InkWell(
+    //celebrate reaching goal
+    WidgetsBinding.instance.addPostFrameCallback((_) => shouldShowConfetti(ref));
 
-      onTap: ()=> LampInfoDialog(context, ref, _pagesRead, _pagesGoal),
+    return Stack(
+      children: [
 
-      child: Container(
-        decoration: BoxDecoration(
-            color: _backgroundColor,
-            borderRadius: const BorderRadius.all(Radius.circular(15))
+        /// Confetti - Congratulations
+        const Padding(
+          padding: CustomPadding(left: 20),
+          child: ConfettiLampPage(),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            getIconIndicator(),
 
-            TextView("$_pagesRead/$_pagesGoal", color: _foregroundColor, weight: FontWeight.bold, size: 12,),
-          ],
+        /// Lamp Widget
+        InkWell(
+
+          onTap: ()=> LampInfoDialog(context, ref, _pagesRead, _pagesGoal),
+
+          child: Container(
+            decoration: BoxDecoration(
+                color: _backgroundColor,
+                borderRadius: const BorderRadius.all(Radius.circular(15))
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                getIconIndicator(),
+
+                TextView("$_pagesRead/$_pagesGoal", color: _foregroundColor, weight: FontWeight.bold, size: 12,),
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -58,6 +76,16 @@ class PageCountBox extends ConsumerWidget {
 
     } else {
       return Icon(Icons.lightbulb_outline_rounded, color: _foregroundColor,);
+    }
+  }
+
+  static shouldShowConfetti(WidgetRef ref){
+
+    if(_pagesRead == _pagesGoal){
+      ref.read(confettiLampProvider.notifier).showConfetti();
+
+    } else {
+      ref.read(confettiLampProvider.notifier).hideConfetti();
     }
   }
 }

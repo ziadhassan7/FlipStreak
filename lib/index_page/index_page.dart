@@ -11,10 +11,10 @@ import '../futures/notes/presentation/pages/note_index/screen/notes_page.dart';
 import 'nav_bar_provider.dart';
 
 class IndexPage extends ConsumerWidget {
-  IndexPage({Key? key, this.askForBatteryOptimization = false}) : super(key: key);
+  IndexPage({Key? key,}) : super(key: key);
 
   int _currentIndex = 0;
-  bool askForBatteryOptimization;
+  static bool askForBatteryOptimization = false;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -7,14 +7,14 @@ class BatteryOptimizationUtil {
   static disableBatteryOptimization() async {
 
     //check if battery optimization is disabled
-    if(await _isBatteryOptimizationEnabled()){
-      // if not ask use to disable it
+    if(await isBatteryOptimizationEnabled()){
+      // if enabled, ask user to disable it
       await DisableBatteryOptimization.showDisableBatteryOptimizationSettings();
     }
 
   }
 
-  static Future<bool> _isBatteryOptimizationEnabled() async {
+  static Future<bool> isBatteryOptimizationEnabled() async {
     bool? isDisabled = await DisableBatteryOptimization.isBatteryOptimizationDisabled;
     return !(isDisabled ?? false);
   }

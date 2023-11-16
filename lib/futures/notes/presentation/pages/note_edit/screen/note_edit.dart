@@ -1,13 +1,14 @@
 import 'package:flip_streak/core/styles/device_screen.dart';
 import 'package:flip_streak/core/utils/system_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/styles/padding.dart';
 import '../../../manager/controller/back_controller.dart';
 import '../views/editing_window.dart';
 import '../views/note_app_bar.dart';
 import '../views/note_bottom_bar.dart';
 
-class NoteEdit extends StatefulWidget {
+class NoteEdit extends ConsumerStatefulWidget {
   const NoteEdit({super.key, this.currentNoteId});
 
    final String? currentNoteId;
@@ -15,10 +16,10 @@ class NoteEdit extends StatefulWidget {
   static const double _padding = 40;
 
   @override
-  State<NoteEdit> createState() => _NoteEditState();
+  ConsumerState<NoteEdit> createState() => _NoteEditState();
 }
 
-class _NoteEditState extends State<NoteEdit> {
+class _NoteEditState extends ConsumerState<NoteEdit> {
   final Color fillColor = Colors.black26;
 
   @override
@@ -36,7 +37,7 @@ class _NoteEditState extends State<NoteEdit> {
 
     return WillPopScope(
 
-      onWillPop: ()=> BackController.onSystemBack(context),
+      onWillPop: ()=> BackController.onSystemBack(context, ref),
 
       child:  Scaffold(
 

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../dialog/discard_dialog.dart';
 import '../../pages/note_edit/views/editing_window.dart';
 import 'note_controller.dart';
@@ -6,20 +7,24 @@ import 'note_controller.dart';
 class BackController {
 
 
-  static onBackPressed(BuildContext context){
+  static onBackPressed(BuildContext context, WidgetRef ref){
 
     if(_shouldOpenDialog()){
-      DiscardDialog(context,);
+      DiscardDialog(context, ref);
 
     } else {
+      NoteController.clearAndRefresh(ref);
       Navigator.pop(context);
     }
   }
 
-  static Future<bool> onSystemBack(BuildContext context) async{
+  static Future<bool> onSystemBack(BuildContext context, WidgetRef ref) async{
 
     if (_shouldOpenDialog()){
-      DiscardDialog(context,);
+      DiscardDialog(context, ref);
+
+    } else {
+      NoteController.clearAndRefresh(ref);
     }
 
     //Close Screen

@@ -36,7 +36,7 @@ class NoteController {
     }
 
     //Start fresh next time
-    _clearAllValues(ref);
+    clearAndRefresh(ref);
   }
 
   void saveNew(
@@ -86,7 +86,13 @@ class NoteController {
 
   }
 
-  void _clearAllValues(WidgetRef ref){
+  static void clearAndRefresh(WidgetRef ref){
+    _clearAllValues();
+    ref.read(bookNameProvider.notifier).clear();
+    ref.read(pageNumberProvider.notifier).clear();
+  }
+
+  static void _clearAllValues(){
     //clear note details
     noteTitle.clear();
     noteBody.clear();
@@ -94,7 +100,5 @@ class NoteController {
     //clear book related details
     bookName.clear();
     pageNumber.clear();
-    ref.read(bookNameProvider.notifier).clear();
-    ref.read(pageNumberProvider.notifier).clear();
   }
 }

@@ -5,11 +5,11 @@ import '../../../manager/controller/back_controller.dart';
 import '../../../manager/state_manager/share_loading_provider.dart';
 import '../../note_share/screen/note_share_page.dart';
 
-class NoteAppBar extends StatelessWidget {
+class NoteAppBar extends ConsumerWidget {
   const NoteAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(20),
 
@@ -18,7 +18,7 @@ class NoteAppBar extends StatelessWidget {
           ///                                                                   / Back Button
           IconButton(
             onPressed: (){
-              BackController.onBackPressed(context);
+              BackController.onBackPressed(context, ref);
             },
 
             icon: const Icon(Icons.arrow_back_ios)),

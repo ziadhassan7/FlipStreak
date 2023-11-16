@@ -1,3 +1,4 @@
+import 'package:flip_streak/core/utils/converters/string_list_converter.dart';
 import 'package:flip_streak/futures/books/presentation/managers/controllers/book_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +16,8 @@ class BookmarkList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    List<String> allBookmarks = ref.watch(bookmarkListProvider);
+    ref.watch(bookmarkListProvider); //refresh upon adding new bookmarks
+    List<String> allBookmarks = getListFromString(bookModel.bookmarks ?? ""); //get book list
 
     return Padding(
       padding: const CustomPadding(horizontal: 10),

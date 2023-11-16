@@ -38,7 +38,6 @@ class FileUtil {
   }
 
   static bool renameFile(File file, String newFileName){
-    var filePath = file.path;
     //get new path
     String dir = dirname(file.path);
     String newPath = join(dir, '$newFileName.pdf');

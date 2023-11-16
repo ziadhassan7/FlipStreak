@@ -4,7 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../futures/books/data/local_db/book_client.dart';
 
 
-class FileUtility {
+class FileUtil {
 
   static Future<String> getAppPath() async {
     Directory? directory = await getExternalStorageDirectory();
@@ -34,6 +34,22 @@ class FileUtility {
       final newFile = await sourceFile.copy(newPath);
       await sourceFile.delete();
       return newFile;
+    }
+  }
+
+  static bool renameFile(File file, String newFileName){
+    var filePath = file.path;
+    //get new path
+    String dir = dirname(file.path);
+    String newPath = join(dir, '$newFileName.pdf');
+
+    //rename
+    try {
+      file.renameSync(newPath); //you can use rename() which is asynchronous (await)
+      return true;
+
+    } catch (e) {
+      return false;
     }
   }
 

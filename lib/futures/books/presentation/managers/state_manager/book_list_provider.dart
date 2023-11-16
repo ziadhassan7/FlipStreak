@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flip_streak/core/utils/file_util.dart';
 import 'package:flip_streak/futures/books/presentation/managers/controllers/book_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/utils/converters/string_list_converter.dart';
@@ -81,6 +84,7 @@ class BookProvider extends StateNotifier<Future<List<BookModel>>>{
   /// update Book Name
   void renameBook(String name, BookModel book){
     updateBookName(name, book);
+    FileUtil.renameFile(File(book.path), name);
     updateNotifier();
   }
 

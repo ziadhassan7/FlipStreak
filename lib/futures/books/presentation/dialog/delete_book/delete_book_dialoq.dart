@@ -35,7 +35,7 @@ class DeleteBookDialog {
   }
 
   Future<void> deleteBook() async {
-    bool isDeleted = await FileUtility.deleteFile(bookId, filePath);
+    bool isDeleted = await FileUtil.deleteFile(bookId, filePath);
 
 
     if(isDeleted) {

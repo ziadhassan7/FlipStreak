@@ -52,7 +52,7 @@ class AddBookUtil {
 
     // check for duplicates
     if(await _isDuplicate(fileName) == false) {
-      String newPath = await FileUtility.copyFile(File(filePath));
+      String newPath = await FileUtil.copyFile(File(filePath));
 
       model = BookModel(
           id: fileName,

@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:path/path.dart';
+
 import '../../../../../core/utils/converters/string_list_converter.dart';
 import '../../../data/local_db/book_client.dart';
 import '../../../data/model/book_model.dart';
@@ -136,9 +138,15 @@ updateLastReadDate ({BookModel? book}) {
 updateBookName (String newName, BookModel book) async {
   String oldName = book.id;
 
-  bookModel = book.copyWith(id: newName,); //rename model
+  //new path
+  String dir = dirname(book.path);
+  String newPath = join(dir, '$newName.pdf');
 
-  await bookClient.updateItem(bookModel, oldId: oldName); //update book
+  //update model
+  bookModel = book.copyWith(id: newName, path: newPath);
+
+  //update book
+  await bookClient.updateItem(bookModel, oldId: oldName);
 }
 
 

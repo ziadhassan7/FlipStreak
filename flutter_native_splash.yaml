@@ -1,0 +1,13 @@
+flutter_native_splash:
+  image: assets/app_icon/app_logo.png
+  color: "#FDF0E5"
+
+  android_12:
+    image: assets/app_icon/app_logo.png
+    color: "#FDF0E5"
+
+#
+# dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+#
+# image icon, should be, square frame of 1152~1152 px, and inside it a logo of max 768 px
+# image icon with background, should be, square frame of 960~960 px, and inside it a logo of max 640 px

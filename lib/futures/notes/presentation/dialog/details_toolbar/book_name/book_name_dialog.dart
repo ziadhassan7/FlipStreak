@@ -17,10 +17,10 @@ class BookNameDialog {
 
     ZDialog(
       context,
-      dominantButtonTitle: "Save",
-      dominantButtonColor: colorOrange,
+      mainButtonTitle: "Save",
+      mainButtonColor: colorOrange,
 
-      dominantButtonFunction: ()=> _save(ref),
+      mainButtonFunction: ()=> _save(ref),
 
       child: BookDialogView(),
 

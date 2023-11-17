@@ -10,10 +10,11 @@ class ZDialog {
   final Color backgroundColor;
   final bool disableTintColor;
 
-  String? dominantButtonTitle;
-  Color? dominantButtonColor;
-  Function()? dominantButtonFunction;
-  bool? closeOnDominateButton;
+  String? mainButtonTitle;
+  Color? mainButtonColor;
+  Function()? mainButtonFunction;
+  Function()? cancelButtonFunction;
+  bool? closeOnMainButton;
 
   String? trailingButtonTitle;
   Function()? trailingButtonFunction;
@@ -28,11 +29,12 @@ class ZDialog {
       {this.backgroundColor = Colors.white,
         this.disableTintColor = false,
 
-        this.dominantButtonTitle = "Save",
-        this.dominantButtonColor = colorAccent,
-        required this.dominantButtonFunction,
+        this.mainButtonTitle = "Save",
+        this.mainButtonColor = colorAccent,
+        required this.mainButtonFunction,
+        this.cancelButtonFunction,
 
-        this.closeOnDominateButton = true,
+        this.closeOnMainButton = true,
 
         required this.child,
 
@@ -51,21 +53,26 @@ class ZDialog {
             backgroundColor: backgroundColor,
 
             /// Child Content Widget
-            content: child,
+            content: SingleChildScrollView(child: child),
 
             actions: <Widget>[
               /// Cancel Button
               TextButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  if(cancelButtonFunction != null){
+                    cancelButtonFunction!();
+                  }
+                  Navigator.pop(context);
+                },
                 child: const TextView('Cancel', color: colorDark,),
               ),
 
               /// Confirm Button
               TextButton(
                   onPressed: (){
-                    dominantButtonFunction!();
+                    mainButtonFunction!();
                     //close window
-                    if(closeOnDominateButton!){
+                    if(closeOnMainButton!){
                       Navigator.pop(context);
                     }
                   },
@@ -73,11 +80,11 @@ class ZDialog {
                   style: ButtonStyle(
                     //color
                     backgroundColor: MaterialStateProperty.all(
-                        dominantButtonColor),
+                        mainButtonColor),
                   ),
                   //text
                   child: TextView(
-                    dominantButtonTitle!,
+                    mainButtonTitle!,
                     color: backgroundColor,
                   )),
             ],
@@ -95,8 +102,8 @@ class ZDialog {
       {this.backgroundColor = Colors.white,
         this.disableTintColor = true,
 
-        this.dominantButtonTitle = "Got it!",
-        this.dominantButtonColor = colorAccent,
+        this.mainButtonTitle = "Got it!",
+        this.mainButtonColor = colorAccent,
 
         required this.child,
 
@@ -127,11 +134,11 @@ class ZDialog {
 
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            dominantButtonColor),
+                            mainButtonColor),
                       ),
 
                       child: TextView(
-                        dominantButtonTitle!,
+                        mainButtonTitle!,
                         color: backgroundColor,
                       ),
                     ),
@@ -148,13 +155,13 @@ class ZDialog {
   ///                                                                           /TwoAction Dialog
   /// Dialog that has a main_action_button
   /// and a trailing_action_button , on the left
-  ZDialog.twoAction(
+  ZDialog.trailingAction(
       this.context,
       {this.backgroundColor = Colors.white,
         this.disableTintColor = true,
 
-        this.dominantButtonTitle = "Got it!",
-        this.dominantButtonColor = colorAccent,
+        this.mainButtonTitle = "Got it!",
+        this.mainButtonColor = colorAccent,
 
         required this.trailingButtonTitle,
         required this.trailingButtonFunction,
@@ -197,11 +204,11 @@ class ZDialog {
 
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                          dominantButtonColor),
+                          mainButtonColor),
                     ),
 
                     child: TextView(
-                      dominantButtonTitle!,
+                      mainButtonTitle!,
                       color: backgroundColor,
                     ),
                   ),

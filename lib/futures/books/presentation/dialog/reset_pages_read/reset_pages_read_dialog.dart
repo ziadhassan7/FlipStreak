@@ -16,10 +16,10 @@ class ResetPagesReadDialog {
 
     ZDialog(
         context,
-        dominantButtonTitle: "Reset",
-        dominantButtonColor: Colors.red,
+        mainButtonTitle: "Reset",
+        mainButtonColor: Colors.red,
 
-        dominantButtonFunction: (){
+        mainButtonFunction: (){
           ref.read(pagesReadProvider.notifier).reset();
         },
 

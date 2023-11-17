@@ -23,7 +23,7 @@ class PickerDialog {
 
     ZDialog(
       context,
-      dominantButtonFunction: () {
+      mainButtonFunction: () {
         onSave(currentValue);
         PickerDialog.currentValue = 0;
       },

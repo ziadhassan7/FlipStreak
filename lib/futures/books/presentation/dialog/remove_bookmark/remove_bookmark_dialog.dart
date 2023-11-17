@@ -13,8 +13,8 @@ class RemoveBookmarkDialog {
     ZDialog(
       context,
 
-      dominantButtonTitle: "Remove",
-      dominantButtonFunction: () => removeBookmark(page),
+      mainButtonTitle: "Remove",
+      mainButtonFunction: () => removeBookmark(page),
 
       child: const TextView("Remove this page from bookmarks?"),
     );

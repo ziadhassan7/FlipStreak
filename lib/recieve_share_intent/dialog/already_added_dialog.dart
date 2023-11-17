@@ -10,8 +10,8 @@ class AlreadyAddedDialog {
     ZDialog(
       context,
 
-      dominantButtonTitle: "Open book",
-      dominantButtonFunction: () async {
+      mainButtonTitle: "Open book",
+      mainButtonFunction: () async {
         await StatusHandler().openBook(context, filePath);
       },
 

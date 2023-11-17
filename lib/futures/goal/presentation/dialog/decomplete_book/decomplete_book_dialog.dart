@@ -18,10 +18,10 @@ class DecompleteBookDialog {
 
     ZDialog(
         context,
-        dominantButtonTitle: "Remove",
-        dominantButtonColor: Colors.red,
+        mainButtonTitle: "Remove",
+        mainButtonColor: Colors.red,
 
-        dominantButtonFunction: (){
+        mainButtonFunction: (){
           ref.read(bookListProvider.notifier).toggleAsCompleted(bookItem);
         },
 

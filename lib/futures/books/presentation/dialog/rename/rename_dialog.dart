@@ -21,12 +21,12 @@ class RenameDialog {
 
     ZDialog(
         context,
-        dominantButtonTitle: "Save",
-        dominantButtonColor: colorAccent,
+        mainButtonTitle: "Save",
+        mainButtonColor: colorAccent,
 
-        closeOnDominateButton: false,
+        closeOnMainButton: false,
 
-        dominantButtonFunction: ()=>
+        mainButtonFunction: ()=>
           RenameManager.changeBookName(context, ref, oldBook: book, controller: controller),
 
         child: const BookNameTextInput(),

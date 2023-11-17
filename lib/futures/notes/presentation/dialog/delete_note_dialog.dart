@@ -16,10 +16,10 @@ class DeleteNoteDialog {
 
     ZDialog(
         context,
-        dominantButtonTitle: "Delete",
-        dominantButtonColor: const Color.fromRGBO(140, 0, 0, 1),
+        mainButtonTitle: "Delete",
+        mainButtonColor: const Color.fromRGBO(140, 0, 0, 1),
 
-        dominantButtonFunction: (){
+        mainButtonFunction: (){
           deleteNote(ref, noteId);
         },
 

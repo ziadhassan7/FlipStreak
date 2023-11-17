@@ -16,10 +16,10 @@ class DiscardDialog {
 
     ZDialog(
         context,
-        dominantButtonTitle: "Discard",
-        dominantButtonColor: colorOrange,
+        mainButtonTitle: "Discard",
+        mainButtonColor: colorOrange,
 
-        dominantButtonFunction: (){
+        mainButtonFunction: (){
           exit();
         },
 

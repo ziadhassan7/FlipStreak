@@ -17,7 +17,7 @@ class LampInfoDialog {
   String pagesRead, pagesGoal;
 
   LampInfoDialog(BuildContext context, WidgetRef ref, this.pagesRead, this.pagesGoal){
-    ZDialog.twoAction(
+    ZDialog.trailingAction(
       context,
 
       trailingButtonTitle: "Change Goal",

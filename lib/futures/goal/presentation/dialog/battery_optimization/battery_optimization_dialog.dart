@@ -13,8 +13,9 @@ class BatteryOptimizationDialog {
       context,
 
       disableTintColor: true,
-      dominantButtonTitle: "Turn Off",
-      dominantButtonFunction: () async => await askToDisableBatteryOptimization(),
+      mainButtonTitle: "Turn Off",
+      mainButtonFunction: () async => await askToDisableBatteryOptimization(),
+      cancelButtonFunction: neverAskAgainForOptimization,
 
       child: const OptimizationView(),
     );
@@ -29,4 +30,8 @@ class BatteryOptimizationDialog {
     await BatteryOptimizationUtil.disableBatteryOptimization();
   }
 
+  neverAskAgainForOptimization() {
+    //set askForBatteryOptimization to false, (never ask again)
+    IndexPage.askForBatteryOptimization = false;
+  }
 }

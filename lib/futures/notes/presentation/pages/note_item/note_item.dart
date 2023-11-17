@@ -104,9 +104,7 @@ class NoteItem extends ConsumerWidget {
                             width: BottomBarController
                                 .getBookNameWidth(context, note.noteBookName),
 
-                            child: TextView(note.noteBookName,
-                              weight: FontWeight.bold,
-                              size: 14, color: colorAccent,),
+                            child: customTextView(note.noteBookName,),
                           ),
 
                           const Spacer(),
@@ -116,9 +114,7 @@ class NoteItem extends ConsumerWidget {
                             width: BottomBarController
                                 .getPageNumberWidth(context, note.notePage),
 
-                            child: TextView(getPageNumber(note.notePage),
-                              weight: FontWeight.bold,
-                              size: 14, color: colorAccent,),
+                            child: customTextView(getPageNumber(note.notePage),),
                           ),
                         ],
                       ),
@@ -143,5 +139,18 @@ class NoteItem extends ConsumerWidget {
     return (note.noteBody.length > 400)
         ? 200 //maximum height
         : null; //adaptive
+  }
+
+  Widget customTextView(String value){
+
+    return Visibility(
+      visible: value.isNotEmpty,
+
+      child: TextView(
+        value,
+        weight: FontWeight.bold,
+        size: 14,
+        color: colorAccent,),
+    );
   }
 }

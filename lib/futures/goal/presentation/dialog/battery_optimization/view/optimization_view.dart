@@ -28,21 +28,21 @@ class OptimizationView extends StatelessWidget {
           _alignmentSpace(),
 
           const TextView(
-            "Some devices may ignore background notifications, when battery optimization is turned on.",
+            "battery optimization may prevent background notification.",
 
-            size: 12,
-            color: Colors.black38,
+            size: 13,
+            color: Colors.black45,
             maxLine: 5,
           ),
 
           _alignmentSpace(),
 
           const TextView(
-            "Please turn it off to receive notifications.",
+            "Please turn off, or allow disabling battery optimization.",
 
-            size: 12,
+            size: 13,
             weight: FontWeight.bold,
-            color: Colors.black38,
+            color: Colors.black45,
             maxLine: 5,
           ),
 

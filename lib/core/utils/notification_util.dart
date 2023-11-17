@@ -1,4 +1,4 @@
-import 'package:flip_streak/core/constants/color_constants.dart';
+import 'dart:ui';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -68,7 +68,7 @@ class NotificationUtil {
           channelDescription: "some description",
           importance: Importance.max,
 
-          color: colorSecondary, //Background Color
+          color: Color.fromRGBO(243, 121, 105, 1), //Background Color
       ),
     );
   }

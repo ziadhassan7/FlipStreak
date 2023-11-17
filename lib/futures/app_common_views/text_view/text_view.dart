@@ -5,6 +5,13 @@ enum FontFamily {
   inriaSans,
   poppins,
   roboto,
+
+  //nunitoSans,
+  //timesNewRoman,
+  //montserrat,
+  //inter,
+  //inder,
+
 }
 
 class TextView extends StatelessWidget {

@@ -10,7 +10,8 @@ class ZiGroupedList<T, E> extends StatelessWidget {
       required this.items,
       required this.sortBy,
       required this.itemBuilder,
-      required this.groupSeparatorBuilder,})
+      required this.groupSeparatorBuilder,
+      this.descendingOrder = true})
       : super(key: key);
 
   /// Grid List
@@ -23,6 +24,7 @@ class ZiGroupedList<T, E> extends StatelessWidget {
         required this.groupSeparatorBuilder,
         this.crossAxisCount,
         this.gridDelegate,
+        this.descendingOrder = true
       })
       : super(key: key) {
 
@@ -36,6 +38,7 @@ class ZiGroupedList<T, E> extends StatelessWidget {
   final Widget Function(E) groupSeparatorBuilder;
   int? crossAxisCount;
   SliverGridDelegate? gridDelegate;
+  bool descendingOrder;
 
   static final List _sortHeaders = [];
 
@@ -112,6 +115,13 @@ class ZiGroupedList<T, E> extends StatelessWidget {
         _sortHeaders.add(sortBy(item));
       }
     }
+
+    //arrange headers
+    _sortHeaders.sort((a,b) {
+      return descendingOrder
+          ? b.compareTo(a)
+          : a.compareTo(b);
+    });
   }
 
   // List of groups

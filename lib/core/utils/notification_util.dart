@@ -1,3 +1,4 @@
+import 'package:flip_streak/core/constants/color_constants.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -59,7 +60,9 @@ class NotificationUtil {
           "0", //Channel ID
           "main_channel", //Channel Name
           channelDescription: "some description",
-          importance: Importance.max
+          importance: Importance.max,
+
+          color: colorSecondary, //Background Color
       ),
     );
   }
@@ -80,9 +83,12 @@ class NotificationUtil {
 
     tz.initializeTimeZones();
 
-    const AndroidInitializationSettings initializationSettingsAndroid =  AndroidInitializationSettings('launch_background');
+    const AndroidInitializationSettings initializationSettingsAndroid =  AndroidInitializationSettings('notification_icon');
     // your app icon should be in
     //android/app/src/main/res/drawable
+    //You should make a separate simpler icon for notifications
+    //Icon should be 36X36, with no background
+    //It will be white or black (no color)
 
     const InitializationSettings initializationSettings = InitializationSettings(
         android: initializationSettingsAndroid);

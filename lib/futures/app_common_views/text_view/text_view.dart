@@ -11,6 +11,7 @@ enum FontFamily {
   //montserrat,
   //inter,
   //inder,
+  //Comfortaa,
 
 }
 

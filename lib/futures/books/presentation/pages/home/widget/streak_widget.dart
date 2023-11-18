@@ -42,8 +42,8 @@ class StreakWidget extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
 
               children: [
-                textWidget(StreakCommentUtil.getSmallText(ref), size: 15),
-                textWidget(StreakCommentUtil.getBigText(ref), size: 16),
+                textWidget(StreakCommentUtil.getSmallText(streakCount), size: 16, isBold: false),
+                textWidget(StreakCommentUtil.getBigText(streakCount), size: 16,),
                 const SizedBox(height: 2,),
                 textWidget(streakCount.toString(), size: 55),
                 textWidget(streakCount == 1? "day":"days", size: 30),

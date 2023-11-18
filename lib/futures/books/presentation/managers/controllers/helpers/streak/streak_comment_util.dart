@@ -1,7 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/hive_keys.dart';
 import '../../../../../../../core/shared_pref/hive_client.dart';
-import '../../../state_manager/streak_provider.dart';
 
 
 class StreakCommentUtil {
@@ -9,8 +7,7 @@ class StreakCommentUtil {
   static final HiveClient _hive = HiveClient();
 
 
-  static String getSmallText(WidgetRef ref){
-    int streak = ref.watch(streakProvider);
+  static String getSmallText(int streak){
 
     if(_hive.getStreakState() == COUNTDOWN_STATE) {
       return "Countdown";
@@ -23,14 +20,13 @@ class StreakCommentUtil {
         return "Good";
 
       } else {
-        return "Fantastic";
+        return "Fantastic!";
       }
 
     }
   }
 
-  static String getBigText(WidgetRef ref){
-    int streak = ref.watch(streakProvider);
+  static String getBigText(int streak){
 
     if(_hive.getStreakState() == COUNTDOWN_STATE) {
       return "Don't let the streak die!";

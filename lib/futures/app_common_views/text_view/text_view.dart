@@ -12,7 +12,7 @@ enum FontFamily {
   //inter,
   //inder,
   //Comfortaa,
-
+  //josefinSans,
 }
 
 class TextView extends StatelessWidget {

@@ -77,6 +77,8 @@ dev_dependencies:
 # dart run icons_launcher:create
 icons_launcher:
   image_path: "assets/app_icon/adaptive_icon.png"
+  adaptive_foreground_image: "assets/app_icon/app_logo.png"
+  adaptive_round_image: "assets/app_icon/app_logo.png"
   adaptive_background_color: "FDF0E5"
   platforms:
     android:

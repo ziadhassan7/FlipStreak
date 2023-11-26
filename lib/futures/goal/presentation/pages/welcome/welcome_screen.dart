@@ -16,6 +16,7 @@ class WelcomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
+    double screenHeight = AppScreen(context).height;
     Pages currentPage = ref.watch(welcomeScreenProvider);
 
     return Container(
@@ -39,11 +40,13 @@ class WelcomeScreen extends ConsumerWidget {
                       alignmentSpace(context, false),
 
                       /// Illustration
-                      SvgPicture.asset(getIllustration(currentPage) , height: 200, fit: BoxFit.fitHeight,),
+                      Visibility(
+                          visible: shouldShowIllustration(screenHeight),
+                          child: SvgPicture.asset(getIllustration(currentPage) , height: 200, fit: BoxFit.fitHeight,)),
 
                       alignmentSpace(context, true),
 
-                      /// Counter Input
+                      /// Counter Input - Allow Notifications
                       getLeadingWidget(currentPage),
 
                       alignmentSpace(context, false),
@@ -96,5 +99,14 @@ class WelcomeScreen extends ConsumerWidget {
     }
 
     return SizedBox(height: height,);
+  }
+
+
+  shouldShowIllustration(double screenHeight){
+    if(screenHeight < 600){
+      return false;
+    }
+
+    return true;
   }
 }

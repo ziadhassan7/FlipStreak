@@ -39,7 +39,7 @@ class AchievementsPage extends ConsumerWidget {
                     return snapshot.data!.isNotEmpty
                         ? Column(
                             children: [
-                              BookGoalWidget(completedBooks: getCompletedOnly(snapshot.data!).length,),
+                              BookGoalWidget(completedBooks: getCompletedThisYear(snapshot.data!).length,),
 
                               CompletedBooksWidget(books: snapshot.data!)
                             ],
@@ -63,5 +63,22 @@ class AchievementsPage extends ConsumerWidget {
     final List<BookModel> allBooks = await providerBooks;
 
     return getCompletedOnly(allBooks);
+  }
+
+
+  getCompletedThisYear(List<BookModel> allCompletedBooks){
+
+    int currentYear = DateTime.now().year;
+    List<BookModel> completedBooksThisYear = [];
+
+    for(var book in allCompletedBooks){
+      //check if book is completed this year
+      int completedYear = DateTime.parse(book.completeDate!).year;
+      if(completedYear == currentYear){
+        completedBooksThisYear.add(book);
+      }
+    }
+
+    return completedBooksThisYear;
   }
 }

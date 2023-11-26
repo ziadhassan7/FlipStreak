@@ -33,8 +33,6 @@ class AllowNotificationButton extends StatelessWidget {
 
   void actAsFinishButton(BuildContext context){
     NotificationUtil.requestPermission().then((isGranted) {
-      //set askForBatteryOptimization to true, if notification permission is granted
-      IndexPage.askForBatteryOptimization = isGranted ?? false;
       //Navigate to Home Page,
       AppRouter.navigateTo(context, IndexPage(), isReplace: true);
 

@@ -27,12 +27,12 @@ class ShareItem extends ConsumerWidget {
           ),
         ),
 
-        child: const Padding(
-          padding: CustomPadding(horizontal: 18, vertical: 32),
+        child: Padding(
+          padding: const CustomPadding(horizontal: 18, vertical: 32),
 
           child: Column(
             children: [
-              Stack(
+              const Stack(
                 children: [
                   /// Note
                   NoteBox(),
@@ -44,15 +44,21 @@ class ShareItem extends ConsumerWidget {
 
 
               /// Brand Identity
-              Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: CustomPadding(horizontal: 12, vertical: 4),
-                    child: TextView(
+              Padding(
+                padding: const CustomPadding(horizontal: 12, vertical: 4),
+                child: Row(
+                  children: [
+                    const Spacer(),
+
+                    Image.asset("assets/app_icon/adaptive_icon.png", width: 24,),
+
+                    const TextView(
                       "Shared from FlipStreak",
-                      color: Colors.white38, //colorOrange.withOpacity(0.6)
+                      color: Colors.white70,
                       size: 12,),
-                  ))
+                  ],
+                ),
+              )
             ],
           ),
         ),

@@ -45,7 +45,7 @@ class _AddNewItemState extends ConsumerState<AddItemButton> {
                 controller: addItemTextController,
                 decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Create new label',
+                    hintText: 'Create a category',
                     hintStyle: TextStyle(color: Colors.black38)
                 ),
 

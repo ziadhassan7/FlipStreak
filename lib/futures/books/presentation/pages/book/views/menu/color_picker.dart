@@ -10,32 +10,30 @@ class ColorPicker{
   static const Color onDarkForeground =  Colors.white24;
   static const Color onBrightForeground =  Colors.black12;
 
-  static PopupMenuEntry<int> list(WidgetRef ref) {
-
-    final isBright = ref.watch(brightModeProvider);
+  static Widget list(isBright) {
 
     final Color chosenColor = isBright ? onBrightForeground : onDarkForeground;
 
-    return PopupMenuItem<int>(
-      enabled: false, //not interactive
-      value: 2,
+    return Consumer(
+      builder: (context, ref, _) {
 
-      child: Column(
-        children: [
+        return Column(
+          children: [
 
-          divider(chosenColor),
+            divider(chosenColor),
 
-          Container(
-            decoration: BoxDecoration(
-                color: chosenColor,
-                borderRadius: const BorderRadius.all(Radius.circular(20))
+            Container(
+              decoration: BoxDecoration(
+                  color: chosenColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(20))
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+
+              child: colorIconList(ref),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-
-            child: colorIconList(ref),
-          ),
-        ],
-      ),
+          ],
+        );
+      }
     );
   }
 

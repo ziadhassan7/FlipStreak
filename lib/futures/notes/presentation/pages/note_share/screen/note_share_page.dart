@@ -74,7 +74,7 @@ class NoteSharePage extends ConsumerWidget {
   /// Function
   //Execute function after build
   Future<void> executeShareNote(WidgetRef ref) async {
-    await Future.delayed(const Duration(milliseconds: 400), () async {
+    await Future.delayed(const Duration(milliseconds: 500), () async {
       await NoteShareController.share();
       ref.read(shareLoadingProvider.notifier).finished();
     });

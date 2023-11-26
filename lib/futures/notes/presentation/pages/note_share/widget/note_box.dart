@@ -67,9 +67,16 @@ class NoteBox extends StatelessWidget {
             const SizedBox(height: 20,),
 
             ///                                                                 / Book Name
-            TextView(getFormattedBookName(bookName), color: colorAccent, size: 12,),
+            Visibility(
+              visible: bookName != '',
+              child: Column(
+                children: [
+                  TextView(getFormattedBookName(bookName), color: colorAccent, size: 12,),
 
-            const SizedBox(height: 18,),
+                  const SizedBox(height: 18,)
+                ],
+              ),
+            ),
           ],
         )
     );

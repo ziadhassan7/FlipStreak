@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/color_constants.dart';
 
 class CustomFormat{
-
 
   /// TextFormField (Title-normal)
   static TextStyle formField({required bool isTitle}){
@@ -14,17 +12,10 @@ class CustomFormat{
     );
   }
 
-  /// Text (bold, accent)
-  static TextStyle textInriaSans({double? size, Color? color, bool isBold = false}){
-    return GoogleFonts.inriaSans(
-        fontSize: size,
-        fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-        color: color ?? colorAccent,
-    );
-  }
-
+  /// Text Style
   static TextStyle tinos({double? size, Color? color, bool isBold = false}){
-    return GoogleFonts.tinos(
+    return TextStyle(
+      fontFamily: 'Tinos',
       fontSize: size,
       fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
       color: color ?? colorAccent,
@@ -36,7 +27,7 @@ class CustomFormat{
     return ButtonStyle(
       backgroundColor: MaterialStateProperty.all(colorAccent),
       foregroundColor: MaterialStateProperty.all(Colors.white),
-      textStyle: MaterialStateProperty.all(GoogleFonts.inriaSans(fontWeight: FontWeight.bold, fontSize: 15)),
+      textStyle: MaterialStateProperty.all(const TextStyle(fontFamily: 'InriaSans',fontWeight: FontWeight.bold, fontSize: 15)),
     );
   }
 }

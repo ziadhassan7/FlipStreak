@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 enum FontFamily {
   inriaSans,
-  poppins,
-  roboto,
 
+  //poppins,
+  //roboto,
   //nunitoSans,
   //timesNewRoman,
   //montserrat,
@@ -79,13 +78,13 @@ class TextView extends StatelessWidget {
     switch (currentFamily) {
     //InriaSans
       case FontFamily.inriaSans:
-        return GoogleFonts.inriaSans(fontSize: size, fontWeight: weight, color: color);
-    //Poppins
+        return TextStyle(fontFamily: 'InriaSans', fontSize: size, fontWeight: weight, color: color);
+    /*//Poppins
       case FontFamily.poppins:
         return GoogleFonts.poppins(fontSize: size, fontWeight: weight, color: color);
     //Roboto
       case FontFamily.roboto:
-        return GoogleFonts.roboto(fontSize: size, fontWeight: weight, color: color);
+        return GoogleFonts.roboto(fontSize: size, fontWeight: weight, color: color);*/
 
     //default - null
       case null:

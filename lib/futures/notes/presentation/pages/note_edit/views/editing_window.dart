@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../manager/controller/note_controller.dart';
 import '../../../styles/custom_format.dart';
 
@@ -12,7 +11,7 @@ class EditingWindow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
-        textTheme: GoogleFonts.tinosTextTheme() //inriaSerifTextTheme,
+        fontFamily: 'Tinos',
     ),
 
       child: Column(

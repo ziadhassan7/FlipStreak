@@ -39,14 +39,14 @@ class ListItem extends StatelessWidget {
 
               /// Thumbnail Book
               SizedBox(
-                height: 90,
-                width: 70,
+                  height: 97,
+                  width: 68,
                 child: BookThumbnail(filePath: book.path)),
 
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 60,
+                  height: 66,
 
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

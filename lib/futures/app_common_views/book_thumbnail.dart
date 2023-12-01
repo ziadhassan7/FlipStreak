@@ -27,7 +27,7 @@ class BookThumbnail extends StatelessWidget {
                 if(snapshot.hasData) {
 
                   PdfPageImage image = snapshot.data!;
-                  return Image.memory(image.bytes, fit: BoxFit.fitHeight, width: 200, height: 300,);
+                  return Image.memory(image.bytes, fit: BoxFit.fill, width: 200, height: 300,);
 
                   // loading
                 } else {

@@ -17,9 +17,11 @@ class CountersHelper {
   void updateCounters(WidgetRef ref, {required bool isIncrement}){
 
     // update current initial value
-    isIncrement
-      ? pageReadCounter++
-      : pageReadCounter--;
+    if(isIncrement){
+      pageReadCounter++;
+    } else {
+      if(pageReadCounter != 0) pageReadCounter--; //do not go bellow 0
+    }
 
     // check if, it is not rapid scrolls
     if(!ScrollBehaviourController.isRapidScroll()){

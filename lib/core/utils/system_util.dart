@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wakelock/wakelock.dart';
 import '../constants/color_constants.dart';
-import '../../futures/books/presentation/managers/state_manager/bright_mode_provider.dart';
+import '../../features/books/presentation/managers/state_manager/bright_mode_provider.dart';
 
 class SystemUtil {
 

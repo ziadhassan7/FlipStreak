@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/styles/padding.dart';
-import '../../../futures/app_common_views/text_view/text_view.dart';
+import '../../../features/app_common_views/text_view/text_view.dart';
 
 class StatusView extends StatelessWidget {
   final String message;

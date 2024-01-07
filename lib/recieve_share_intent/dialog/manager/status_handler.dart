@@ -1,7 +1,7 @@
 import 'package:flip_streak/core/app_router.dart';
-import 'package:flip_streak/futures/books/data/local_db/book_client.dart';
-import 'package:flip_streak/futures/books/presentation/managers/controllers/book_controller.dart';
-import 'package:flip_streak/futures/books/presentation/pages/details/screen/detail_page.dart';
+import 'package:flip_streak/features/books/data/local_db/book_client.dart';
+import 'package:flip_streak/features/books/presentation/managers/controllers/book_controller.dart';
+import 'package:flip_streak/features/books/presentation/pages/details/screen/detail_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 

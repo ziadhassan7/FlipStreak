@@ -1,4 +1,4 @@
-import 'package:flip_streak/futures/books/presentation/managers/controllers/helpers/add_book_util.dart';
+import 'package:flip_streak/features/books/presentation/managers/controllers/helpers/add_book_util.dart';
 import 'package:flip_streak/index_page/index_page.dart';
 import 'package:flip_streak/recieve_share_intent/dialog/failure_dialog.dart';
 import 'package:flutter/material.dart';

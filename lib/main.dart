@@ -9,7 +9,7 @@ import 'package:flutter_sharing_intent/model/sharing_file.dart';
 import 'core/custom_log.dart';
 import 'core/shared_pref/hive_client.dart';
 import 'core/utils/system_util.dart';
-import 'futures/goal/presentation/pages/welcome/welcome_screen.dart';
+import 'features/goal/presentation/pages/welcome/welcome_screen.dart';
 import 'injection.dart' as inject;
 
 Future<void> main() async {

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import '../futures/books/presentation/pages/home/screen/home_page.dart';
-import '../futures/books/presentation/pages/library/screen/library_page.dart';
-import '../futures/goal/presentation/pages/achievements/achievements_page.dart';
-import '../futures/notes/presentation/pages/note_index/screen/notes_page.dart';
+import '../features/books/presentation/pages/home/screen/home_page.dart';
+import '../features/books/presentation/pages/library/screen/library_page.dart';
+import '../features/goal/presentation/pages/achievements/achievements_page.dart';
+import '../features/notes/presentation/pages/note_index/screen/notes_page.dart';
 import 'nav_bar_provider.dart';
 
 class IndexPage extends ConsumerWidget {

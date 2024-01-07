@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
-import '../../../futures/notes/presentation/manager/controller/note_controller.dart';
+import '../../../features/notes/presentation/manager/controller/note_controller.dart';
 
 class WidgetImageConverter {
 

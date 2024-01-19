@@ -19,7 +19,7 @@ class LastBookProvider extends StateNotifier<BookModel?>{
 
   LastBookProvider() : super(null);
 
-  void updateWidget(BookModel bookModel) {
+  void updateLastBookWidget(BookModel bookModel) {
 
     hive.saveLastBook(bookModel.id);
     state = bookModel;

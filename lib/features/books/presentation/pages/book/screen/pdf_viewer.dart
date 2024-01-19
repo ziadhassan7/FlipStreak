@@ -7,6 +7,8 @@ import '../../../../../../core/styles/device_screen.dart';
 import '../../../managers/controllers/book_controller.dart';
 import '../../../managers/controllers/helpers/counters/counters_helper.dart';
 import '../../../managers/controllers/page_controller.dart';
+import '../../../managers/state_manager/book_list_provider.dart';
+import '../../../managers/state_manager/last_book_provider.dart';
 import '../../../managers/state_manager/page_filter_provider.dart';
 import '../../../managers/state_manager/pdf_view_loaded_provider.dart';
 import '../../../managers/state_manager/scroll_page_indicator_provider.dart';
@@ -54,6 +56,12 @@ class PdfViewer extends ConsumerWidget {
           }
           //show topBar
           ref.read(topbarProvider.notifier).keepOpen();
+
+          // Refresh LastBook Widget provider
+          ref.read(lastBookProvider.notifier).updateLastBookWidget(bookModel);
+
+          //update last (read date) on book
+          ref.read(bookListProvider.notifier).updateLastTimeRead();
         },
 
         onPageChanged: (int? page, int? total) {

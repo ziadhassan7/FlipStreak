@@ -80,7 +80,7 @@ class NotificationUtil {
     FlutterLocalNotificationsPlugin();
 
     return await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
+        AndroidFlutterLocalNotificationsPlugin>()?.requestNotificationsPermission();
   }
 
 

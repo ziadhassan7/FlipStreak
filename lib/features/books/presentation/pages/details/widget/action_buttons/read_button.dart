@@ -4,6 +4,7 @@ import '../../../../../../../core/constants/color_constants.dart';
 import '../../../../../../app_common_views/text_view/text_view.dart';
 import '../../../../managers/controllers/book_controller.dart';
 import '../../../book/screen/book_page.dart';
+import '../../../book/viewer_engine/epub_book_view.dart';
 
 class ReadButton extends StatelessWidget {
   const ReadButton({Key? key, required this.height}) : super(key: key);

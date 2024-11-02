@@ -1,4 +1,5 @@
 import 'package:flip_streak/features/books/presentation/managers/controllers/book_controller.dart';
+import 'package:flip_streak/features/books/presentation/pages/book/viewer_engine/controller/reader_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controllers/page_controller.dart';
@@ -23,7 +24,7 @@ class ScrollViewProvider extends StateNotifier<double>{
 
     int page = ((ratio*totalPages)/100).round();
 
-    jumpToPage(page);
+    ReaderController.jumpToPage(page);
 
     state = position;
   }

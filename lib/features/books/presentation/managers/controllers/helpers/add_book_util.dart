@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:epub_view/epub_view.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
@@ -88,10 +89,22 @@ class AddBookUtil {
   }
 
   static Future<int> _getTotalPages(String filePath) async {
-    PdfDocument document = await PdfDocument.openFile(filePath);
-    int page = document.pagesCount - 1;
+    int pageCount = 0;
 
-    return page;
+    // Check if the file is a PDF or EPUB and initialize accordingly
+    if (filePath.endsWith('.pdf')) {
+      PdfDocument document = await PdfDocument.openFile(filePath);
+      pageCount = document.pagesCount - 1;
+
+    } else if (filePath.endsWith('.epub')) {
+      final EpubController epubController = EpubController(document: EpubDocument.openFile(File(filePath)));
+      final epubBook = await epubController.document;
+
+      // The number of chapters can be counted by checking the number of items in the spine (or Table of Contents).
+      pageCount = epubBook.Chapters?.length ?? 0;
+    }
+
+    return pageCount;
   }
 
 }

@@ -1,84 +1,101 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:epub_view/epub_view.dart' as epub;
 
-class BookThumbnail extends StatelessWidget {
+class BookThumbnail extends StatefulWidget {
   const BookThumbnail({Key? key, required this.filePath, this.page = 0}) : super(key: key);
 
   final String filePath;
   final int page;
 
   @override
-  Widget build(BuildContext context) {
+  BookThumbnailState createState() => BookThumbnailState();
+}
 
-    return Material(
-      elevation: 2,
-      borderRadius: const BorderRadius.all(Radius.circular(8)), //cuz rounded
+class BookThumbnailState extends State<BookThumbnail> {
+  epub.EpubController? epubController;
+  Image? pdfThumbnailImage;
+  late bool isEpub;
 
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Container(
-          alignment: Alignment.center,
+  @override
+  void initState() {
+    super.initState();
 
-          child: FutureBuilder(
-              future: getImage(),
-              builder: (context, AsyncSnapshot<PdfPageImage?> snapshot) {
+    isEpub = widget.filePath.endsWith('.epub');
 
-                // data is ready
-                if(snapshot.hasData) {
-
-                  PdfPageImage image = snapshot.data!;
-                  return Image.memory(image.bytes, fit: BoxFit.fill, width: 200, height: 300,);
-
-                  // loading
-                } else {
-                  return const Center(child: CircularProgressIndicator(),);
-                }
-
-              }
-          ),
-
-        ),
-      ),
-    );
-  }
-
-
-  Future<PdfDocument> getPdfFile() async {
-    return await PdfDocument.openFile(filePath);
-  }
-
-  Future<PdfPage> getPage(PdfDocument document) async {
-    if(document.pagesCount == 1 || page < 0){
-      return await document.getPage(1);
+    if(isEpub){
+      createEpubThumbnail();
     }
-    return await document.getPage(page +1);
   }
 
-  Future<PdfPageImage?> getPdfImage(PdfPage page) async {
+
+  Future<Image> createPdfThumbnail() async {
+    final document = await PdfDocument.openFile(widget.filePath);
+    final page = await document.getPage(widget.page + 1); // PDF page indexing starts at 1
     final pageImage = await page.render(
       width: page.width,
       height: page.height,
       format: PdfPageImageFormat.jpeg,
       quality: 10,
-      backgroundColor: '#ffffff',
-
-      // Crop rect in image for render
-      //cropRect: Rect.fromLTRB(left, top, right, bottom),
     );
 
-    return pageImage;
+    await page.close();
+    await document.close();
+
+    return pdfThumbnailImage = Image.memory(pageImage!.bytes, fit: BoxFit.fill, width: 200, height: 300);
+
   }
 
-
-  Future<PdfPageImage?> getImage() async {
-    final document = await getPdfFile();
-
-    final page = await getPage(document);
-
-    final image = await getPdfImage(page);
-
-    return image;
+  void createEpubThumbnail() {
+    epubController = epub.EpubController(document: epub.EpubDocument.openFile(File(widget.filePath)));
   }
 
+  @override
+  Widget build(BuildContext context) {
+
+    return Material(
+      elevation: 2,
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          alignment: Alignment.center,
+          child: isEpub ? _buildEpubView() : _buildPdfView(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPdfView(){
+    return FutureBuilder(
+        future: createPdfThumbnail(),
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            return snapshot.data!;
+          } else {
+            return const CircularProgressIndicator();
+          }
+        }
+    );
+  }
+
+  Widget _buildEpubView() {
+    return SizedBox(
+      width: 200,
+      height: 300,
+      child: IgnorePointer( //this widget is to disable scrolling and touch events
+        child: epub.EpubView(
+          controller: epubController!,
+
+          onDocumentLoaded: (book){
+            Future.delayed(const Duration(milliseconds: 600), (){
+              epubController!.jumpTo(index: widget.page);
+            });
+          },
+        ),
+      ),
+    );
+  }
 }
 

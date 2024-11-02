@@ -1,4 +1,5 @@
 import 'package:flip_streak/features/app_common_views/text_view/text_view.dart';
+import 'package:flip_streak/features/books/presentation/pages/book/viewer_engine/controller/reader_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/app_router.dart';
@@ -7,7 +8,6 @@ import '../../../../../../core/styles/padding.dart';
 import '../../../../../app_common_views/book_thumbnail.dart';
 import '../../../../data/model/book_model.dart';
 import '../../../managers/controllers/book_controller.dart';
-import '../../../managers/controllers/page_controller.dart';
 import '../../../managers/state_manager/book_list_provider.dart';
 import '../../../managers/state_manager/last_book_provider.dart';
 import '../../book/screen/book_page.dart';
@@ -15,6 +15,7 @@ import '../../book/screen/book_page.dart';
 class LastBookWidget extends ConsumerWidget {
   const LastBookWidget({Key? key}) : super(key: key);
 
+  static final ReaderController _reader = ReaderController();
   static final GlobalKey pdfKey = GlobalKey();
 
   @override
@@ -147,7 +148,7 @@ class LastBookWidget extends ConsumerWidget {
       model = await bookClient.readOneElement(bookId);
 
       // get last saved page and update it not repeat tasks
-      return await refreshLastPageFromHiveAndGetBook(model);
+      return await ReaderController.refreshLastPageFromHiveAndGetBook(model);
     }
 
     return model;
@@ -177,8 +178,7 @@ class LastBookWidget extends ConsumerWidget {
     // Globalize new bookModel data
     await globalizeCurrentBookModel(model).then((value) {
       // Open Details Page
-      AppRouter
-          .navigateTo(context, const BookPage(),);
+      if(context.mounted) AppRouter.navigateTo(context, const BookPage(),);
     });
 
   }

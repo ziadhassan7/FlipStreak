@@ -1,9 +1,9 @@
+import 'package:flip_streak/features/books/presentation/pages/book/viewer_engine/controller/reader_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../../core/constants/color_constants.dart';
 import '../../../managers/state_manager/bookmark_list_provider.dart';
-import '../../../managers/controllers/page_controller.dart';
 
 class BookmarkFab extends ConsumerWidget {
   const BookmarkFab(this.isBright, {Key? key,}) : super(key: key);
@@ -21,7 +21,7 @@ class BookmarkFab extends ConsumerWidget {
     List<String> allBookmarks = ref.watch(bookmarkListProvider);
 
     return FutureBuilder(
-      future: pdfController.getCurrentPage(),
+      future: ReaderController.getCurrentPage(),
       builder: (context, AsyncSnapshot snapshot) {
 
         if(snapshot.hasData){

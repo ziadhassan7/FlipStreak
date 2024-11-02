@@ -24,7 +24,7 @@ class AppRouter {
   static Future<List<PlatformFile>?> pickFiles() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['pdf', 'doc'],
+      allowedExtensions: ['pdf', 'doc', 'epub'],
       allowMultiple: true,
     );
 

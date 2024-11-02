@@ -1,9 +1,9 @@
+import 'package:flip_streak/features/books/presentation/pages/book/viewer_engine/controller/reader_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app_common_views/book_thumbnail.dart';
 import '../../../../app_common_views/text_view/text_view.dart';
 import '../../managers/controllers/book_controller.dart';
-import '../../managers/controllers/page_controller.dart';
 import '../remove_bookmark/remove_bookmark_dialog.dart';
 
 class BookmarkDialogItem extends ConsumerWidget {
@@ -18,7 +18,7 @@ class BookmarkDialogItem extends ConsumerWidget {
 
       // click handler
       onTap: () {
-        pdfController.setPage(int.parse(page));
+        ReaderController.setCurrentPage(int.parse(page));
         Navigator.pop(dialogContext);
       },
       onLongPress: (){

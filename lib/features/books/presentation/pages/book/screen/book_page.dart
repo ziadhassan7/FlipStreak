@@ -1,12 +1,14 @@
 import 'package:flip_streak/core/constants/color_constants.dart';
-import 'package:flip_streak/features/books/presentation/pages/book/screen/pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/utils/system_util.dart';
+import '../../../managers/controllers/book_controller.dart';
 import '../../../managers/controllers/helpers/exit_book_util.dart';
 import '../../../managers/state_manager/bright_mode_provider.dart';
 import '../../../managers/state_manager/pdf_view_loaded_provider.dart';
 import '../../../managers/state_manager/top_bar_provider.dart';
+import '../viewer_engine/epub_book_view.dart';
+import '../viewer_engine/pdf_viewer.dart';
 import '../views/scroll_bar/scroll_bar.dart';
 import '../views/topbar/main_topbar/base_top_bar.dart';
 import '../widget/bookmark_fab.dart';
@@ -44,7 +46,7 @@ class BookPage extends ConsumerWidget {
 
             children: [
               /// Document Screen
-              PdfViewer(initialPage: initialPage),
+              documentViewer(context),
 
               /// Touch Detector
               Consumer(
@@ -116,6 +118,22 @@ class BookPage extends ConsumerWidget {
       }
     });
 
+  }
+
+
+  Widget documentViewer(BuildContext context){
+    //Get Correct Viewer Engine
+    //pdf
+    if (bookModel.path.endsWith('.pdf')) {
+      return PdfViewer(initialPage: initialPage);
+
+    //epub
+    } else if (bookModel.path.endsWith('.epub')) {
+      return EpubBookView(initialPage: initialPage, filePath: bookModel.path,);
+    }
+
+    //docs
+    return const PdfViewer();
   }
 
 }

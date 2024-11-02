@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:epub_view/epub_view.dart';
+import 'package:flutter_epub_viewer/flutter_epub_viewer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../core/constants/color_constants.dart';
 import '../../../managers/controllers/book_controller.dart';
@@ -32,14 +32,12 @@ class EpubBookViewState extends ConsumerState<EpubBookView> {
   void initState() {
     super.initState();
 
-    final epubDocument = EpubDocument.openFile(File(widget.filePath));
-    epubController = EpubController(document: epubDocument,);
+    epubController = EpubController();
     ReaderController.injectController(epub: epubController);
   }
 
   @override
   void dispose() {
-    epubController.dispose();
     ReaderController.dispose();
     super.dispose();
   }
@@ -54,15 +52,12 @@ class EpubBookViewState extends ConsumerState<EpubBookView> {
     return ColorFiltered(
       colorFilter: pageFilter,
 
-      child: EpubView(
-          controller: epubController,
+      child: EpubViewer(
+          epubSource: EpubSource.fromFile(File(widget.filePath)),
 
-          onDocumentLoaded: (book){
+          epubController: epubController,
 
-            Future.delayed(Duration(milliseconds: 700), (){
-              //TODO: This would scroll to index not chapter, and we save the chapters
-              //epubController.jumpTo(index: _reader.openInitialPage(widget.initialPage));
-            });
+          onEpubLoaded: (){
 
             //show scrollbar, unless total pages is 0
             if(bookModel.totalPages != 0){
@@ -78,10 +73,13 @@ class EpubBookViewState extends ConsumerState<EpubBookView> {
             ref.read(bookListProvider.notifier).updateLastTimeRead();
           },
 
-          onChapterChanged: (value){
+          onRelocated: (value){
 
             int lastPage = bookModel.lastPage;
-            int currentPage = value?.chapterNumber ?? 0; //TODO: We currently scroll by chapters, what about indexes?
+            int currentPage = value.progress.round();
+
+            print('Loooook');
+            print(currentPage);
 
             // update counters & states
             if (currentPage > lastPage) {

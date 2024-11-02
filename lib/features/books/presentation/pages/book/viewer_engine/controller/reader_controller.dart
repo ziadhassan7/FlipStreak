@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:epub_view/epub_view.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_epub_viewer/flutter_epub_viewer.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../../../core/constants/color_constants.dart';
@@ -118,8 +118,7 @@ class ReaderController{
 
     //epub
     if(epubController != null){
-      //TODO: We currently scroll by chapters not indexes
-      epubController!.jumpTo(index: page);
+      epubController!.toProgressPercentage(page.toDouble());
     }
   }
 
@@ -160,12 +159,13 @@ class ReaderController{
   }
 
 
-  static Future<int?> getCurrentPage(){
+  static Future<int?> getCurrentPage() async{
     if(pdfController != null){
       return pdfController!.getCurrentPage();
 
     } else {
-      return Future.value(epubController!.currentValueListenable.value?.chapterNumber);
+      EpubLocation location = await epubController!.getCurrentLocation();
+      return location.progress.round();
     }
   }
 
@@ -175,7 +175,7 @@ class ReaderController{
     }
 
     if(epubController != null){
-      epubController!.jumpTo(index: page);
+      epubController!.toProgressPercentage(page.toDouble());
     }
   }
 

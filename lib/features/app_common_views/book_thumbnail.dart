@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_epub_viewer/flutter_epub_viewer.dart' as epub;
+import 'package:flutter_epub_viewer/flutter_epub_viewer.dart';
 import 'package:pdfx/pdfx.dart';
-import 'package:epub_view/epub_view.dart' as epub;
 
 class BookThumbnail extends StatefulWidget {
   const BookThumbnail({Key? key, required this.filePath, this.page = 0}) : super(key: key);
@@ -48,7 +49,7 @@ class BookThumbnailState extends State<BookThumbnail> {
   }
 
   void createEpubThumbnail() {
-    epubController = epub.EpubController(document: epub.EpubDocument.openFile(File(widget.filePath)));
+    epubController = epub.EpubController();
   }
 
   @override
@@ -85,13 +86,12 @@ class BookThumbnailState extends State<BookThumbnail> {
       width: 200,
       height: 300,
       child: IgnorePointer( //this widget is to disable scrolling and touch events
-        child: epub.EpubView(
-          controller: epubController!,
+        child: epub.EpubViewer(
+          epubSource: EpubSource.fromFile(File(widget.filePath)),
+          epubController: epubController!,
 
-          onDocumentLoaded: (book){
-            Future.delayed(const Duration(milliseconds: 600), (){
-              epubController!.jumpTo(index: widget.page);
-            });
+          onEpubLoaded: (){
+            epubController!.toProgressPercentage(widget.page.toDouble());
           },
         ),
       ),
